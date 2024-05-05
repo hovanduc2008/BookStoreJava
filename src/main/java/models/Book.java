@@ -1,6 +1,9 @@
 package models;
 
-public class Book {
+
+import java.io.Serializable;
+
+public class Book implements Serializable {
     private String ISBN;
     private String title;
     private String author;
@@ -11,7 +14,7 @@ public class Book {
     private int quantityInStock;
     private Category category;
 
-    public Book(String ISBN, String title, String author, String publisher, int publicationYear, int numberOfPages, double price, int quantityInStock, Category category) {
+    public Book(String ISBN, String title, String author, String publisher, int publicationYear, int numberOfPages, double price, int quantityInStock) {
         this.ISBN = ISBN;
         this.title = title;
         this.author = author;
@@ -20,7 +23,7 @@ public class Book {
         this.numberOfPages = numberOfPages;
         this.price = price;
         this.quantityInStock = quantityInStock;
-        this.category = category;
+        //this.category = category;
     }
 
     // Getter và setter cho các thuộc tính
