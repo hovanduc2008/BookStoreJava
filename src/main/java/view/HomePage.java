@@ -4,6 +4,18 @@
  */
 package view;
 
+import java.util.List;
+import java.util.ArrayList;  
+import java.util.ArrayList;
+import java.util.TreeSet;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+
 import view.View;
 
 import java.util.ArrayList;
@@ -37,6 +49,7 @@ import views.receipt.CreateReceipt;
 import views.supplier.CreateSupplier;
 import views.supplier.EditSupplier;
 
+import controllers.book.BookController;
 
 
 // Model
@@ -48,21 +61,47 @@ import models.Book;
 
 // Controller
 import controllers.book.BookController;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
  * @author Admin
  */
+
+
+
 public class HomePage extends javax.swing.JFrame implements View {
     
-     @Override
-    public <T> void showData(ArrayList<T> dataList, DefaultTableModel model) {
-        
+
+    @Override
+    public <T> void showData(ArrayList<T> list, DefaultTableModel model) {
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        model.setRowCount(0);
+        for (T t : list) {
+            if (t instanceof Book) {
+                Book b = (Book) t;
+                tblModelSach.addRow(new Object[]{
+                    b.getISBN(), b.getTitle(), b.getPublicationYear(), b.getAuthor(), b.getQuantityInStock(), b.getPrice()
+                });
+
+            }
+            
+        }
     }
 
-    private ArrayList<Book> booklist;
+//    private ArrayList<Book> booklist;
     private DefaultTableModel tblModelQLX;
+    
+    private ArrayList<Book> book_list;
+    
+    private int dongChon = -1;
+    // Default table
+    private DefaultTableModel tblModelSach;
+    
+    // Controller
+    
     private BookController bookController;
+    
     
     
     /**
@@ -72,10 +111,18 @@ public class HomePage extends javax.swing.JFrame implements View {
         initComponents();
         
         
-        booklist = new ArrayList<>();
-//        tblModelQLX = (DefaultTableModel) tblDanhSachXe.getModel();
-        bookController = new BookController();
-//        showQlyChamSocXe();
+        book_list = new ArrayList<>();
+        
+        
+       
+       
+        tblModelSach = (DefaultTableModel) tblSach.getModel();
+        this.bookController = new BookController();
+        showBookList();
+        
+        
+
+        this.handleGetBook();
     }
 
     /**
@@ -109,7 +156,7 @@ public class HomePage extends javax.swing.JFrame implements View {
         RadioSortByTime4 = new javax.swing.JRadioButton();
         jbtXep4 = new javax.swing.JButton();
         jScrollPane9 = new javax.swing.JScrollPane();
-        tblQLHD4 = new javax.swing.JTable();
+        tblSach = new javax.swing.JTable();
         jLabel13 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         Panle_timKiem5 = new javax.swing.JPanel();
@@ -392,9 +439,9 @@ public class HomePage extends javax.swing.JFrame implements View {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        tblQLHD4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14)), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
-        tblQLHD4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        tblQLHD4.setModel(new javax.swing.table.DefaultTableModel(
+        tblSach.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14)), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
+        tblSach.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tblSach.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -402,13 +449,13 @@ public class HomePage extends javax.swing.JFrame implements View {
                 "ISBN", "Tên sách", "Ngày phát hành", "Tác giả", "Số lượng", "Giá bán"
             }
         ));
-        tblQLHD4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        tblQLHD4.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblSach.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tblSach.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblQLHD4MouseClicked(evt);
+                tblSachMouseClicked(evt);
             }
         });
-        jScrollPane9.setViewportView(tblQLHD4);
+        jScrollPane9.setViewportView(tblSach);
 
         jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -443,7 +490,7 @@ public class HomePage extends javax.swing.JFrame implements View {
                 .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         Panle_timKiem4.getAccessibleContext().setAccessibleName("Tìm kiếm sách");
@@ -1596,14 +1643,33 @@ public class HomePage extends javax.swing.JFrame implements View {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    public void handleCreateBook(Book x) {
-        booklist.add(x);
-//        this.showData(dsQly, tblModelQLX);
-        bookController.writeToFile(booklist, "books.txt");
+    private void showBookList() {
+        book_list = (ArrayList<Book>) bookController.readDataFromFile("books.txt");
+        if (book_list == null) {
+            book_list = new ArrayList<>();
+        }
+        this.showData(book_list, tblModelSach);
     }
     
     
+    
+    
+    public void handleCreateBook(Book x) {
+        book_list.add(x);
+        this.showData(book_list, tblModelSach);
+        bookController.writeToFile(book_list, "books.txt");  
+    }
+    
+    public void handleGetBook() {
+//        this.showData(dsQly, tblModelQLX);
+        Object obj = bookController.readDataFromFile("books.txt");
+        if (obj != null && obj instanceof Book) {
+            Book b = (Book) obj;
+            System.out.println("Lop Sach");
+        } else {
+            System.out.println("File is empty or object type mismatch");
+        }
+    }
     
     private void btTimHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimHDActionPerformed
         //      Lấy thông tin khách hàng tìm kiếm từ JTextField
@@ -1737,11 +1803,47 @@ public class HomePage extends javax.swing.JFrame implements View {
     }//GEN-LAST:event_btThemHD4ActionPerformed
 
     private void btSuaHD4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSuaHD4ActionPerformed
-        new EditBook().setVisible(true);
+        //        Lấy ra chỉ số dòng chọn của người dùng click vào 
+        dongChon = tblSach.getSelectedRow();
+        /*       Nếu danh sách rỗng hoặc người dùng chưa chọn dòng  thì in ra thông báo
+        còn nếu không thì gọi đến màn hình sửa */
+        if (book_list.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Không có thông tin xe để sửa!");
+        } else if (dongChon == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Hãy chọn dòng chứa thông tin cần sửa!");
+        } else {
+            EditBook sua = new EditBook(this, rootPaneCheckingEnabled);
+            sua.setEditData(book_list.get(dongChon));
+            sua.setVisible(true);
+        }
+        
+        
     }//GEN-LAST:event_btSuaHD4ActionPerformed
 
     private void btXoaHD4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoaHD4ActionPerformed
-        // TODO add your handling code here:
+       //        Lấy ra chỉ số dòng chọn của người dùng click vào       
+        dongChon = tblSach.getSelectedRow();
+        /*       Nếu danh sách rỗng hoặc người dùng chưa chọn dòng  thì in ra thông báo
+        còn nếu không thì show ra màn hình xác nhận xóa */
+        if (dongChon == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Hãy chọn một dòng cần xóa!");
+        } else if (book_list.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Không có thông tin để xóa!");
+        } else {
+            int confirm = JOptionPane.showConfirmDialog(
+                    rootPane,
+                    "Bạn có chắc chắn muốn xóa?",
+                    "Xác nhận xóa",
+                    JOptionPane.YES_NO_OPTION
+            );
+            /*           Người dùng chọn Yes sẽ tiến hành xóa thông tin khỏi danh sách và 
+            show lại danh sách sau khi xóa */
+            if (confirm == JOptionPane.YES_OPTION) {
+                book_list.remove(dongChon);
+                bookController.writeToFile(book_list, "books.txt");
+                this.showData(book_list, tblModelSach);
+            }
+        }
     }//GEN-LAST:event_btXoaHD4ActionPerformed
 
     private void btXemChiTietHD4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXemChiTietHD4ActionPerformed
@@ -1749,16 +1851,18 @@ public class HomePage extends javax.swing.JFrame implements View {
     }//GEN-LAST:event_btXemChiTietHD4ActionPerformed
 
     private void btnReset4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReset4ActionPerformed
-        // TODO add your handling code here:
+        tblModelSach = (DefaultTableModel) tblSach.getModel();
+        this.bookController = new BookController();
+        showBookList();        
     }//GEN-LAST:event_btnReset4ActionPerformed
 
     private void jbtXep4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtXep4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jbtXep4ActionPerformed
 
-    private void tblQLHD4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblQLHD4MouseClicked
+    private void tblSachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSachMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblQLHD4MouseClicked
+    }//GEN-LAST:event_tblSachMouseClicked
 
     private void btTimHD5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimHD5ActionPerformed
         // TODO add your handling code here:
@@ -1996,9 +2100,9 @@ public class HomePage extends javax.swing.JFrame implements View {
     private javax.swing.JTable tblQLHD1;
     private javax.swing.JTable tblQLHD2;
     private javax.swing.JTable tblQLHD3;
-    private javax.swing.JTable tblQLHD4;
     private javax.swing.JTable tblQLHD5;
     private javax.swing.JTable tblQLHD6;
+    private javax.swing.JTable tblSach;
     private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtSearch1;
     private javax.swing.JTextField txtSearch2;

@@ -4,16 +4,27 @@
  */
 package views.book;
 
+import java.awt.Color;
+import java.awt.Cursor;
+import java.time.format.DateTimeFormatter;
+
+import models.Book;
+import view.HomePage;
+
 /**
  *
  * @author Admin
  */
 public class EditBook extends javax.swing.JFrame {
-
+    private HomePage home;
     /**
      * Creates new form EditBook
      */
-    public EditBook() {
+    public EditBook(java.awt.Frame parent, boolean modal) {
+//        super(parent, modal);
+        initComponents();
+        this.setLocationRelativeTo(null);
+        home = (HomePage) parent;
         initComponents();
     }
 
@@ -280,9 +291,14 @@ public class EditBook extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditBook().setVisible(true);
+                new EditBook(null, false).setVisible(true);
             }
         });
+    }
+    
+    public void setEditData(Book x) {
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
