@@ -4,12 +4,12 @@ package models;
 import java.io.Serializable;
 
 public class Category implements Serializable {
-
-    public String getCateID() {
+    private static final long serialVersionUID = -3971165505482975091L;
+    public int getCateID() {
         return cateID;
     }
 
-    public void setCateID(String cateID) {
+    public void setCateID(int cateID) {
         this.cateID = cateID;
     }
 
@@ -29,13 +29,13 @@ public class Category implements Serializable {
         this.description = description;
     }
 
-    public Category(String cateID, String name, String description) {
+    public Category(int cateID, String name, String description) {
         this.cateID = cateID;
         this.name = name;
         this.description = description;
     }
 
-    private String cateID;
+    private int cateID;
     private String name;
     private String description;
 }

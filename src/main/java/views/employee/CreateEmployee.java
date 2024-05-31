@@ -15,11 +15,11 @@ public class CreateEmployee extends javax.swing.JFrame {
      */
     private HomePage home;
     public CreateEmployee(java.awt.Frame parent, boolean modal) {
+        initComponents();
         this.setLocationRelativeTo(null);
         home = (HomePage) parent;
         
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        initComponents();
     }
 
     /**

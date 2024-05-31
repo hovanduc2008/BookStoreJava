@@ -12,11 +12,21 @@ package models;
 import java.io.Serializable;
 
 public class Author implements Serializable {
+
+    
+    private int id;
     private String name;
-    private String authorId;
     private String phoneNumber;
     private String email;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public String getDate_of_birth() {
         return date_of_birth;
     }
@@ -35,9 +45,9 @@ public class Author implements Serializable {
     private String date_of_birth;
     private String address;
 
-    public Author(String authorId, String name, String phoneNumber, String email, String address, String date_birth) {
+    public Author(int id, String name, String phoneNumber, String email, String address, String date_birth) {
+        this.id = id;
         this.name = name;
-        this.authorId = authorId;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.address = address;
@@ -51,14 +61,6 @@ public class Author implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getAuthorId() {
-        return authorId;
-    }
-
-    public void setAuthorId(String employeeId) {
-        this.authorId = employeeId;
     }
 
     public String getPhoneNumber() {

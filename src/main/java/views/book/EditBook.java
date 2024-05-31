@@ -4,6 +4,8 @@
  */
 package views.book;
 
+import javax.swing.JOptionPane;
+
 import java.awt.Color;
 import java.awt.Cursor;
 import java.time.format.DateTimeFormatter;
@@ -20,12 +22,15 @@ public class EditBook extends javax.swing.JFrame {
     /**
      * Creates new form EditBook
      */
+    
+    Book bif;
+    
     public EditBook(java.awt.Frame parent, boolean modal) {
-//        super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
         home = (HomePage) parent;
-        initComponents();
+        
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -37,25 +42,29 @@ public class EditBook extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jRadioButton1 = new javax.swing.JRadioButton();
         jLabel9 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtSuaChua1 = new javax.swing.JTextField();
+        txtBookEditName = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         btnThem = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         btnHuyBo = new javax.swing.JButton();
-        txtSuaChua = new javax.swing.JTextField();
-        txtSDT = new javax.swing.JTextField();
+        booknumberOfPagesEdit = new javax.swing.JTextField();
+        txtBookEditDate = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        txtSuaChua2 = new javax.swing.JTextField();
+        txtBookEditPrice = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        txtBSX = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        comboBookCate = new javax.swing.JComboBox<>();
+        comboBookSupplier = new javax.swing.JComboBox<>();
+        txtBookEditAuthor = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        txtBookEditISBN = new javax.swing.JLabel();
+
+        jRadioButton1.setText("jRadioButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,9 +72,14 @@ public class EditBook extends javax.swing.JFrame {
 
         jLabel3.setText("Tên sách:");
 
-        txtSuaChua1.addActionListener(new java.awt.event.ActionListener() {
+        txtBookEditName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtBookEditNameFocusGained(evt);
+            }
+        });
+        txtBookEditName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSuaChua1ActionPerformed(evt);
+                txtBookEditNameActionPerformed(evt);
             }
         });
 
@@ -87,15 +101,15 @@ public class EditBook extends javax.swing.JFrame {
             }
         });
 
-        txtSuaChua.addActionListener(new java.awt.event.ActionListener() {
+        booknumberOfPagesEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSuaChuaActionPerformed(evt);
+                booknumberOfPagesEditActionPerformed(evt);
             }
         });
 
-        txtSDT.addActionListener(new java.awt.event.ActionListener() {
+        txtBookEditDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSDTActionPerformed(evt);
+                txtBookEditDateActionPerformed(evt);
             }
         });
 
@@ -103,30 +117,26 @@ public class EditBook extends javax.swing.JFrame {
 
         jLabel6.setText("Năm xuất bản:");
 
-        txtSuaChua2.addActionListener(new java.awt.event.ActionListener() {
+        txtBookEditPrice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSuaChua2ActionPerformed(evt);
+                txtBookEditPriceActionPerformed(evt);
             }
         });
 
         jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel10.setText("SỬA THÔNG TIN SÁCH");
 
-        txtBSX.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBSXActionPerformed(evt);
-            }
-        });
-
         jLabel8.setText("Giá bán:");
 
         jLabel2.setText("Mã ISBN:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Truyện ngắn", "Truyện dài" }));
+        comboBookCate.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Truyện ngắn", "Truyện dài" }));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fahasa" }));
+        comboBookSupplier.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fahasa" }));
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nguyễn Nhật Ánh" }));
+        txtBookEditAuthor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nguyễn Nhật Ánh" }));
+
+        txtBookEditISBN.setText("   ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -144,98 +154,133 @@ public class EditBook extends javax.swing.JFrame {
                     .addComponent(jLabel8)
                     .addComponent(jLabel11))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel10)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(btnThem)
-                            .addGap(87, 87, 87)
-                            .addComponent(btnHuyBo))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtBSX, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-                            .addComponent(txtSuaChua2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtSuaChua, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtSDT, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtSuaChua1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(88, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnThem)
+                        .addGap(87, 87, 87)
+                        .addComponent(btnHuyBo))
+                    .addComponent(txtBookEditPrice, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(booknumberOfPagesEdit, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtBookEditDate, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(comboBookCate, 0, 269, Short.MAX_VALUE)
+                    .addComponent(comboBookSupplier, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtBookEditAuthor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(txtBookEditISBN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtBookEditName))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel10)
-                .addGap(29, 29, 29)
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtBSX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1)
+                    .addComponent(txtBookEditISBN))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtSuaChua1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBookEditName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBookEditAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBookEditDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboBookSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
-                    .addComponent(txtSuaChua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(booknumberOfPagesEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboBookCate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSuaChua2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBookEditPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThem)
                     .addComponent(btnHuyBo))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtSuaChua1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSuaChua1ActionPerformed
+    private void txtBookEditNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBookEditNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSuaChua1ActionPerformed
+    }//GEN-LAST:event_txtBookEditNameActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        try {
+            // Retrieve and trim input values
+            String title = txtBookEditName.getText();
+            String author = String.valueOf(txtBookEditAuthor.getSelectedItem());
+            String supplier = String.valueOf(comboBookSupplier.getSelectedItem());
+            String category = String.valueOf(comboBookCate.getSelectedItem());
 
+            // Parse integer values with exception handling
+            int publicationYear = Integer.parseInt(txtBookEditDate.getText());
+            int numberOfPages = Integer.parseInt(booknumberOfPagesEdit.getText());
+            int price = Integer.parseInt(txtBookEditPrice.getText());
+
+            // Retrieve ISBN and quantity in stock
+            String ISBN = txtBookEditISBN.getText();
+            int quantityInStock = bif.getQuantityInStock(); // Ensure bif is properly defined and accessible
+
+            // Create a new Book object
+            Book b = new Book(ISBN, title, author, "", publicationYear, numberOfPages, price, quantityInStock, category);
+
+            // Handle the update of the book
+            home.updateBook(b);
+
+            // Show a success message after the book is updated
+            JOptionPane.showMessageDialog(null, "Book updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+        } catch (NumberFormatException e) {
+            // Handle invalid number format
+            JOptionPane.showMessageDialog(null, "Please enter valid numbers for publication year, number of pages, and price.", "Input Error", JOptionPane.ERROR_MESSAGE);
+        } catch (NullPointerException e) {
+            // Handle null selection in combo boxes
+            JOptionPane.showMessageDialog(null, "Please make sure all fields are filled out.", "Input Error", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            // Handle any other exceptions
+            JOptionPane.showMessageDialog(null, "An error occurred while updating the book: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnHuyBoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyBoActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnHuyBoActionPerformed
 
-    private void txtSuaChuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSuaChuaActionPerformed
+    private void booknumberOfPagesEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_booknumberOfPagesEditActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSuaChuaActionPerformed
+    }//GEN-LAST:event_booknumberOfPagesEditActionPerformed
 
-    private void txtSDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSDTActionPerformed
+    private void txtBookEditDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBookEditDateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSDTActionPerformed
+    }//GEN-LAST:event_txtBookEditDateActionPerformed
 
-    private void txtSuaChua2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSuaChua2ActionPerformed
+    private void txtBookEditPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBookEditPriceActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSuaChua2ActionPerformed
+    }//GEN-LAST:event_txtBookEditPriceActionPerformed
 
-    private void txtBSXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBSXActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBSXActionPerformed
+    private void txtBookEditNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBookEditNameFocusGained
+        txtBookEditDate.setCaretPosition(txtBookEditDate.getText().length());
+    }//GEN-LAST:event_txtBookEditNameFocusGained
 
     /**
      * @param args the command line arguments
@@ -273,16 +318,44 @@ public class EditBook extends javax.swing.JFrame {
     }
     
     public void setEditData(Book x) {
+        bif = x;
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         
+        txtBookEditISBN.setText(x.getISBN());
+        txtBookEditName.setText(x.getTitle());
+        txtBookEditAuthor.setSelectedItem(x.getAuthor());
+        txtBookEditDate.setText(String.valueOf(x.getPublicationYear()));
+        comboBookSupplier.setSelectedItem(x.getPublisher());
+        booknumberOfPagesEdit.setText(String.valueOf(x.getNumberOfPages()));
+        double price = x.getPrice();
+        String priceString = String.format("%.0f", price); // Format giá trị thành số nguyên
+        txtBookEditPrice.setText(priceString);
+        
+//        txtID.setText(x.getMaChamSoc() + "");
+//        txtID.setEditable(false);
+//        txtID.setBorder(null);
+//        txtID.setBackground(null);
+//        txtID.setForeground(Color.BLACK);
+//        txtID.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+//        txtID.setCaretColor(txtID.getBackground());
+//        
+//        txtBSX.setText(x.getBienSoXe());
+//        comboLoaiXe.setSelectedItem(x.getLoaiXe());
+//        txtChuSoHuu.setText(x.getChuSoHuu().getHoTen());
+//        txtSDT.setText(x.getChuSoHuu().getSdt());
+//        txtSuaChua.setText(x.getVatPham().getTenVatPham());
+//        txtNgaySua.setText(x.getNgaySua().format(dateFormatter));
+//        txtSoLuong.setText(x.getVatPham().getSoLuong() + "");
+//        txtDonGia.setText(x.getVatPham().getDonGia() + "");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField booknumberOfPagesEdit;
     private javax.swing.JButton btnHuyBo;
     private javax.swing.JButton btnThem;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JComboBox<String> comboBookCate;
+    private javax.swing.JComboBox<String> comboBookSupplier;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
@@ -292,10 +365,11 @@ public class EditBook extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField txtBSX;
-    private javax.swing.JTextField txtSDT;
-    private javax.swing.JTextField txtSuaChua;
-    private javax.swing.JTextField txtSuaChua1;
-    private javax.swing.JTextField txtSuaChua2;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JComboBox<String> txtBookEditAuthor;
+    private javax.swing.JTextField txtBookEditDate;
+    private javax.swing.JLabel txtBookEditISBN;
+    private javax.swing.JTextField txtBookEditName;
+    private javax.swing.JTextField txtBookEditPrice;
     // End of variables declaration//GEN-END:variables
 }

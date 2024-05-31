@@ -1,12 +1,14 @@
 package models;
 
-public class OrderDetail {
+import java.io.Serializable;
 
-    public String getOrderID() {
+public class OrderDetail implements Serializable {
+
+    public int getOrderID() {
         return orderID;
     }
 
-    public void setOrderID(String orderID) {
+    public void setOrderID(int orderID) {
         this.orderID = orderID;
     }
 
@@ -34,13 +36,13 @@ public class OrderDetail {
         this.subtotal = subtotal;
     }
 
-    public OrderDetail(String orderID, String book, int quantity, double subtotal) {
+    public OrderDetail(int orderID, String book, int quantity, double subtotal) {
         this.orderID = orderID;
         this.book = book;
         this.quantity = quantity;
         this.subtotal = subtotal;
     }
-    private String orderID;
+    private int orderID;
     private String book;
     private int quantity;
     private double subtotal;

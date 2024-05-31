@@ -12,9 +12,9 @@ public class Book implements Serializable {
     private int numberOfPages;
     private double price;
     private int quantityInStock;
-    private Category category;
+    private String category;
 
-    public Book(String ISBN, String title, String author, String publisher, int publicationYear, int numberOfPages, double price, int quantityInStock) {
+    public Book(String ISBN, String title, String author, String publisher, int publicationYear, int numberOfPages, double price, int quantityInStock, String category) {
         this.ISBN = ISBN;
         this.title = title;
         this.author = author;
@@ -23,7 +23,7 @@ public class Book implements Serializable {
         this.numberOfPages = numberOfPages;
         this.price = price;
         this.quantityInStock = quantityInStock;
-        //this.category = category;
+        this.category = category;
     }
 
     // Getter và setter cho các thuộc tính
@@ -91,11 +91,11 @@ public class Book implements Serializable {
         this.quantityInStock = quantityInStock;
     }
 
-    public Category getCategory() {
+    public String getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(String category) {
         this.category = category;
     }
 }

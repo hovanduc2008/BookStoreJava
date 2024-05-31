@@ -5,6 +5,7 @@
 package views.supplier;
 import models.Supplier;
 import view.HomePage;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Admin
@@ -16,11 +17,11 @@ public class CreateSupplier extends javax.swing.JFrame {
      */
     private HomePage home;
     public CreateSupplier(java.awt.Frame parent, boolean modal) {
+        initComponents();
         this.setLocationRelativeTo(null);
         home = (HomePage) parent;
         
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        initComponents();
     }
 
     /**
@@ -167,17 +168,36 @@ public class CreateSupplier extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSupplierPhoneActionPerformed
 
+    private int getMaxId() {
+        int maxId = 0;
+        for (Supplier supploier : home.supplier_list) {
+            if (supploier.getId() > maxId) {
+                maxId = supploier.getId();
+            }
+        }
+        return maxId;
+    }
+    
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         String name, phone, email, address;
-        
+
         name = txtSupplierName.getText();
         phone = txtSupplierPhone.getText();
         email = txtSupplierEmail.getText();
         address = txtSupplierAddress.getText();
-        
-        Supplier a = new Supplier( name,  address,  phone,  email);
-        
-        home.handleCreateSupplier(a);
+
+        try {
+            // Thử tạo một đối tượng Supplier
+            Supplier a = new Supplier(getMaxId() + 1, name, address, phone, email);
+
+            // Nếu tạo thành công, gọi phương thức handleCreateSupplier
+            home.handleCreateSupplier(a);
+        } catch (Exception ex) {
+            // Xử lý ngoại lệ ở đây
+            ex.printStackTrace(); // In thông tin ngoại lệ ra console (để kiểm tra)
+            // Hiển thị thông báo lỗi cho người dùng
+            JOptionPane.showMessageDialog(null, "Đã xảy ra lỗi khi tạo nhà cung cấp. Vui lòng thử lại hoặc liên hệ với người quản trị.");
+        }
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void txtSupplierNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSupplierNameActionPerformed

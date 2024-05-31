@@ -4,6 +4,17 @@
  */
 package views.author;
 
+import javax.swing.JOptionPane;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.time.format.DateTimeFormatter;
+import javax.swing.SwingUtilities;
+import view.HomePage;
+import javax.swing.*;
+import java.awt.*;
+
+import models.Author;
+
 /**
  *
  * @author Admin
@@ -13,8 +24,16 @@ public class EditAuthor extends javax.swing.JFrame {
     /**
      * Creates new form EditAuthor
      */
-    public EditAuthor() {
+    private HomePage home;
+    
+    private Author au;
+    
+    public EditAuthor(java.awt.Frame parent, boolean modal) {
         initComponents();
+        this.setLocationRelativeTo(null);
+        home = (HomePage) parent;
+        
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -28,19 +47,19 @@ public class EditAuthor extends javax.swing.JFrame {
 
         jLabel3 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        txtSDT1 = new javax.swing.JTextField();
-        txtBSX = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         btnHuyBo = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        txtChuSoHuu = new javax.swing.JTextField();
-        txtSDT = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        txtSuaChua1 = new javax.swing.JTextField();
         btnThem = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        txtBSX1 = new javax.swing.JTextField();
+        txtAuthorEditID = new javax.swing.JTextField();
+        txtAuthorEditName = new javax.swing.JTextField();
+        txtAuthorEditEmail = new javax.swing.JTextField();
+        txtAuthorEditPhone = new javax.swing.JTextField();
+        txtAuthorEditDate = new javax.swing.JTextField();
+        txtAuthorEditAddress = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,18 +67,6 @@ public class EditAuthor extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel10.setText("SỬA THÔNG TIN TÁC GIẢ");
-
-        txtSDT1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSDT1ActionPerformed(evt);
-            }
-        });
-
-        txtBSX.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBSXActionPerformed(evt);
-            }
-        });
 
         jLabel7.setText("Ngày sinh:");
 
@@ -74,27 +81,9 @@ public class EditAuthor extends javax.swing.JFrame {
 
         jLabel2.setText("Họ tên:");
 
-        txtChuSoHuu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtChuSoHuuActionPerformed(evt);
-            }
-        });
-
-        txtSDT.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSDTActionPerformed(evt);
-            }
-        });
-
         jLabel6.setText("Địa chỉ:");
 
-        txtSuaChua1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSuaChua1ActionPerformed(evt);
-            }
-        });
-
-        btnThem.setText("Thêm");
+        btnThem.setText("Sửa");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemActionPerformed(evt);
@@ -103,9 +92,27 @@ public class EditAuthor extends javax.swing.JFrame {
 
         jLabel5.setText("Mã tác giả:");
 
-        txtBSX1.addActionListener(new java.awt.event.ActionListener() {
+        txtAuthorEditEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBSX1ActionPerformed(evt);
+                txtAuthorEditEmailActionPerformed(evt);
+            }
+        });
+
+        txtAuthorEditPhone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAuthorEditPhoneActionPerformed(evt);
+            }
+        });
+
+        txtAuthorEditDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAuthorEditDateActionPerformed(evt);
+            }
+        });
+
+        txtAuthorEditAddress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAuthorEditAddressActionPerformed(evt);
             }
         });
 
@@ -126,50 +133,53 @@ public class EditAuthor extends javax.swing.JFrame {
                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(txtBSX1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
                         .addComponent(btnThem)
                         .addGap(87, 87, 87)
                         .addComponent(btnHuyBo))
-                    .addComponent(txtBSX, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtSDT)
-                    .addComponent(txtChuSoHuu)
-                    .addComponent(txtSuaChua1)
-                    .addComponent(txtSDT1, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE))
-                .addGap(93, 93, 93))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtAuthorEditName, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAuthorEditID, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAuthorEditEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAuthorEditPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAuthorEditDate, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAuthorEditAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(73, 73, 73))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtBSX1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAuthorEditID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtBSX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAuthorEditName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtSuaChua1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAuthorEditPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtChuSoHuu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel4)
+                    .addComponent(txtAuthorEditEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAuthorEditAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(txtSDT1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(txtAuthorEditDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThem)
                     .addComponent(btnHuyBo))
@@ -179,37 +189,56 @@ public class EditAuthor extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtSDT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSDT1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSDT1ActionPerformed
-
-    private void txtBSXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBSXActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBSXActionPerformed
-
     private void btnHuyBoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyBoActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnHuyBoActionPerformed
 
-    private void txtChuSoHuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtChuSoHuuActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtChuSoHuuActionPerformed
-
-    private void txtSDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSDTActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSDTActionPerformed
-
-    private void txtSuaChua1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSuaChua1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSuaChua1ActionPerformed
-
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        try {
+            // Retrieve and trim input values
+            String name = txtAuthorEditName.getText().trim();
+            String phone = txtAuthorEditPhone.getText().trim();
+            String email = txtAuthorEditEmail.getText().trim();
+            String date_birth = txtAuthorEditDate.getText().trim();
+            String address = txtAuthorEditAddress.getText().trim();
 
+            // Validate input fields
+            if (name.isEmpty()) {
+                throw new IllegalArgumentException("Name must be filled out.");
+            }
+
+            // Create a new Author object with the updated details
+            Author a = new Author(au.getId(), name, phone, email, address, date_birth);
+
+            // Handle the update of the author
+            home.updateAuthor(a);
+
+            // Show a success message after the author is updated
+            JOptionPane.showMessageDialog(null, "Author updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+        } catch (IllegalArgumentException e) {
+            // Handle missing input fields
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Input Error", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            // Handle any other exceptions
+            JOptionPane.showMessageDialog(null, "An error occurred while updating the author: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnThemActionPerformed
 
-    private void txtBSX1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBSX1ActionPerformed
+    private void txtAuthorEditPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAuthorEditPhoneActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtBSX1ActionPerformed
+    }//GEN-LAST:event_txtAuthorEditPhoneActionPerformed
+
+    private void txtAuthorEditDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAuthorEditDateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAuthorEditDateActionPerformed
+
+    private void txtAuthorEditAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAuthorEditAddressActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAuthorEditAddressActionPerformed
+
+    private void txtAuthorEditEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAuthorEditEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAuthorEditEmailActionPerformed
 
     /**
      * @param args the command line arguments
@@ -241,9 +270,20 @@ public class EditAuthor extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditAuthor().setVisible(true);
+                new EditAuthor(null, false).setVisible(true);
+                
             }
         });
+    }
+    
+    public void setEditData(Author x) {
+        au = x;
+        txtAuthorEditID.setText(String.valueOf(x.getId()));
+        txtAuthorEditName.setText(x.getName());
+        txtAuthorEditAddress.setText(x.getAddress());
+        txtAuthorEditPhone.setText(x.getPhoneNumber());
+        txtAuthorEditDate.setText(x.getDate_of_birth());
+        txtAuthorEditEmail.setText(x.getEmail());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -256,11 +296,11 @@ public class EditAuthor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField txtBSX;
-    private javax.swing.JTextField txtBSX1;
-    private javax.swing.JTextField txtChuSoHuu;
-    private javax.swing.JTextField txtSDT;
-    private javax.swing.JTextField txtSDT1;
-    private javax.swing.JTextField txtSuaChua1;
+    private javax.swing.JTextField txtAuthorEditAddress;
+    private javax.swing.JTextField txtAuthorEditDate;
+    private javax.swing.JTextField txtAuthorEditEmail;
+    private javax.swing.JTextField txtAuthorEditID;
+    private javax.swing.JTextField txtAuthorEditName;
+    private javax.swing.JTextField txtAuthorEditPhone;
     // End of variables declaration//GEN-END:variables
 }

@@ -21,8 +21,6 @@ public class CreateCategory extends javax.swing.JFrame {
     private HomePage home;
     public CreateCategory(java.awt.Frame parent, boolean modal) {
         initComponents();
-        
-         initComponents();
         this.setLocationRelativeTo(null);
         home = (HomePage) parent;
         
@@ -135,13 +133,23 @@ public class CreateCategory extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCateDesActionPerformed
 
+    private int getMaxId() {
+        int maxId = 0;
+        for (Category category : home.category_list) {
+            if (category.getCateID()> maxId) {
+                maxId = category.getCateID();
+            }
+        }
+        return maxId;
+    }
+    
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         String name, des;
         
         name = txtCateName.getText();
         des = txtCateDes.getText();
         
-        Category b = new Category("1", name, des);
+        Category b = new Category(getMaxId() + 1, name, des);
         
         home.handleCreateCategory(b);
     }//GEN-LAST:event_btnThemActionPerformed

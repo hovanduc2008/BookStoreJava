@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package views.author;
-
+import javax.swing.JOptionPane;
 import models.Author;
 import view.HomePage;
 
@@ -19,11 +19,11 @@ public class CreateAuthor extends javax.swing.JFrame {
     private HomePage home;
     
     public CreateAuthor(java.awt.Frame parent, boolean modal) {
+        initComponents();
         this.setLocationRelativeTo(null);
         home = (HomePage) parent;
         
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        initComponents();
     }
 
     /**
@@ -166,7 +166,7 @@ public class CreateAuthor extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThem)
                     .addComponent(btnHuyBo))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
@@ -196,18 +196,45 @@ public class CreateAuthor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAuthorDateActionPerformed
 
+    private int getMaxId() {
+        int maxId = 0;
+        for (Author author : home.author_list) {
+            if (author.getId() > maxId) {
+                maxId = author.getId();
+            }
+        }
+        return maxId;
+    }
+    
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        String name, phone, email, address, date_birth;
-        
-        name = txtAuthorName.getText();
-        phone = txtAuthorPhone.getText();
-        email = txtAuthorEmail.getText();
-        date_birth = txtAuthorDate.getText();
-        address = txtAuthorAddress.getText();
-        
-        Author a = new Author("1", name, phone , email, address, date_birth);
-        
-        home.handleCreateAuthor(a);
+        try {
+            // Retrieve and trim input values
+            String name = txtAuthorName.getText().trim();
+            String phone = txtAuthorPhone.getText().trim();
+            String email = txtAuthorEmail.getText().trim();
+            String date_birth = txtAuthorDate.getText().trim();
+            String address = txtAuthorAddress.getText().trim();
+
+            // Validate input fields
+            if (name.isEmpty()) {
+                throw new IllegalArgumentException("Name must be filled out.");
+            }
+
+            // Create a new Author object
+            Author a = new Author(getMaxId() + 1, name, phone, email, address, date_birth);
+
+            // Handle the creation of the author
+            home.handleCreateAuthor(a);
+
+            // Show a success message after the author is added
+            JOptionPane.showMessageDialog(null, "Author added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+        } catch (IllegalArgumentException e) {
+            // Handle missing input fields
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Input Error", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            // Handle any other exceptions
+            JOptionPane.showMessageDialog(null, "An error occurred while adding the author: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnThemActionPerformed
 
     /**

@@ -4,54 +4,56 @@ import java.util.Date; // Import để sử dụng lớp Date
 import java.util.ArrayList; // Thêm dòng này để import ArrayList
 import java.util.List; // Thêm dòng này để import List
 
-public class Order {
-    private String orderId;
-    private Date orderDate;
-    private Customer customer;
-    private List<Book> books;
-    private double totalAmount;
-    private boolean isPaid;
+import java.io.Serializable;
 
-    public Order(String orderId, Date orderDate, Customer customer, List<Book> books, double totalAmount, boolean isPaid) {
-        this.orderId = orderId;
-        this.orderDate = orderDate;
-        this.customer = customer;
-        this.books = books;
-        this.totalAmount = totalAmount;
-        this.isPaid = isPaid;
-    }
+public class Order implements Serializable {
 
-    // Getter và setter cho các thuộc tính
-    public String getOrderId() {
+    public int getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(String orderId) {
+    public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
 
-    public Date getOrderDate() {
+    public String getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(Date orderDate) {
+    public void setOrderDate(String orderDate) {
         this.orderDate = orderDate;
     }
 
-    public Customer getCustomer() {
+    public String getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Customer customer) {
+    public void setCustomer(String customer) {
         this.customer = customer;
     }
 
-    public List<Book> getBooks() {
-        return books;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setBooks(List<Book> books) {
-        this.books = books;
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public double getTotalAmount() {
@@ -62,11 +64,22 @@ public class Order {
         this.totalAmount = totalAmount;
     }
 
-    public boolean isPaid() {
-        return isPaid;
+    public Order(int orderId, String orderDate, String customer, String phone, String email, String address, double totalAmount) {
+        this.orderId = orderId;
+        this.orderDate = orderDate;
+        this.customer = customer;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.totalAmount = totalAmount;
     }
+    private int orderId;
+    private String orderDate;
+    private String customer;
+    private String phone;
+    private String email;
+    private String address;
+    private double totalAmount;
 
-    public void setPaid(boolean paid) {
-        isPaid = paid;
-    }
+    
 }

@@ -40,9 +40,9 @@
                           <Component id="btnHuyBo" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="txtBSX" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtBSX1" alignment="1" pref="348" max="32767" attributes="0"/>
-                          <Component id="txtSuaChua1" alignment="1" max="32767" attributes="0"/>
+                          <Component id="txtCateName" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtCateID" alignment="1" pref="348" max="32767" attributes="0"/>
+                          <Component id="txtCateDes" alignment="1" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -58,17 +58,17 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtBSX1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtCateID" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtBSX" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtCateName" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtSuaChua1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtCateDes" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -89,9 +89,9 @@
         <Property name="text" type="java.lang.String" value="S&#x1eec;A TH&#xd4;NG TIN DANH M&#x1ee4;C"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtBSX">
+    <Component class="javax.swing.JTextField" name="txtCateName">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtBSXActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCateNameActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
@@ -104,14 +104,14 @@
         <Property name="text" type="java.lang.String" value="M&#xf4; t&#x1ea3;:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtSuaChua1">
+    <Component class="javax.swing.JTextField" name="txtCateDes">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSuaChua1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCateDesActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnThem">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
+        <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThemActionPerformed"/>
@@ -130,9 +130,9 @@
         <Property name="text" type="java.lang.String" value="M&#xe3; danh m&#x1ee5;c:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtBSX1">
+    <Component class="javax.swing.JTextField" name="txtCateID">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtBSX1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCateIDActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

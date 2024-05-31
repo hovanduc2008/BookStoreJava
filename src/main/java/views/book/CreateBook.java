@@ -4,7 +4,12 @@
  */
 package views.book;
 
+import javax.swing.JOptionPane;
+
 import models.Book;
+import models.Category;
+import models.Supplier;
+import models.Author;
 import view.HomePage;
 
 /**
@@ -26,6 +31,21 @@ public class CreateBook extends javax.swing.JFrame  {
         initComponents();
         this.setLocationRelativeTo(null);
         home = (HomePage) parent;
+        
+        comboBookCate.removeAllItems();
+        for (Category  cate : home.category_list) {
+            comboBookCate.addItem(cate.getName());
+        }
+        
+        comboBookSupplier.removeAllItems();
+        for (Supplier  supplier : home.supplier_list) {
+            comboBookSupplier.addItem(supplier.getName());
+        }
+        
+        comboBookAuthor.removeAllItems();
+        for (Author author : home.author_list) {
+            comboBookAuthor.addItem(author.getName());
+        }
         
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
@@ -50,14 +70,14 @@ public class CreateBook extends javax.swing.JFrame  {
         btnThem = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         btnHuyBo = new javax.swing.JButton();
-        bookauthor = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         bookPrice = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        txtSuaChua3 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        comboBookCate = new javax.swing.JComboBox<>();
+        comboBookSupplier = new javax.swing.JComboBox<>();
+        comboBookAuthor = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -110,12 +130,6 @@ public class CreateBook extends javax.swing.JFrame  {
             }
         });
 
-        bookauthor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bookauthorActionPerformed(evt);
-            }
-        });
-
         jLabel7.setText("Số trang:");
 
         bookPrice.addActionListener(new java.awt.event.ActionListener() {
@@ -128,15 +142,18 @@ public class CreateBook extends javax.swing.JFrame  {
 
         jLabel9.setText("Danh mục:");
 
-        txtSuaChua3.addActionListener(new java.awt.event.ActionListener() {
+        jLabel11.setText("NCC:");
+
+        comboBookCate.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Truyện Ngắn", "Item 2", "Item 3", "Item 4" }));
+        comboBookCate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSuaChua3ActionPerformed(evt);
+                comboBookCateActionPerformed(evt);
             }
         });
 
-        jLabel11.setText("NCC:");
+        comboBookSupplier.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Truyện Ngắn", "Item 2", "Item 3", "Item 4" }));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Truyện Ngắn", "Item 2", "Item 3", "Item 4" }));
+        comboBookAuthor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Truyện Ngắn", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -163,15 +180,15 @@ public class CreateBook extends javax.swing.JFrame  {
                     .addComponent(bookPrice, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(booknumberOfPages, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(publicationY, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(bookauthor, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(booktitle, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtSuaChua3, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnThem)
                         .addGap(87, 87, 87)
                         .addComponent(btnHuyBo))
-                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(97, Short.MAX_VALUE))
+                    .addComponent(comboBookCate, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(comboBookSupplier, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(comboBookAuthor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,24 +205,24 @@ public class CreateBook extends javax.swing.JFrame  {
                     .addComponent(booktitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bookauthor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel4)
+                    .addComponent(comboBookAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(publicationY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(txtSuaChua3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
+                    .addComponent(comboBookSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
                     .addComponent(booknumberOfPages, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboBookCate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bookPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -214,7 +231,7 @@ public class CreateBook extends javax.swing.JFrame  {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThem)
                     .addComponent(btnHuyBo))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
@@ -237,36 +254,50 @@ public class CreateBook extends javax.swing.JFrame  {
     }//GEN-LAST:event_booktitleActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        String ISBN, title, author, publisher;
-        int numberOfPages, publicationYear, price;
-        
-        ISBN = isbn.getText().trim();
-        title = booktitle.getText();
-        author = bookauthor.getText();
-        publicationYear = Integer.parseInt(publicationY.getText());
-        numberOfPages = Integer.parseInt(booknumberOfPages.getText());
-        price = Integer.parseInt(bookPrice.getText());
-        
-        Book b = new Book(ISBN, title, author,"", publicationYear, numberOfPages, price, 0);
-        
-        home.handleCreateBook(b);
+        try {
+            // Retrieve and trim input values
+            String ISBN = isbn.getText().trim();
+            String title = booktitle.getText();
+            String author = String.valueOf(comboBookAuthor.getSelectedItem());
+            String supplier = String.valueOf(comboBookSupplier.getSelectedItem());
+            String category = String.valueOf(comboBookCate.getSelectedItem());
+
+            // Parse integer values with exception handling
+            int publicationYear = Integer.parseInt(publicationY.getText());
+            int numberOfPages = Integer.parseInt(booknumberOfPages.getText());
+            int price = Integer.parseInt(bookPrice.getText());
+
+            // Create a new Book object
+            Book b = new Book(ISBN, title, author, "", publicationYear, numberOfPages, price, 0, category);
+
+            // Handle the creation of the book
+            home.handleCreateBook(b);
+
+            // Show a success message after the book is added
+            JOptionPane.showMessageDialog(null, "Book added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+        } catch (NumberFormatException e) {
+            // Handle invalid number format
+            JOptionPane.showMessageDialog(null, "Please enter valid numbers for publication year, number of pages, and price.", "Input Error", JOptionPane.ERROR_MESSAGE);
+        } catch (NullPointerException e) {
+            // Handle null selection in combo boxes
+            JOptionPane.showMessageDialog(null, "Please make sure all fields are filled out.", "Input Error", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            // Handle any other exceptions
+            JOptionPane.showMessageDialog(null, "An error occurred while adding the book: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnHuyBoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyBoActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnHuyBoActionPerformed
 
-    private void bookauthorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookauthorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bookauthorActionPerformed
-
     private void bookPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookPriceActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bookPriceActionPerformed
 
-    private void txtSuaChua3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSuaChua3ActionPerformed
+    private void comboBookCateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBookCateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSuaChua3ActionPerformed
+    }//GEN-LAST:event_comboBookCateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -305,13 +336,14 @@ public class CreateBook extends javax.swing.JFrame  {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField bookPrice;
-    private javax.swing.JTextField bookauthor;
     private javax.swing.JTextField booknumberOfPages;
     private javax.swing.JTextField booktitle;
     private javax.swing.JButton btnHuyBo;
     private javax.swing.JButton btnThem;
+    private javax.swing.JComboBox<String> comboBookAuthor;
+    private javax.swing.JComboBox<String> comboBookCate;
+    private javax.swing.JComboBox<String> comboBookSupplier;
     private javax.swing.JTextField isbn;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
@@ -322,6 +354,5 @@ public class CreateBook extends javax.swing.JFrame  {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField publicationY;
-    private javax.swing.JTextField txtSuaChua3;
     // End of variables declaration//GEN-END:variables
 }

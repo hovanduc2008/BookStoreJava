@@ -4,6 +4,11 @@
  */
 package views.branch;
 
+import javax.swing.JOptionPane;
+import java.time.format.DateTimeFormatter;
+import models.Branch;
+import view.HomePage;
+
 /**
  *
  * @author Admin
@@ -13,10 +18,26 @@ public class EditBranch extends javax.swing.JFrame {
     /**
      * Creates new form EditBranch
      */
-    public EditBranch() {
+    private HomePage home;
+    public EditBranch(java.awt.Frame parent, boolean modal) {
         initComponents();
+        this.setLocationRelativeTo(null);
+        home = (HomePage) parent;
+        
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
+    public void setEditData(Branch x) {
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        
+        txtBranchEditID.setText("1");
+        txtBranchEditName.setText(x.getName());
+        txtBranchEditAddress.setText(x.getAddress());
+        txtBranchEditHotline.setText(x.getHotline());
+        txtBranchEditManager.setSelectedItem(x.getManager());
+        txtBranchEditStatus.setSelectedItem(x.getStatus());
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,27 +47,27 @@ public class EditBranch extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtSDT = new javax.swing.JTextField();
+        txtBranchEditHotline = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        txtBSX = new javax.swing.JTextField();
+        txtBranchEditName = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtSuaChua1 = new javax.swing.JTextField();
+        txtBranchEditAddress = new javax.swing.JTextField();
         btnThem = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         btnHuyBo = new javax.swing.JButton();
-        txtChuSoHuu = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        txtBSX1 = new javax.swing.JTextField();
+        txtBranchEditID = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        txtBranchEditStatus = new javax.swing.JComboBox<>();
+        txtBranchEditManager = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        txtSDT.addActionListener(new java.awt.event.ActionListener() {
+        txtBranchEditHotline.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSDTActionPerformed(evt);
+                txtBranchEditHotlineActionPerformed(evt);
             }
         });
 
@@ -55,9 +76,9 @@ public class EditBranch extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel10.setText("SỬA THÔNG TIN CHI NHÁNH");
 
-        txtBSX.addActionListener(new java.awt.event.ActionListener() {
+        txtBranchEditName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBSXActionPerformed(evt);
+                txtBranchEditNameActionPerformed(evt);
             }
         });
 
@@ -65,9 +86,9 @@ public class EditBranch extends javax.swing.JFrame {
 
         jLabel3.setText("Địa chỉ:");
 
-        txtSuaChua1.addActionListener(new java.awt.event.ActionListener() {
+        txtBranchEditAddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSuaChua1ActionPerformed(evt);
+                txtBranchEditAddressActionPerformed(evt);
             }
         });
 
@@ -87,23 +108,19 @@ public class EditBranch extends javax.swing.JFrame {
             }
         });
 
-        txtChuSoHuu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtChuSoHuuActionPerformed(evt);
-            }
-        });
-
         jLabel7.setText("Trạng thái:");
 
-        txtBSX1.addActionListener(new java.awt.event.ActionListener() {
+        txtBranchEditID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBSX1ActionPerformed(evt);
+                txtBranchEditIDActionPerformed(evt);
             }
         });
 
         jLabel5.setText("Mã chi nhánh:");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Đang hoạt động", "Không hoạt động" }));
+        txtBranchEditStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Đang hoạt động", "Không hoạt động" }));
+
+        txtBranchEditManager.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nguyễn Văn An", "Đặng Hải Long" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -115,7 +132,7 @@ public class EditBranch extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(18, 18, 18)
-                        .addComponent(txtBSX1))
+                        .addComponent(txtBranchEditID))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
@@ -125,15 +142,15 @@ public class EditBranch extends javax.swing.JFrame {
                             .addComponent(jLabel7))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtBSX)
-                            .addComponent(txtSDT)
-                            .addComponent(txtChuSoHuu)
-                            .addComponent(txtSuaChua1, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                            .addComponent(txtBranchEditName)
+                            .addComponent(txtBranchEditHotline)
+                            .addComponent(txtBranchEditAddress, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(btnThem)
                                 .addGap(87, 87, 87)
                                 .addComponent(btnHuyBo))
-                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(txtBranchEditStatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtBranchEditManager, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(106, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -148,27 +165,27 @@ public class EditBranch extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtBSX1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBranchEditID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtBSX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBranchEditName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtSuaChua1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBranchEditAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtChuSoHuu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel4)
+                    .addComponent(txtBranchEditManager, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBranchEditHotline, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBranchEditStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThem)
@@ -179,33 +196,56 @@ public class EditBranch extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtBSXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBSXActionPerformed
+    private void txtBranchEditNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBranchEditNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtBSXActionPerformed
+    }//GEN-LAST:event_txtBranchEditNameActionPerformed
 
-    private void txtSuaChua1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSuaChua1ActionPerformed
+    private void txtBranchEditAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBranchEditAddressActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSuaChua1ActionPerformed
+    }//GEN-LAST:event_txtBranchEditAddressActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        try {
+            // Retrieve input values
+            String name = txtBranchEditName.getText().trim();
+            String address = txtBranchEditAddress.getText().trim();
+            String hotline = txtBranchEditHotline.getText().trim();
+            String status = (String) txtBranchEditStatus.getSelectedItem();
+            String manager = (String) txtBranchEditManager.getSelectedItem();
 
+            // Validate input fields
+            if (name.isEmpty() || address.isEmpty() || hotline.isEmpty() || status == null || manager == null) {
+                throw new IllegalArgumentException("All fields must be filled out.");
+            }
+
+            // Create a new Branch object with the updated details
+            Branch branch = new Branch(name, status, hotline, address, manager);
+
+            // Handle the update of the branch
+            home.updateBranch(branch);
+
+            // Show a success message after the branch is updated
+            JOptionPane.showMessageDialog(null, "Branch updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+        } catch (IllegalArgumentException e) {
+            // Handle missing or invalid input fields
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Input Error", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            // Handle any other exceptions
+            JOptionPane.showMessageDialog(null, "An error occurred while updating the branch: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnHuyBoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyBoActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnHuyBoActionPerformed
 
-    private void txtChuSoHuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtChuSoHuuActionPerformed
+    private void txtBranchEditIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBranchEditIDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtChuSoHuuActionPerformed
+    }//GEN-LAST:event_txtBranchEditIDActionPerformed
 
-    private void txtBSX1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBSX1ActionPerformed
+    private void txtBranchEditHotlineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBranchEditHotlineActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtBSX1ActionPerformed
-
-    private void txtSDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSDTActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSDTActionPerformed
+    }//GEN-LAST:event_txtBranchEditHotlineActionPerformed
 
     /**
      * @param args the command line arguments
@@ -237,7 +277,7 @@ public class EditBranch extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditBranch().setVisible(true);
+                new EditBranch(null, false).setVisible(true);
             }
         });
     }
@@ -245,7 +285,6 @@ public class EditBranch extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHuyBo;
     private javax.swing.JButton btnThem;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -253,10 +292,11 @@ public class EditBranch extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField txtBSX;
-    private javax.swing.JTextField txtBSX1;
-    private javax.swing.JTextField txtChuSoHuu;
-    private javax.swing.JTextField txtSDT;
-    private javax.swing.JTextField txtSuaChua1;
+    private javax.swing.JTextField txtBranchEditAddress;
+    private javax.swing.JTextField txtBranchEditHotline;
+    private javax.swing.JTextField txtBranchEditID;
+    private javax.swing.JComboBox<String> txtBranchEditManager;
+    private javax.swing.JTextField txtBranchEditName;
+    private javax.swing.JComboBox<String> txtBranchEditStatus;
     // End of variables declaration//GEN-END:variables
 }

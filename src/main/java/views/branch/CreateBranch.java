@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package views.branch;
+
+import javax.swing.JOptionPane;
 import models.Branch;
 import view.HomePage;
 
@@ -18,11 +20,11 @@ public class CreateBranch extends javax.swing.JFrame {
      */
     private HomePage home;
     public CreateBranch(java.awt.Frame parent, boolean modal) {
+        initComponents();
         this.setLocationRelativeTo(null);
         home = (HomePage) parent;
         
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        initComponents();
     }
 
     /**
@@ -107,7 +109,7 @@ public class CreateBranch extends javax.swing.JFrame {
             }
         });
 
-        txtBranchManager.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        txtBranchManager.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nguyễn Văn An", "Đặng Hải Long" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -180,17 +182,34 @@ public class CreateBranch extends javax.swing.JFrame {
     }//GEN-LAST:event_txtBranchNameActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        String name, address, hotline, status, manager;
-        
-        name = txtBranchName.getText();
-        address = txtBranchAddress.getText();
-        hotline = txtBranchHotline.getText();
-        status = (String)txtBranchStatus.getSelectedItem();
-        manager = (String)txtBranchManager.getSelectedItem();
-        
-        Branch a = new Branch( name,  status,  hotline,  address, manager);
-        
-        home.handleCreateBranch(a);        
+        try {
+            // Retrieve input values
+            String name = txtBranchName.getText().trim();
+            String address = txtBranchAddress.getText().trim();
+            String hotline = txtBranchHotline.getText().trim();
+            String status = (String) txtBranchStatus.getSelectedItem();
+            String manager = (String) txtBranchManager.getSelectedItem();
+
+            // Validate input fields
+            if (name.isEmpty() || address.isEmpty() || hotline.isEmpty() || status == null || manager == null) {
+                throw new IllegalArgumentException("All fields must be filled out.");
+            }
+
+            // Create a new Branch object
+            Branch branch = new Branch(name, status, hotline, address, manager);
+
+            // Handle the creation of the branch
+            home.handleCreateBranch(branch);
+
+            // Show a success message after the branch is added
+            JOptionPane.showMessageDialog(null, "Branch added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+        } catch (IllegalArgumentException e) {
+            // Handle missing or invalid input fields
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Input Error", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            // Handle any other exceptions
+            JOptionPane.showMessageDialog(null, "An error occurred while adding the branch: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }       
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnHuyBoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyBoActionPerformed

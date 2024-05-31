@@ -3,6 +3,8 @@ package view;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import models.Login;
+import javax.swing.JFrame;
+
 public class LoginFrm extends javax.swing.JFrame {
 
     /**
@@ -126,7 +128,9 @@ public class LoginFrm extends javax.swing.JFrame {
         Login login = new Login(tenDangNhap, new String(getMatKhau));
         Login chuan = new Login();
         if(chuan.equals(login)) {
-            new HomePage().setVisible(true);
+            HomePage h = new HomePage();
+            h.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            h.setVisible(true);
             this.setVisible(false);
         } else {
             JOptionPane.showMessageDialog(rootPane, "Thông tin tài khoản hoặc mật khẩu không chính xác");

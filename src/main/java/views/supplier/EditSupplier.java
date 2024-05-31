@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package views.supplier;
+import javax.swing.JOptionPane;
+import models.Supplier;
+import view.HomePage;
 
 /**
  *
@@ -13,10 +16,26 @@ public class EditSupplier extends javax.swing.JFrame {
     /**
      * Creates new form EditSupplier
      */
-    public EditSupplier() {
+    HomePage home;
+    
+    Supplier sp;
+    
+    public EditSupplier(java.awt.Frame parent, boolean modal) {
         initComponents();
+        this.setLocationRelativeTo(null);
+        home = (HomePage) parent;
+        
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
+    public void setEditData(Supplier x) {
+        sp = x;
+        txtSupplierEditName.setText(x.getName());
+        txtSupplierEditPhone.setText(x.getPhoneNumber());
+        txtSupplierEditAddress.setText(x.getAddress());
+        txtSupplierEditEmail.setText(x.getEmail());
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,14 +45,14 @@ public class EditSupplier extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtBSX = new javax.swing.JTextField();
+        txtSupplierEditName = new javax.swing.JTextField();
         btnThem = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
-        txtSuaChua1 = new javax.swing.JTextField();
+        txtSupplierEditPhone = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        txtChuSoHuu = new javax.swing.JTextField();
+        txtSupplierEditEmail = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtSDT = new javax.swing.JTextField();
+        txtSupplierEditAddress = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         btnHuyBo = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -42,13 +61,13 @@ public class EditSupplier extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        txtBSX.addActionListener(new java.awt.event.ActionListener() {
+        txtSupplierEditName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBSXActionPerformed(evt);
+                txtSupplierEditNameActionPerformed(evt);
             }
         });
 
-        btnThem.setText("Thêm");
+        btnThem.setText("Sửa");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemActionPerformed(evt);
@@ -58,25 +77,25 @@ public class EditSupplier extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel10.setText("SỬA THÔNG TIN NHÀ CUNG CẤP");
 
-        txtSuaChua1.addActionListener(new java.awt.event.ActionListener() {
+        txtSupplierEditPhone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSuaChua1ActionPerformed(evt);
+                txtSupplierEditPhoneActionPerformed(evt);
             }
         });
 
         jLabel6.setText("Địa chỉ:");
 
-        txtChuSoHuu.addActionListener(new java.awt.event.ActionListener() {
+        txtSupplierEditEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtChuSoHuuActionPerformed(evt);
+                txtSupplierEditEmailActionPerformed(evt);
             }
         });
 
         jLabel3.setText("Điện thoại:");
 
-        txtSDT.addActionListener(new java.awt.event.ActionListener() {
+        txtSupplierEditAddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSDTActionPerformed(evt);
+                txtSupplierEditAddressActionPerformed(evt);
             }
         });
 
@@ -109,10 +128,10 @@ public class EditSupplier extends javax.swing.JFrame {
                     .addComponent(jLabel5))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtBSX, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
-                    .addComponent(txtSDT, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtChuSoHuu, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtSuaChua1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtSupplierEditName, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
+                    .addComponent(txtSupplierEditAddress, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtSupplierEditEmail, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtSupplierEditPhone, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnThem)
                         .addGap(87, 87, 87)
@@ -136,19 +155,19 @@ public class EditSupplier extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtBSX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSupplierEditName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtSuaChua1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSupplierEditPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtChuSoHuu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSupplierEditEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSupplierEditAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThem)
@@ -159,25 +178,38 @@ public class EditSupplier extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtBSXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBSXActionPerformed
+    private void txtSupplierEditNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSupplierEditNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtBSXActionPerformed
+    }//GEN-LAST:event_txtSupplierEditNameActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        String name, phone, email, address;
 
+        name = txtSupplierEditName.getText();
+        phone = txtSupplierEditPhone.getText();
+        email = txtSupplierEditEmail.getText();
+        address = txtSupplierEditAddress.getText();
+
+        try {
+            Supplier a = new Supplier(sp.getId(), name, address, phone, email);
+            home.updateSupplier(a);
+        } catch (Exception ex) {
+            ex.printStackTrace(); // In thông tin ngoại lệ ra console (để kiểm tra)
+            JOptionPane.showMessageDialog(null, "Đã xảy ra lỗi khi cập nhật thông tin nhà cung cấp. Vui lòng thử lại hoặc liên hệ với người quản trị.");
+        }
     }//GEN-LAST:event_btnThemActionPerformed
 
-    private void txtSuaChua1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSuaChua1ActionPerformed
+    private void txtSupplierEditPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSupplierEditPhoneActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSuaChua1ActionPerformed
+    }//GEN-LAST:event_txtSupplierEditPhoneActionPerformed
 
-    private void txtChuSoHuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtChuSoHuuActionPerformed
+    private void txtSupplierEditEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSupplierEditEmailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtChuSoHuuActionPerformed
+    }//GEN-LAST:event_txtSupplierEditEmailActionPerformed
 
-    private void txtSDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSDTActionPerformed
+    private void txtSupplierEditAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSupplierEditAddressActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSDTActionPerformed
+    }//GEN-LAST:event_txtSupplierEditAddressActionPerformed
 
     private void btnHuyBoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyBoActionPerformed
         this.dispose();
@@ -213,7 +245,7 @@ public class EditSupplier extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditSupplier().setVisible(true);
+                new EditSupplier(null, false).setVisible(true);
             }
         });
     }
@@ -228,9 +260,9 @@ public class EditSupplier extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField txtBSX;
-    private javax.swing.JTextField txtChuSoHuu;
-    private javax.swing.JTextField txtSDT;
-    private javax.swing.JTextField txtSuaChua1;
+    private javax.swing.JTextField txtSupplierEditAddress;
+    private javax.swing.JTextField txtSupplierEditEmail;
+    private javax.swing.JTextField txtSupplierEditName;
+    private javax.swing.JTextField txtSupplierEditPhone;
     // End of variables declaration//GEN-END:variables
 }

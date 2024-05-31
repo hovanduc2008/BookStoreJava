@@ -5,6 +5,9 @@
 package views.receipt;
 import models.Receipt;
 import view.HomePage;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 /**
  *
  * @author Admin
@@ -16,11 +19,11 @@ public class CreateReceipt extends javax.swing.JFrame {
      */
     private HomePage home;
     public CreateReceipt(java.awt.Frame parent, boolean modal) {
+        initComponents();
         this.setLocationRelativeTo(null);
         home = (HomePage) parent;
         
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        initComponents();
     }
 
     /**
@@ -179,10 +182,17 @@ public class CreateReceipt extends javax.swing.JFrame {
         
         book = (String)comboReceiptBook.getSelectedItem();
         employee = (String)comboReceiptEmployee.getSelectedItem();
-        supplier = (String)comboReceiptEmployee.getSelectedItem();
+        supplier = (String)comboReceiptSupplier.getSelectedItem();
         quantity = txtReceiptQuantity.getText();
         
-        Receipt b = new Receipt("1","10/10/2023",supplier, book,quantity, employee, "1000000");
+        // Lấy thời gian hiện tại
+        LocalDateTime currentTime = LocalDateTime.now();
+        
+        // Định dạng thời gian hiện tại thành chuỗi
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        String formattedDateTime = currentTime.format(formatter);
+        
+        Receipt b = new Receipt("1",formattedDateTime,supplier, book,quantity, employee, "1000000");
         
         home.handleCreateReceipt(b);        
     }//GEN-LAST:event_btnThemActionPerformed

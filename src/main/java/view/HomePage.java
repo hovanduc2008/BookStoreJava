@@ -4,6 +4,7 @@
  */
 package view;
 
+import javax.swing.UIManager;
 import java.util.List;
 import java.util.ArrayList;  
 import java.util.ArrayList;
@@ -78,6 +79,7 @@ import controllers.order.OrderController;
 import controllers.publisher.PublisherController;
 import controllers.reciept.ReceiptController;
 import controllers.supplier.SupplierController;
+import controllers.orderdetail.OrderDetailController;
 
 
 import java.time.format.DateTimeFormatter;
@@ -104,10 +106,19 @@ public class HomePage extends javax.swing.JFrame implements View {
                 });
 
             }
+            
+            if (t instanceof Order) {
+                Order b = (Order) t;
+                tblModelOrder.addRow(new Object[]{
+                    b.getOrderId(), b.getCustomer(), b.getAddress(), b.getPhone(), b.getOrderDate(), b.getTotalAmount()
+                });
+
+            }
+            
             if (t instanceof Author) {
                 Author a = (Author) t;
                 tblModelAuthor.addRow(new Object[]{
-                    a.getAuthorId(), a.getName(), a.getAddress(), a.getPhoneNumber(), a.getEmail(), a.getDate_of_birth()
+                    a.getId(), a.getName(), a.getAddress(), a.getPhoneNumber(), a.getEmail(), a.getDate_of_birth()
                 });
 
             }
@@ -130,7 +141,7 @@ public class HomePage extends javax.swing.JFrame implements View {
             if (t instanceof Supplier ) {
                 Supplier a = (Supplier) t;
                 tblModelSupplier.addRow(new Object[]{
-                    a.getName(), a.getAddress(), a.getPhoneNumber(), a.getEmail()
+                    a.getId(), a.getName(), a.getAddress(), a.getPhoneNumber(), a.getEmail()
                 });
             }
             
@@ -152,16 +163,18 @@ public class HomePage extends javax.swing.JFrame implements View {
     }
 
 //    private ArrayList<Book> booklist;    
-    private ArrayList<Book> book_list;
-    private ArrayList<Author> author_list;
-    private ArrayList<Category> category_list;
-    private ArrayList<Branch> branch_list;
-    private ArrayList<Customer> customer_list;
-    private ArrayList<Employee> employee_list;
-    private ArrayList<Order> order_list;
-    private ArrayList<Publisher> publisher_list;
-    private ArrayList<Receipt> receipt_list;
-    private ArrayList<Supplier> supplier_list;
+    public ArrayList<Book> book_list;
+    public ArrayList<Author> author_list;
+    public ArrayList<Category> category_list;
+    public ArrayList<Branch> branch_list;
+    public ArrayList<Customer> customer_list;
+    public ArrayList<Employee> employee_list;
+    public ArrayList<Order> order_list;
+    public ArrayList<models.OrderDetail> order_detail_list;
+    public ArrayList<Publisher> publisher_list;
+    public ArrayList<Receipt> receipt_list;
+    public ArrayList<Supplier> supplier_list;
+    
     
     private int dongChon = -1;
     
@@ -187,6 +200,7 @@ public class HomePage extends javax.swing.JFrame implements View {
     private CustomerController customerController;
     private EmployeeController employeeController;
     private OrderController orderController;
+    private OrderDetailController orderDetailController;
     private PublisherController publisherController;
     private ReceiptController receiptController;
     private SupplierController supplierController;
@@ -196,6 +210,8 @@ public class HomePage extends javax.swing.JFrame implements View {
      * Creates new form HomePage
      */
     public HomePage() {
+        
+        
         initComponents();
         
         
@@ -206,6 +222,7 @@ public class HomePage extends javax.swing.JFrame implements View {
         customer_list = new ArrayList<>();
         employee_list = new ArrayList<>();
         order_list = new ArrayList<>();
+        order_detail_list = new ArrayList<>();
         publisher_list = new ArrayList<>();
         receipt_list = new ArrayList<>();
         supplier_list = new ArrayList<>();
@@ -239,6 +256,11 @@ public class HomePage extends javax.swing.JFrame implements View {
         tblModelReceipt = (DefaultTableModel) tblReceipt.getModel();
         this.receiptController = new ReceiptController();
         showReceiptList(); 
+        
+        // order 
+        tblModelOrder = (DefaultTableModel) tblOrder.getModel();
+        this.orderController = new OrderController();
+        showOrderList(); 
         
         // supplier
 //        tblModelPublisher = (DefaultTableModel) tblPublisher.getModel();
@@ -346,7 +368,7 @@ public class HomePage extends javax.swing.JFrame implements View {
         RadioSortByTime2 = new javax.swing.JRadioButton();
         jbtXep2 = new javax.swing.JButton();
         jScrollPane7 = new javax.swing.JScrollPane();
-        tblQLHD2 = new javax.swing.JTable();
+        tblOrder = new javax.swing.JTable();
         jLabel11 = new javax.swing.JLabel();
         iPanel11 = new javax.swing.JPanel();
         Panle_timKiem6 = new javax.swing.JPanel();
@@ -358,10 +380,6 @@ public class HomePage extends javax.swing.JFrame implements View {
         btSuaHD6 = new javax.swing.JButton();
         btXoaHD6 = new javax.swing.JButton();
         btnReset6 = new javax.swing.JButton();
-        jPanel23 = new javax.swing.JPanel();
-        RadioSortTT6 = new javax.swing.JRadioButton();
-        RadioSortByTime6 = new javax.swing.JRadioButton();
-        jbtXep6 = new javax.swing.JButton();
         jScrollPane11 = new javax.swing.JScrollPane();
         tblBranch = new javax.swing.JTable();
         jLabel15 = new javax.swing.JLabel();
@@ -600,6 +618,7 @@ public class HomePage extends javax.swing.JFrame implements View {
         );
 
         Panle_timKiem4.getAccessibleContext().setAccessibleName("Tìm kiếm sách");
+        Panle_timKiem4.getAccessibleContext().setAccessibleDescription("");
 
         jTabbedPane1.addTab("Quản lý sách", jPanel5);
 
@@ -943,10 +962,10 @@ public class HomePage extends javax.swing.JFrame implements View {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(Panle_timKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 443, Short.MAX_VALUE)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36))
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 951, Short.MAX_VALUE)
+            .addComponent(jScrollPane3)
             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
@@ -1103,7 +1122,7 @@ public class HomePage extends javax.swing.JFrame implements View {
 
             },
             new String [] {
-                "NCC", "Địa chỉ", "Điện thoại", "Email"
+                "ID", "NCC", "Địa chỉ", "Điện thoại", "Email"
             }
         ));
         tblSupplier.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -1113,6 +1132,10 @@ public class HomePage extends javax.swing.JFrame implements View {
             }
         });
         jScrollPane6.setViewportView(tblSupplier);
+        if (tblSupplier.getColumnModel().getColumnCount() > 0) {
+            tblSupplier.getColumnModel().getColumn(0).setResizable(false);
+            tblSupplier.getColumnModel().getColumn(4).setResizable(false);
+        }
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1279,9 +1302,9 @@ public class HomePage extends javax.swing.JFrame implements View {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        tblQLHD2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14)), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
-        tblQLHD2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        tblQLHD2.setModel(new javax.swing.table.DefaultTableModel(
+        tblOrder.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14)), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
+        tblOrder.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tblOrder.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -1289,13 +1312,13 @@ public class HomePage extends javax.swing.JFrame implements View {
                 "Mã hóa đơn", "Khách hàng", "Địa chỉ", "SĐT", "Thời gian", "Tổng thanh toán"
             }
         ));
-        tblQLHD2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        tblQLHD2.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblOrder.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tblOrder.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblQLHD2MouseClicked(evt);
+                tblOrderMouseClicked(evt);
             }
         });
-        jScrollPane7.setViewportView(tblQLHD2);
+        jScrollPane7.setViewportView(tblOrder);
 
         jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1414,48 +1437,6 @@ public class HomePage extends javax.swing.JFrame implements View {
         });
         jPanel22.add(btnReset6);
 
-        jPanel23.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sắp xếp", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
-        jPanel23.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
-        RadioSortTT6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        RadioSortTT6.setText("Tăng dần theo tổng thanh toán");
-
-        RadioSortByTime6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        RadioSortByTime6.setText("Thời gian gần nhất");
-
-        jbtXep6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jbtXep6.setText("Xếp");
-        jbtXep6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtXep6ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
-        jPanel23.setLayout(jPanel23Layout);
-        jPanel23Layout.setHorizontalGroup(
-            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel23Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jbtXep6, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(RadioSortTT6)
-                        .addComponent(RadioSortByTime6)))
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-        jPanel23Layout.setVerticalGroup(
-            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel23Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(RadioSortTT6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(RadioSortByTime6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jbtXep6)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
         tblBranch.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14)), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
         tblBranch.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tblBranch.setModel(new javax.swing.table.DefaultTableModel(
@@ -1486,9 +1467,7 @@ public class HomePage extends javax.swing.JFrame implements View {
             .addGroup(iPanel11Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(Panle_timKiem6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36))
+                .addGap(36, 592, Short.MAX_VALUE))
             .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 951, Short.MAX_VALUE)
             .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -1497,14 +1476,12 @@ public class HomePage extends javax.swing.JFrame implements View {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, iPanel11Layout.createSequentialGroup()
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(iPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Panle_timKiem6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Panle_timKiem6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Quản lý chi nhánh", iPanel11);
@@ -1730,10 +1707,6 @@ public class HomePage extends javax.swing.JFrame implements View {
         // TODO add your handling code here:
     }//GEN-LAST:event_tblBranchMouseClicked
 
-    private void jbtXep6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtXep6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtXep6ActionPerformed
-
     private void btnReset6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReset6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnReset6ActionPerformed
@@ -1765,7 +1738,19 @@ public class HomePage extends javax.swing.JFrame implements View {
     }//GEN-LAST:event_btXoaHD6ActionPerformed
 
     private void btSuaHD6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSuaHD6ActionPerformed
-        new EditBranch().setVisible(true);
+        //        Lấy ra chỉ số dòng chọn của người dùng click vào
+        dongChon = tblBranch.getSelectedRow();
+        /*       Nếu danh sách rỗng hoặc người dùng chưa chọn dòng  thì in ra thông báo
+        còn nếu không thì gọi đến màn hình sửa */
+        if (branch_list.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Không có thông tin xe để sửa!");
+        } else if (dongChon == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Hãy chọn dòng chứa thông tin cần sửa!");
+        } else {
+            EditBranch sua = new EditBranch(this, rootPaneCheckingEnabled);
+            sua.setEditData(branch_list.get(dongChon));
+            sua.setVisible(true);
+        }
     }//GEN-LAST:event_btSuaHD6ActionPerformed
 
     private void btThemHD6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemHD6ActionPerformed
@@ -1777,9 +1762,9 @@ public class HomePage extends javax.swing.JFrame implements View {
         // TODO add your handling code here:
     }//GEN-LAST:event_btTimHD6ActionPerformed
 
-    private void tblQLHD2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblQLHD2MouseClicked
+    private void tblOrderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblOrderMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblQLHD2MouseClicked
+    }//GEN-LAST:event_tblOrderMouseClicked
 
     private void jbtXep2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtXep2ActionPerformed
         // TODO add your handling code here:
@@ -1790,8 +1775,18 @@ public class HomePage extends javax.swing.JFrame implements View {
     }//GEN-LAST:event_btnReset2ActionPerformed
 
     private void btXemChiTietHD2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXemChiTietHD2ActionPerformed
-        OrderDetail createB = new OrderDetail(this, rootPaneCheckingEnabled);
-        createB.setVisible(true);
+        dongChon = tblOrder.getSelectedRow();
+        /*       Nếu danh sách rỗng hoặc người dùng chưa chọn dòng  thì in ra thông báo
+        còn nếu không thì gọi đến màn hình sửa */
+        if (order_list.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Không có thông tin để sửa!");
+        } else if (dongChon == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Hãy chọn dòng chứa thông tin cần sửa!");
+        } else {
+            OrderDetail dt = new OrderDetail(this, rootPaneCheckingEnabled);
+            dt.setEditData(order_list.get(dongChon));
+            dt.setVisible(true);
+        }
     }//GEN-LAST:event_btXemChiTietHD2ActionPerformed
 
     private void btXoaHD2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoaHD2ActionPerformed
@@ -1822,11 +1817,44 @@ public class HomePage extends javax.swing.JFrame implements View {
     }//GEN-LAST:event_btnReset1ActionPerformed
 
     private void btXoaHD1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoaHD1ActionPerformed
-        // TODO add your handling code here:
+        //        Lấy ra chỉ số dòng chọn của người dùng click vào
+        dongChon = tblSupplier.getSelectedRow();
+        /*       Nếu danh sách rỗng hoặc người dùng chưa chọn dòng  thì in ra thông báo
+        còn nếu không thì show ra màn hình xác nhận xóa */
+        if (dongChon == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Hãy chọn một dòng cần xóa!");
+        } else if (supplier_list.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Không có thông tin để xóa!");
+        } else {
+            int confirm = JOptionPane.showConfirmDialog(
+                rootPane,
+                "Bạn có chắc chắn muốn xóa?",
+                "Xác nhận xóa",
+                JOptionPane.YES_NO_OPTION
+            );
+            /*           Người dùng chọn Yes sẽ tiến hành xóa thông tin khỏi danh sách và
+            show lại danh sách sau khi xóa */
+            if (confirm == JOptionPane.YES_OPTION) {
+                supplier_list.remove(dongChon);
+                supplierController.writeToFile(supplier_list, "suppliers.txt");
+                this.showData(supplier_list, tblModelSupplier);
+            }
+        }
     }//GEN-LAST:event_btXoaHD1ActionPerformed
 
     private void btSuaHD1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSuaHD1ActionPerformed
-        new EditSupplier().setVisible(true);
+       dongChon = tblSupplier.getSelectedRow();
+        /*       Nếu danh sách rỗng hoặc người dùng chưa chọn dòng  thì in ra thông báo
+        còn nếu không thì gọi đến màn hình sửa */
+        if (supplier_list.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Không có thông tin xe để sửa!");
+        } else if (dongChon == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Hãy chọn dòng chứa thông tin cần sửa!");
+        } else {
+            EditSupplier sua = new EditSupplier(this, rootPaneCheckingEnabled);
+            sua.setEditData(supplier_list.get(dongChon));
+            sua.setVisible(true);
+        }
     }//GEN-LAST:event_btSuaHD1ActionPerformed
 
     private void btThemHD1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemHD1ActionPerformed
@@ -1877,7 +1905,19 @@ public class HomePage extends javax.swing.JFrame implements View {
     }//GEN-LAST:event_btXoaHDActionPerformed
 
     private void btSuaHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSuaHDActionPerformed
-        new EditCategory().setVisible(true);
+        //        Lấy ra chỉ số dòng chọn của người dùng click vào 
+        dongChon = tblCategory.getSelectedRow();
+        /*       Nếu danh sách rỗng hoặc người dùng chưa chọn dòng  thì in ra thông báo
+        còn nếu không thì gọi đến màn hình sửa */
+        if (category_list.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Không có thông tin xe để sửa!");
+        } else if (dongChon == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Hãy chọn dòng chứa thông tin cần sửa!");
+        } else {
+            EditCategory sua = new EditCategory(this, rootPaneCheckingEnabled);
+            sua.setEditData(category_list.get(dongChon));
+            sua.setVisible(true);
+        }
     }//GEN-LAST:event_btSuaHDActionPerformed
 
     private void btThemHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemHDActionPerformed
@@ -1933,7 +1973,19 @@ public class HomePage extends javax.swing.JFrame implements View {
     }//GEN-LAST:event_btXoaHD5ActionPerformed
 
     private void btSuaHD5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSuaHD5ActionPerformed
-        new EditAuthor().setVisible(true);
+        //        Lấy ra chỉ số dòng chọn của người dùng click vào 
+        dongChon = tblAuthor.getSelectedRow();
+        /*       Nếu danh sách rỗng hoặc người dùng chưa chọn dòng  thì in ra thông báo
+        còn nếu không thì gọi đến màn hình sửa */
+        if (author_list.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Không có thông tin xe để sửa!");
+        } else if (dongChon == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Hãy chọn dòng chứa thông tin cần sửa!");
+        } else {
+            EditAuthor sua = new EditAuthor(this, rootPaneCheckingEnabled);
+            sua.setEditData(author_list.get(dongChon));
+            sua.setVisible(true);
+        }
     }//GEN-LAST:event_btSuaHD5ActionPerformed
 
     private void btThemHD5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemHD5ActionPerformed
@@ -2144,6 +2196,11 @@ public class HomePage extends javax.swing.JFrame implements View {
         orderController.writeToFile(order_list, "orders.txt");  
     }
     
+    public void handleCreateOrderDetail(models.OrderDetail x) {
+        order_detail_list.add(x);
+        orderDetailController.writeToFile(order_detail_list, "order_details.txt");  
+    }
+    
     public void handleCreatePublisher(Publisher x) {
         publisher_list.add(x);
         this.showData(publisher_list, tblModelPublisher);
@@ -2160,6 +2217,46 @@ public class HomePage extends javax.swing.JFrame implements View {
         supplier_list.add(x);
         this.showData(supplier_list, tblModelSupplier);
         supplierController.writeToFile(supplier_list, "suppliers.txt");  
+    }
+    
+    public void updateBook(Book x) {
+        int oldIndex = dongChon;
+        book_list.remove(oldIndex);
+        book_list.add(oldIndex, x);
+        showData(book_list, tblModelSach);
+        bookController.writeToFile(book_list, "books.txt");
+    }
+    
+    public void updateSupplier(Supplier x) {
+        int oldIndex = dongChon;
+        supplier_list.remove(oldIndex);
+        supplier_list.add(oldIndex, x);
+        showData(supplier_list, tblModelSupplier);
+        supplierController.writeToFile(supplier_list, "suppliers.txt");
+    }
+    
+    public void updateAuthor(Author x) {
+        int oldIndex = dongChon;
+        author_list.remove(oldIndex);
+        author_list.add(oldIndex, x);
+        showData(author_list, tblModelAuthor);
+        authorController.writeToFile(author_list, "authors.txt");
+    }
+    
+    public void updateBranch(Branch x) {
+        int oldIndex = dongChon;
+        branch_list.remove(oldIndex);
+        branch_list.add(oldIndex, x);
+        showData(branch_list, tblModelBranch);
+        branchController.writeToFile(branch_list, "branches.txt");
+    }
+    
+    public void updateCategory(Category x) {
+        int oldIndex = dongChon;
+        category_list.remove(oldIndex);
+        category_list.add(oldIndex, x);
+        showData(category_list, tblModelCategory);
+        categoryController.writeToFile(category_list, "categories.txt");
     }
     
     /**
@@ -2192,7 +2289,16 @@ public class HomePage extends javax.swing.JFrame implements View {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HomePage().setVisible(true);
+                try {
+                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                    HomePage h = new HomePage();
+                    h.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                    h.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                
+                
             }
         });
     }
@@ -2222,14 +2328,12 @@ public class HomePage extends javax.swing.JFrame implements View {
     private javax.swing.JRadioButton RadioSortByTime3;
     private javax.swing.JRadioButton RadioSortByTime4;
     private javax.swing.JRadioButton RadioSortByTime5;
-    private javax.swing.JRadioButton RadioSortByTime6;
     private javax.swing.JRadioButton RadioSortTT;
     private javax.swing.JRadioButton RadioSortTT1;
     private javax.swing.JRadioButton RadioSortTT2;
     private javax.swing.JRadioButton RadioSortTT3;
     private javax.swing.JRadioButton RadioSortTT4;
     private javax.swing.JRadioButton RadioSortTT5;
-    private javax.swing.JRadioButton RadioSortTT6;
     private javax.swing.JButton btSuaHD;
     private javax.swing.JButton btSuaHD1;
     private javax.swing.JButton btSuaHD4;
@@ -2291,7 +2395,6 @@ public class HomePage extends javax.swing.JFrame implements View {
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel22;
-    private javax.swing.JPanel jPanel23;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
@@ -2311,11 +2414,10 @@ public class HomePage extends javax.swing.JFrame implements View {
     private javax.swing.JButton jbtXep3;
     private javax.swing.JButton jbtXep4;
     private javax.swing.JButton jbtXep5;
-    private javax.swing.JButton jbtXep6;
     private javax.swing.JTable tblAuthor;
     private javax.swing.JTable tblBranch;
     private javax.swing.JTable tblCategory;
-    private javax.swing.JTable tblQLHD2;
+    private javax.swing.JTable tblOrder;
     private javax.swing.JTable tblReceipt;
     private javax.swing.JTable tblSach;
     private javax.swing.JTable tblSupplier;

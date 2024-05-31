@@ -20,11 +20,11 @@ public class OrderController extends ControllerFile {
 //        }); 
 //    }
     
-    public ArrayList searchOrder(ArrayList<Order> books, String id) {
+    public ArrayList searchOrder(ArrayList<Order> books, int id) {
         ArrayList<Order> list = new ArrayList<>();
-        if(id.length() > 0) {
+        if(true) {
             for(Order x : list) {
-                if(x.getOrderId().equals(id)) {
+                if(x.getOrderId() == id) {
                     list.add(x);
                 }
             }

@@ -4,6 +4,9 @@
  */
 package views.category;
 
+import models.Category;
+import view.HomePage;
+
 /**
  *
  * @author Admin
@@ -13,8 +16,22 @@ public class EditCategory extends javax.swing.JFrame {
     /**
      * Creates new form EditCategory
      */
-    public EditCategory() {
+    private HomePage home;
+    private Category c;
+    
+    public EditCategory(java.awt.Frame parent, boolean modal) {
         initComponents();
+        this.setLocationRelativeTo(null);
+        home = (HomePage) parent;
+        
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+    }
+    
+    public void setEditData(Category x) {
+        c = x;
+        txtCateID.setText(String.valueOf(x.getCateID()));
+        txtCateName.setText(x.getName());
+        txtCateDes.setText(x.getDescription());
     }
 
     /**
@@ -27,23 +44,23 @@ public class EditCategory extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel10 = new javax.swing.JLabel();
-        txtBSX = new javax.swing.JTextField();
+        txtCateName = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtSuaChua1 = new javax.swing.JTextField();
+        txtCateDes = new javax.swing.JTextField();
         btnThem = new javax.swing.JButton();
         btnHuyBo = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        txtBSX1 = new javax.swing.JTextField();
+        txtCateID = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel10.setText("SỬA THÔNG TIN DANH MỤC");
 
-        txtBSX.addActionListener(new java.awt.event.ActionListener() {
+        txtCateName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBSXActionPerformed(evt);
+                txtCateNameActionPerformed(evt);
             }
         });
 
@@ -51,13 +68,13 @@ public class EditCategory extends javax.swing.JFrame {
 
         jLabel3.setText("Mô tả:");
 
-        txtSuaChua1.addActionListener(new java.awt.event.ActionListener() {
+        txtCateDes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSuaChua1ActionPerformed(evt);
+                txtCateDesActionPerformed(evt);
             }
         });
 
-        btnThem.setText("Thêm");
+        btnThem.setText("Sửa");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemActionPerformed(evt);
@@ -73,9 +90,9 @@ public class EditCategory extends javax.swing.JFrame {
 
         jLabel4.setText("Mã danh mục:");
 
-        txtBSX1.addActionListener(new java.awt.event.ActionListener() {
+        txtCateID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBSX1ActionPerformed(evt);
+                txtCateIDActionPerformed(evt);
             }
         });
 
@@ -98,9 +115,9 @@ public class EditCategory extends javax.swing.JFrame {
                             .addGap(49, 49, 49)
                             .addComponent(btnHuyBo))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtBSX)
-                            .addComponent(txtBSX1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
-                            .addComponent(txtSuaChua1, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addComponent(txtCateName)
+                            .addComponent(txtCateID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
+                            .addComponent(txtCateDes, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap(83, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -111,15 +128,15 @@ public class EditCategory extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtBSX1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCateID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtBSX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCateName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtSuaChua1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCateDes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThem)
@@ -130,25 +147,32 @@ public class EditCategory extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtBSXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBSXActionPerformed
+    private void txtCateNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCateNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtBSXActionPerformed
+    }//GEN-LAST:event_txtCateNameActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-
+        String name, des;
+        
+        name = txtCateName.getText();
+        des = txtCateDes.getText();
+        
+        Category b = new Category(c.getCateID(), name, des);
+        
+        home.updateCategory(b);
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnHuyBoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyBoActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnHuyBoActionPerformed
 
-    private void txtBSX1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBSX1ActionPerformed
+    private void txtCateIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCateIDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtBSX1ActionPerformed
+    }//GEN-LAST:event_txtCateIDActionPerformed
 
-    private void txtSuaChua1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSuaChua1ActionPerformed
+    private void txtCateDesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCateDesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSuaChua1ActionPerformed
+    }//GEN-LAST:event_txtCateDesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,7 +204,7 @@ public class EditCategory extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditCategory().setVisible(true);
+                new EditCategory(null, false).setVisible(true);
             }
         });
     }
@@ -192,8 +216,8 @@ public class EditCategory extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField txtBSX;
-    private javax.swing.JTextField txtBSX1;
-    private javax.swing.JTextField txtSuaChua1;
+    private javax.swing.JTextField txtCateDes;
+    private javax.swing.JTextField txtCateID;
+    private javax.swing.JTextField txtCateName;
     // End of variables declaration//GEN-END:variables
 }
