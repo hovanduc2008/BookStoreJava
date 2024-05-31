@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package views.employee;
-
+import view.HomePage;
 /**
  *
  * @author Admin
@@ -13,7 +13,12 @@ public class CreateEmployee extends javax.swing.JFrame {
     /**
      * Creates new form CreateEmployee
      */
-    public CreateEmployee() {
+    private HomePage home;
+    public CreateEmployee(java.awt.Frame parent, boolean modal) {
+        this.setLocationRelativeTo(null);
+        home = (HomePage) parent;
+        
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         initComponents();
     }
 
@@ -37,8 +42,8 @@ public class CreateEmployee extends javax.swing.JFrame {
         txtSuaChua1 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         btnThem = new javax.swing.JButton();
-        txtSDT1 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,13 +96,9 @@ public class CreateEmployee extends javax.swing.JFrame {
             }
         });
 
-        txtSDT1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSDT1ActionPerformed(evt);
-            }
-        });
-
         jLabel7.setText("Vị trí:");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nhân viên", "Quản lý"}));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -119,13 +120,12 @@ public class CreateEmployee extends javax.swing.JFrame {
                             .addComponent(btnThem)
                             .addGap(87, 87, 87)
                             .addComponent(btnHuyBo))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtBSX, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-                            .addComponent(txtSDT, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtChuSoHuu, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtSuaChua1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtSDT1, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addContainerGap(97, Short.MAX_VALUE))
+                        .addComponent(txtBSX, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                        .addComponent(txtSDT)
+                        .addComponent(txtChuSoHuu)
+                        .addComponent(txtSuaChua1)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(97, 97, 97))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,7 +151,7 @@ public class CreateEmployee extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
-                    .addComponent(txtSDT1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThem)
@@ -186,10 +186,6 @@ public class CreateEmployee extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnThemActionPerformed
 
-    private void txtSDT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSDT1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSDT1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -220,7 +216,7 @@ public class CreateEmployee extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CreateEmployee().setVisible(true);
+                new CreateEmployee(null, false).setVisible(true);
             }
         });
     }
@@ -228,6 +224,7 @@ public class CreateEmployee extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHuyBo;
     private javax.swing.JButton btnThem;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -237,7 +234,6 @@ public class CreateEmployee extends javax.swing.JFrame {
     private javax.swing.JTextField txtBSX;
     private javax.swing.JTextField txtChuSoHuu;
     private javax.swing.JTextField txtSDT;
-    private javax.swing.JTextField txtSDT1;
     private javax.swing.JTextField txtSuaChua1;
     // End of variables declaration//GEN-END:variables
 }

@@ -26,6 +26,7 @@ public class EditPublisher extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jRadioButton1 = new javax.swing.JRadioButton();
         btnHuyBo = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         txtSDT = new javax.swing.JTextField();
@@ -38,7 +39,9 @@ public class EditPublisher extends javax.swing.JFrame {
         txtBSX = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txtBSX1 = new javax.swing.JTextField();
+        fieldPublisherID = new javax.swing.JTextField();
+
+        jRadioButton1.setText("jRadioButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,11 +96,7 @@ public class EditPublisher extends javax.swing.JFrame {
 
         jLabel5.setText("Mã NXB:");
 
-        txtBSX1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBSX1ActionPerformed(evt);
-            }
-        });
+        fieldPublisherID.setText("1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -114,17 +113,16 @@ public class EditPublisher extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(btnThem)
                             .addGap(87, 87, 87)
                             .addComponent(btnHuyBo))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtBSX, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
-                            .addComponent(txtSDT, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtChuSoHuu, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtSuaChua1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtBSX1, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addComponent(txtBSX, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
+                        .addComponent(txtSDT)
+                        .addComponent(txtChuSoHuu)
+                        .addComponent(txtSuaChua1)
+                        .addComponent(fieldPublisherID, javax.swing.GroupLayout.Alignment.LEADING)))
                 .addContainerGap(105, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -135,7 +133,7 @@ public class EditPublisher extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtBSX1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fieldPublisherID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -186,10 +184,6 @@ public class EditPublisher extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBSXActionPerformed
 
-    private void txtBSX1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBSX1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBSX1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -228,14 +222,15 @@ public class EditPublisher extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHuyBo;
     private javax.swing.JButton btnThem;
+    private javax.swing.JTextField fieldPublisherID;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JTextField txtBSX;
-    private javax.swing.JTextField txtBSX1;
     private javax.swing.JTextField txtChuSoHuu;
     private javax.swing.JTextField txtSDT;
     private javax.swing.JTextField txtSuaChua1;

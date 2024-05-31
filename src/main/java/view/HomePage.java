@@ -49,11 +49,19 @@ import views.receipt.CreateReceipt;
 import views.supplier.CreateSupplier;
 import views.supplier.EditSupplier;
 
-import controllers.book.BookController;
-
 
 // Model
 import models.Book;
+import models.Author;
+import models.Category;
+import models.Branch;
+import models.Customer;
+import models.Employee;
+import models.Order;
+//import models.OrderDetail;
+import models.Publisher;
+import models.Receipt;
+import models.Supplier;
 
 
 
@@ -61,6 +69,17 @@ import models.Book;
 
 // Controller
 import controllers.book.BookController;
+import controllers.author.AuthorController;
+import controllers.category.CategoryController;
+import controllers.branch.BranchController;
+import controllers.customer.CustomerController;
+import controllers.employee.EmployeeController;
+import controllers.order.OrderController;
+import controllers.publisher.PublisherController;
+import controllers.reciept.ReceiptController;
+import controllers.supplier.SupplierController;
+
+
 import java.time.format.DateTimeFormatter;
 
 /**
@@ -85,23 +104,92 @@ public class HomePage extends javax.swing.JFrame implements View {
                 });
 
             }
+            if (t instanceof Author) {
+                Author a = (Author) t;
+                tblModelAuthor.addRow(new Object[]{
+                    a.getAuthorId(), a.getName(), a.getAddress(), a.getPhoneNumber(), a.getEmail(), a.getDate_of_birth()
+                });
+
+            }
+            if (t instanceof Category ) {
+                Category a = (Category) t;
+                tblModelCategory.addRow(new Object[]{
+                    a.getCateID(), a.getName(), a.getDescription()
+                });
+
+            }
+            
+            if (t instanceof Branch ) {
+                Branch a = (Branch) t;
+                tblModelBranch.addRow(new Object[]{
+                    a.getName(), a.getAddress(), a.getManager(), a.getHotline(), a.getStatus()
+                });
+
+            }
+            
+            if (t instanceof Supplier ) {
+                Supplier a = (Supplier) t;
+                tblModelSupplier.addRow(new Object[]{
+                    a.getName(), a.getAddress(), a.getPhoneNumber(), a.getEmail()
+                });
+            }
+            
+            if (t instanceof Publisher ) {
+                Publisher a = (Publisher) t;
+                tblModelPublisher.addRow(new Object[]{
+                    a.getName(), a.getAddress(), a.getPhoneNumber(), a.getEmail()
+                });
+            }
+            
+            if (t instanceof Receipt ) {
+                Receipt a = (Receipt) t;
+                tblModelReceipt.addRow(new Object[]{
+                    a.getReceiptId(), a.getReceiptDate(),a.getSupplier(), a.getBook(), a.getEmployee(), a.getQuantity(), a.getTotalPrice()
+                });
+            }
             
         }
     }
 
-//    private ArrayList<Book> booklist;
-    private DefaultTableModel tblModelQLX;
-    
+//    private ArrayList<Book> booklist;    
     private ArrayList<Book> book_list;
+    private ArrayList<Author> author_list;
+    private ArrayList<Category> category_list;
+    private ArrayList<Branch> branch_list;
+    private ArrayList<Customer> customer_list;
+    private ArrayList<Employee> employee_list;
+    private ArrayList<Order> order_list;
+    private ArrayList<Publisher> publisher_list;
+    private ArrayList<Receipt> receipt_list;
+    private ArrayList<Supplier> supplier_list;
     
     private int dongChon = -1;
+    
+    
     // Default table
     private DefaultTableModel tblModelSach;
+    private DefaultTableModel tblModelAuthor;
+    private DefaultTableModel tblModelCategory;
+    private DefaultTableModel tblModelBranch;
+    private DefaultTableModel tblModelCustomer;
+    private DefaultTableModel tblModelEmployee;
+    private DefaultTableModel tblModelOrder;
+    private DefaultTableModel tblModelPublisher;
+    private DefaultTableModel tblModelReceipt;
+    private DefaultTableModel tblModelSupplier;
     
     // Controller
     
     private BookController bookController;
-    
+    private AuthorController authorController;
+    private CategoryController categoryController;
+    private BranchController branchController;
+    private CustomerController customerController;
+    private EmployeeController employeeController;
+    private OrderController orderController;
+    private PublisherController publisherController;
+    private ReceiptController receiptController;
+    private SupplierController supplierController;
     
     
     /**
@@ -112,17 +200,50 @@ public class HomePage extends javax.swing.JFrame implements View {
         
         
         book_list = new ArrayList<>();
-        
-        
+        author_list = new ArrayList<>();
+        category_list = new ArrayList<>();
+        branch_list = new ArrayList<>();
+        customer_list = new ArrayList<>();
+        employee_list = new ArrayList<>();
+        order_list = new ArrayList<>();
+        publisher_list = new ArrayList<>();
+        receipt_list = new ArrayList<>();
+        supplier_list = new ArrayList<>();
        
-       
+       // book
         tblModelSach = (DefaultTableModel) tblSach.getModel();
         this.bookController = new BookController();
         showBookList();
         
+        // author
+        tblModelAuthor = (DefaultTableModel) tblAuthor.getModel();
+        this.authorController = new AuthorController();
+        showAuthorList(); 
         
-
-        this.handleGetBook();
+        // category
+        tblModelCategory = (DefaultTableModel) tblCategory.getModel();
+        this.categoryController = new CategoryController();
+        showCategoryList(); 
+        
+        // branch
+        tblModelBranch = (DefaultTableModel) tblBranch.getModel();
+        this.branchController = new BranchController();
+        showBranchList(); 
+        
+        // supplier
+        tblModelSupplier = (DefaultTableModel) tblSupplier.getModel();
+        this.supplierController = new SupplierController();
+        showSupplierList(); 
+        
+        // receipt 
+        tblModelReceipt = (DefaultTableModel) tblReceipt.getModel();
+        this.receiptController = new ReceiptController();
+        showReceiptList(); 
+        
+        // supplier
+//        tblModelPublisher = (DefaultTableModel) tblPublisher.getModel();
+//        this.supplierController = new SupplierController();
+//        showSupplierList(); 
     }
 
     /**
@@ -149,7 +270,6 @@ public class HomePage extends javax.swing.JFrame implements View {
         btThemHD4 = new javax.swing.JButton();
         btSuaHD4 = new javax.swing.JButton();
         btXoaHD4 = new javax.swing.JButton();
-        btXemChiTietHD4 = new javax.swing.JButton();
         btnReset4 = new javax.swing.JButton();
         jPanel19 = new javax.swing.JPanel();
         RadioSortTT4 = new javax.swing.JRadioButton();
@@ -168,14 +288,13 @@ public class HomePage extends javax.swing.JFrame implements View {
         btThemHD5 = new javax.swing.JButton();
         btSuaHD5 = new javax.swing.JButton();
         btXoaHD5 = new javax.swing.JButton();
-        btXemChiTietHD5 = new javax.swing.JButton();
         btnReset5 = new javax.swing.JButton();
         jPanel21 = new javax.swing.JPanel();
         RadioSortTT5 = new javax.swing.JRadioButton();
         RadioSortByTime5 = new javax.swing.JRadioButton();
         jbtXep5 = new javax.swing.JButton();
         jScrollPane10 = new javax.swing.JScrollPane();
-        tblQLHD5 = new javax.swing.JTable();
+        tblAuthor = new javax.swing.JTable();
         jLabel14 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         Panle_timKiem = new javax.swing.JPanel();
@@ -185,14 +304,13 @@ public class HomePage extends javax.swing.JFrame implements View {
         btThemHD = new javax.swing.JButton();
         btSuaHD = new javax.swing.JButton();
         btXoaHD = new javax.swing.JButton();
-        btXemChiTietHD = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
         RadioSortTT = new javax.swing.JRadioButton();
         RadioSortByTime = new javax.swing.JRadioButton();
         jbtXep = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tblQLHD = new javax.swing.JTable();
+        tblCategory = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         Panle_timKiem1 = new javax.swing.JPanel();
@@ -204,14 +322,13 @@ public class HomePage extends javax.swing.JFrame implements View {
         btThemHD1 = new javax.swing.JButton();
         btSuaHD1 = new javax.swing.JButton();
         btXoaHD1 = new javax.swing.JButton();
-        btXemChiTietHD1 = new javax.swing.JButton();
         btnReset1 = new javax.swing.JButton();
         jPanel12 = new javax.swing.JPanel();
         RadioSortTT1 = new javax.swing.JRadioButton();
         RadioSortByTime1 = new javax.swing.JRadioButton();
         jbtXep1 = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
-        tblQLHD1 = new javax.swing.JTable();
+        tblSupplier = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
         iPanel9 = new javax.swing.JPanel();
         Panle_timKiem2 = new javax.swing.JPanel();
@@ -240,14 +357,13 @@ public class HomePage extends javax.swing.JFrame implements View {
         btThemHD6 = new javax.swing.JButton();
         btSuaHD6 = new javax.swing.JButton();
         btXoaHD6 = new javax.swing.JButton();
-        btXemChiTietHD6 = new javax.swing.JButton();
         btnReset6 = new javax.swing.JButton();
         jPanel23 = new javax.swing.JPanel();
         RadioSortTT6 = new javax.swing.JRadioButton();
         RadioSortByTime6 = new javax.swing.JRadioButton();
         jbtXep6 = new javax.swing.JButton();
         jScrollPane11 = new javax.swing.JScrollPane();
-        tblQLHD6 = new javax.swing.JTable();
+        tblBranch = new javax.swing.JTable();
         jLabel15 = new javax.swing.JLabel();
         iPanel10 = new javax.swing.JPanel();
         Panle_timKiem3 = new javax.swing.JPanel();
@@ -258,14 +374,13 @@ public class HomePage extends javax.swing.JFrame implements View {
         jPanel16 = new javax.swing.JPanel();
         btThemHD3 = new javax.swing.JButton();
         btXoaHD3 = new javax.swing.JButton();
-        btXemChiTietHD3 = new javax.swing.JButton();
         btnReset3 = new javax.swing.JButton();
         jPanel17 = new javax.swing.JPanel();
         RadioSortTT3 = new javax.swing.JRadioButton();
         RadioSortByTime3 = new javax.swing.JRadioButton();
         jbtXep3 = new javax.swing.JButton();
         jScrollPane8 = new javax.swing.JScrollPane();
-        tblQLHD3 = new javax.swing.JTable();
+        tblReceipt = new javax.swing.JTable();
         jLabel12 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -374,15 +489,6 @@ public class HomePage extends javax.swing.JFrame implements View {
         });
         jPanel18.add(btXoaHD4);
 
-        btXemChiTietHD4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btXemChiTietHD4.setText("Xem chi tiết");
-        btXemChiTietHD4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btXemChiTietHD4ActionPerformed(evt);
-            }
-        });
-        jPanel18.add(btXemChiTietHD4);
-
         btnReset4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnReset4.setText("Refresh");
         btnReset4.addActionListener(new java.awt.event.ActionListener() {
@@ -490,7 +596,7 @@ public class HomePage extends javax.swing.JFrame implements View {
                 .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         Panle_timKiem4.getAccessibleContext().setAccessibleName("Tìm kiếm sách");
@@ -581,15 +687,6 @@ public class HomePage extends javax.swing.JFrame implements View {
         });
         jPanel20.add(btXoaHD5);
 
-        btXemChiTietHD5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btXemChiTietHD5.setText("Xem chi tiết");
-        btXemChiTietHD5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btXemChiTietHD5ActionPerformed(evt);
-            }
-        });
-        jPanel20.add(btXemChiTietHD5);
-
         btnReset5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnReset5.setText("Refresh");
         btnReset5.addActionListener(new java.awt.event.ActionListener() {
@@ -641,9 +738,9 @@ public class HomePage extends javax.swing.JFrame implements View {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        tblQLHD5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14)), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
-        tblQLHD5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        tblQLHD5.setModel(new javax.swing.table.DefaultTableModel(
+        tblAuthor.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14)), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
+        tblAuthor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tblAuthor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -651,13 +748,13 @@ public class HomePage extends javax.swing.JFrame implements View {
                 "ID", "Họ tên", "Địa chỉ", "SĐT", "Email", "Ngày sinh"
             }
         ));
-        tblQLHD5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        tblQLHD5.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblAuthor.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tblAuthor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblQLHD5MouseClicked(evt);
+                tblAuthorMouseClicked(evt);
             }
         });
-        jScrollPane10.setViewportView(tblQLHD5);
+        jScrollPane10.setViewportView(tblAuthor);
 
         jLabel14.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -765,15 +862,6 @@ public class HomePage extends javax.swing.JFrame implements View {
         });
         jPanel9.add(btXoaHD);
 
-        btXemChiTietHD.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btXemChiTietHD.setText("Xem chi tiết");
-        btXemChiTietHD.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btXemChiTietHDActionPerformed(evt);
-            }
-        });
-        jPanel9.add(btXemChiTietHD);
-
         btnReset.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnReset.setText("Refresh");
         btnReset.addActionListener(new java.awt.event.ActionListener() {
@@ -825,23 +913,23 @@ public class HomePage extends javax.swing.JFrame implements View {
                 .addContainerGap(9, Short.MAX_VALUE))
         );
 
-        tblQLHD.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14)), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
-        tblQLHD.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        tblQLHD.setModel(new javax.swing.table.DefaultTableModel(
+        tblCategory.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14)), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
+        tblCategory.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tblCategory.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Mã hóa đơn", "Khách hàng", "Địa chỉ", "SĐT", "Thời gian", "Tổng thanh toán"
+                "ID", "Tên danh mục", "Mô tả"
             }
         ));
-        tblQLHD.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        tblQLHD.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblCategory.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tblCategory.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblQLHDMouseClicked(evt);
+                tblCategoryMouseClicked(evt);
             }
         });
-        jScrollPane3.setViewportView(tblQLHD);
+        jScrollPane3.setViewportView(tblCategory);
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -957,15 +1045,6 @@ public class HomePage extends javax.swing.JFrame implements View {
         });
         jPanel11.add(btXoaHD1);
 
-        btXemChiTietHD1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btXemChiTietHD1.setText("Xem chi tiết");
-        btXemChiTietHD1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btXemChiTietHD1ActionPerformed(evt);
-            }
-        });
-        jPanel11.add(btXemChiTietHD1);
-
         btnReset1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnReset1.setText("Refresh");
         btnReset1.addActionListener(new java.awt.event.ActionListener() {
@@ -1017,23 +1096,23 @@ public class HomePage extends javax.swing.JFrame implements View {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        tblQLHD1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14)), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
-        tblQLHD1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        tblQLHD1.setModel(new javax.swing.table.DefaultTableModel(
+        tblSupplier.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14)), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
+        tblSupplier.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tblSupplier.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Mã hóa đơn", "Khách hàng", "Địa chỉ", "SĐT", "Thời gian", "Tổng thanh toán"
+                "NCC", "Địa chỉ", "Điện thoại", "Email"
             }
         ));
-        tblQLHD1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        tblQLHD1.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblSupplier.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tblSupplier.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblQLHD1MouseClicked(evt);
+                tblSupplierMouseClicked(evt);
             }
         });
-        jScrollPane6.setViewportView(tblQLHD1);
+        jScrollPane6.setViewportView(tblSupplier);
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1326,15 +1405,6 @@ public class HomePage extends javax.swing.JFrame implements View {
         });
         jPanel22.add(btXoaHD6);
 
-        btXemChiTietHD6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btXemChiTietHD6.setText("Xem chi tiết");
-        btXemChiTietHD6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btXemChiTietHD6ActionPerformed(evt);
-            }
-        });
-        jPanel22.add(btXemChiTietHD6);
-
         btnReset6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnReset6.setText("Refresh");
         btnReset6.addActionListener(new java.awt.event.ActionListener() {
@@ -1386,23 +1456,23 @@ public class HomePage extends javax.swing.JFrame implements View {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        tblQLHD6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14)), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
-        tblQLHD6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        tblQLHD6.setModel(new javax.swing.table.DefaultTableModel(
+        tblBranch.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14)), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
+        tblBranch.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tblBranch.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Mã hóa đơn", "Khách hàng", "Địa chỉ", "SĐT", "Thời gian", "Tổng thanh toán"
+                "Chi nhánh", "Địa chỉ", "Quản lý", "Hotline", "Trạng thái"
             }
         ));
-        tblQLHD6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        tblQLHD6.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblBranch.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tblBranch.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblQLHD6MouseClicked(evt);
+                tblBranchMouseClicked(evt);
             }
         });
-        jScrollPane11.setViewportView(tblQLHD6);
+        jScrollPane11.setViewportView(tblBranch);
 
         jLabel15.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1509,15 +1579,6 @@ public class HomePage extends javax.swing.JFrame implements View {
         });
         jPanel16.add(btXoaHD3);
 
-        btXemChiTietHD3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btXemChiTietHD3.setText("Xem chi tiết");
-        btXemChiTietHD3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btXemChiTietHD3ActionPerformed(evt);
-            }
-        });
-        jPanel16.add(btXemChiTietHD3);
-
         btnReset3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnReset3.setText("Refresh");
         btnReset3.addActionListener(new java.awt.event.ActionListener() {
@@ -1569,23 +1630,23 @@ public class HomePage extends javax.swing.JFrame implements View {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        tblQLHD3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14)), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
-        tblQLHD3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        tblQLHD3.setModel(new javax.swing.table.DefaultTableModel(
+        tblReceipt.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14)), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
+        tblReceipt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tblReceipt.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Mã hóa đơn", "Khách hàng", "Địa chỉ", "SĐT", "Thời gian", "Tổng thanh toán"
+                "Mã hóa đơn", "Ngày nhập", "Nhà cung cấp", "Sách", "Phụ trách", "Số lượng", "Tổng tiền"
             }
         ));
-        tblQLHD3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        tblQLHD3.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblReceipt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tblReceipt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblQLHD3MouseClicked(evt);
+                tblReceiptMouseClicked(evt);
             }
         });
-        jScrollPane8.setViewportView(tblQLHD3);
+        jScrollPane8.setViewportView(tblReceipt);
 
         jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1643,167 +1704,297 @@ public class HomePage extends javax.swing.JFrame implements View {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    private void showBookList() {
-        book_list = (ArrayList<Book>) bookController.readDataFromFile("books.txt");
-        if (book_list == null) {
-            book_list = new ArrayList<>();
-        }
-        this.showData(book_list, tblModelSach);
-    }
-    
-    
-    
-    
-    public void handleCreateBook(Book x) {
-        book_list.add(x);
-        this.showData(book_list, tblModelSach);
-        bookController.writeToFile(book_list, "books.txt");  
-    }
-    
-    public void handleGetBook() {
-//        this.showData(dsQly, tblModelQLX);
-        Object obj = bookController.readDataFromFile("books.txt");
-        if (obj != null && obj instanceof Book) {
-            Book b = (Book) obj;
-            System.out.println("Lop Sach");
-        } else {
-            System.out.println("File is empty or object type mismatch");
-        }
-    }
-    
-    private void btTimHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimHDActionPerformed
-        //      Lấy thông tin khách hàng tìm kiếm từ JTextField
-        
-    }//GEN-LAST:event_btTimHDActionPerformed
 
-    private void btThemHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemHDActionPerformed
-        new CreateCategory().setVisible(true);
-    }//GEN-LAST:event_btThemHDActionPerformed
-
-    private void btSuaHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSuaHDActionPerformed
-        new EditCategory().setVisible(true);
-    }//GEN-LAST:event_btSuaHDActionPerformed
-
-    private void btXoaHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoaHDActionPerformed
-        //      Khi có dòng chọn thì gọi đến một màn hình xác nhận xóa nếu không thì đưa ra thông báo
-        
-    }//GEN-LAST:event_btXoaHDActionPerformed
-
-    private void btXemChiTietHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXemChiTietHDActionPerformed
-        
-    }//GEN-LAST:event_btXemChiTietHDActionPerformed
-
-    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
-        
-    }//GEN-LAST:event_btnResetActionPerformed
-
-    private void jbtXepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtXepActionPerformed
-        
-    }//GEN-LAST:event_jbtXepActionPerformed
-
-    private void tblQLHDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblQLHDMouseClicked
-        
-    }//GEN-LAST:event_tblQLHDMouseClicked
-
-    private void btTimHD1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimHD1ActionPerformed
+    private void tblReceiptMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblReceiptMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_btTimHD1ActionPerformed
-
-    private void btThemHD1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemHD1ActionPerformed
-        new CreateSupplier().setVisible(true);
-    }//GEN-LAST:event_btThemHD1ActionPerformed
-
-    private void btSuaHD1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSuaHD1ActionPerformed
-        new EditSupplier().setVisible(true);
-    }//GEN-LAST:event_btSuaHD1ActionPerformed
-
-    private void btXoaHD1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoaHD1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btXoaHD1ActionPerformed
-
-    private void btXemChiTietHD1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXemChiTietHD1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btXemChiTietHD1ActionPerformed
-
-    private void btnReset1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReset1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnReset1ActionPerformed
-
-    private void jbtXep1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtXep1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtXep1ActionPerformed
-
-    private void tblQLHD1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblQLHD1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tblQLHD1MouseClicked
-
-    private void btTimHD2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimHD2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btTimHD2ActionPerformed
-
-    private void btThemHD2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemHD2ActionPerformed
-        new CreateOrder().setVisible(true);
-    }//GEN-LAST:event_btThemHD2ActionPerformed
-
-    private void btXoaHD2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoaHD2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btXoaHD2ActionPerformed
-
-    private void btXemChiTietHD2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXemChiTietHD2ActionPerformed
-        new OrderDetail().setVisible(true);
-    }//GEN-LAST:event_btXemChiTietHD2ActionPerformed
-
-    private void btnReset2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReset2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnReset2ActionPerformed
-
-    private void jbtXep2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtXep2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtXep2ActionPerformed
-
-    private void tblQLHD2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblQLHD2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tblQLHD2MouseClicked
-
-    private void btTimHD3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimHD3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btTimHD3ActionPerformed
-
-    private void btThemHD3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemHD3ActionPerformed
-        new CreateReceipt().setVisible(true);
-    }//GEN-LAST:event_btThemHD3ActionPerformed
-
-    private void btXoaHD3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoaHD3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btXoaHD3ActionPerformed
-
-    private void btXemChiTietHD3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXemChiTietHD3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btXemChiTietHD3ActionPerformed
-
-    private void btnReset3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReset3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnReset3ActionPerformed
+    }//GEN-LAST:event_tblReceiptMouseClicked
 
     private void jbtXep3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtXep3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jbtXep3ActionPerformed
 
-    private void tblQLHD3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblQLHD3MouseClicked
+    private void btnReset3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReset3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblQLHD3MouseClicked
+    }//GEN-LAST:event_btnReset3ActionPerformed
 
-    private void btTimHD4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimHD4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btTimHD4ActionPerformed
-
-    private void btThemHD4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemHD4ActionPerformed
-        CreateBook createB = new CreateBook(this, rootPaneCheckingEnabled);
+    private void btThemHD3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemHD3ActionPerformed
+        CreateReceipt createB = new CreateReceipt(this, rootPaneCheckingEnabled);
         createB.setVisible(true);
-    }//GEN-LAST:event_btThemHD4ActionPerformed
+    }//GEN-LAST:event_btThemHD3ActionPerformed
+
+    private void btTimHD3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimHD3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btTimHD3ActionPerformed
+
+    private void tblBranchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBranchMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblBranchMouseClicked
+
+    private void jbtXep6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtXep6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtXep6ActionPerformed
+
+    private void btnReset6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReset6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnReset6ActionPerformed
+
+    private void btXoaHD6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoaHD6ActionPerformed
+        //        Lấy ra chỉ số dòng chọn của người dùng click vào
+        dongChon = tblBranch.getSelectedRow();
+        /*       Nếu danh sách rỗng hoặc người dùng chưa chọn dòng  thì in ra thông báo
+        còn nếu không thì show ra màn hình xác nhận xóa */
+        if (dongChon == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Hãy chọn một dòng cần xóa!");
+        } else if (branch_list.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Không có thông tin để xóa!");
+        } else {
+            int confirm = JOptionPane.showConfirmDialog(
+                rootPane,
+                "Bạn có chắc chắn muốn xóa?",
+                "Xác nhận xóa",
+                JOptionPane.YES_NO_OPTION
+            );
+            /*           Người dùng chọn Yes sẽ tiến hành xóa thông tin khỏi danh sách và
+            show lại danh sách sau khi xóa */
+            if (confirm == JOptionPane.YES_OPTION) {
+                branch_list.remove(dongChon);
+                categoryController.writeToFile(branch_list, "branches.txt");
+                this.showData(branch_list, tblModelBranch);
+            }
+        }
+    }//GEN-LAST:event_btXoaHD6ActionPerformed
+
+    private void btSuaHD6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSuaHD6ActionPerformed
+        new EditBranch().setVisible(true);
+    }//GEN-LAST:event_btSuaHD6ActionPerformed
+
+    private void btThemHD6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemHD6ActionPerformed
+        CreateBranch createB = new CreateBranch(this, rootPaneCheckingEnabled);
+        createB.setVisible(true);
+    }//GEN-LAST:event_btThemHD6ActionPerformed
+
+    private void btTimHD6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimHD6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btTimHD6ActionPerformed
+
+    private void tblQLHD2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblQLHD2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblQLHD2MouseClicked
+
+    private void jbtXep2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtXep2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtXep2ActionPerformed
+
+    private void btnReset2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReset2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnReset2ActionPerformed
+
+    private void btXemChiTietHD2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXemChiTietHD2ActionPerformed
+        OrderDetail createB = new OrderDetail(this, rootPaneCheckingEnabled);
+        createB.setVisible(true);
+    }//GEN-LAST:event_btXemChiTietHD2ActionPerformed
+
+    private void btXoaHD2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoaHD2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btXoaHD2ActionPerformed
+
+    private void btThemHD2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemHD2ActionPerformed
+        CreateOrder createB = new CreateOrder(this, rootPaneCheckingEnabled);
+        createB.setVisible(true);
+
+    }//GEN-LAST:event_btThemHD2ActionPerformed
+
+    private void btTimHD2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimHD2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btTimHD2ActionPerformed
+
+    private void tblSupplierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSupplierMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblSupplierMouseClicked
+
+    private void jbtXep1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtXep1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtXep1ActionPerformed
+
+    private void btnReset1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReset1ActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_btnReset1ActionPerformed
+
+    private void btXoaHD1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoaHD1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btXoaHD1ActionPerformed
+
+    private void btSuaHD1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSuaHD1ActionPerformed
+        new EditSupplier().setVisible(true);
+    }//GEN-LAST:event_btSuaHD1ActionPerformed
+
+    private void btThemHD1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemHD1ActionPerformed
+        CreateSupplier createB = new CreateSupplier(this, rootPaneCheckingEnabled);
+        createB.setVisible(true);
+    }//GEN-LAST:event_btThemHD1ActionPerformed
+
+    private void btTimHD1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimHD1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btTimHD1ActionPerformed
+
+    private void tblCategoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCategoryMouseClicked
+
+    }//GEN-LAST:event_tblCategoryMouseClicked
+
+    private void jbtXepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtXepActionPerformed
+
+    }//GEN-LAST:event_jbtXepActionPerformed
+
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
+
+    }//GEN-LAST:event_btnResetActionPerformed
+
+    private void btXoaHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoaHDActionPerformed
+        //        Lấy ra chỉ số dòng chọn của người dùng click vào
+        dongChon = tblCategory.getSelectedRow();
+        /*       Nếu danh sách rỗng hoặc người dùng chưa chọn dòng  thì in ra thông báo
+        còn nếu không thì show ra màn hình xác nhận xóa */
+        if (dongChon == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Hãy chọn một dòng cần xóa!");
+        } else if (category_list.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Không có thông tin để xóa!");
+        } else {
+            int confirm = JOptionPane.showConfirmDialog(
+                rootPane,
+                "Bạn có chắc chắn muốn xóa?",
+                "Xác nhận xóa",
+                JOptionPane.YES_NO_OPTION
+            );
+            /*           Người dùng chọn Yes sẽ tiến hành xóa thông tin khỏi danh sách và
+            show lại danh sách sau khi xóa */
+            if (confirm == JOptionPane.YES_OPTION) {
+                category_list.remove(dongChon);
+                categoryController.writeToFile(category_list, "categories.txt");
+                this.showData(category_list, tblModelCategory);
+            }
+        }
+    }//GEN-LAST:event_btXoaHDActionPerformed
+
+    private void btSuaHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSuaHDActionPerformed
+        new EditCategory().setVisible(true);
+    }//GEN-LAST:event_btSuaHDActionPerformed
+
+    private void btThemHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemHDActionPerformed
+        CreateCategory createB = new CreateCategory(this, rootPaneCheckingEnabled);
+        createB.setVisible(true);
+    }//GEN-LAST:event_btThemHDActionPerformed
+
+    private void btTimHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimHDActionPerformed
+        //      Lấy thông tin khách hàng tìm kiếm từ JTextField
+
+    }//GEN-LAST:event_btTimHDActionPerformed
+
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchActionPerformed
+
+    private void tblAuthorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblAuthorMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblAuthorMouseClicked
+
+    private void jbtXep5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtXep5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtXep5ActionPerformed
+
+    private void btnReset5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReset5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnReset5ActionPerformed
+
+    private void btXoaHD5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoaHD5ActionPerformed
+        //        Lấy ra chỉ số dòng chọn của người dùng click vào
+        dongChon = tblAuthor.getSelectedRow();
+        /*       Nếu danh sách rỗng hoặc người dùng chưa chọn dòng  thì in ra thông báo
+        còn nếu không thì show ra màn hình xác nhận xóa */
+        if (dongChon == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Hãy chọn một dòng cần xóa!");
+        } else if (author_list.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Không có thông tin để xóa!");
+        } else {
+            int confirm = JOptionPane.showConfirmDialog(
+                rootPane,
+                "Bạn có chắc chắn muốn xóa?",
+                "Xác nhận xóa",
+                JOptionPane.YES_NO_OPTION
+            );
+            /*           Người dùng chọn Yes sẽ tiến hành xóa thông tin khỏi danh sách và
+            show lại danh sách sau khi xóa */
+            if (confirm == JOptionPane.YES_OPTION) {
+                author_list.remove(dongChon);
+                authorController.writeToFile(author_list, "authors.txt");
+                this.showData(author_list, tblModelAuthor);
+            }
+        }
+    }//GEN-LAST:event_btXoaHD5ActionPerformed
+
+    private void btSuaHD5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSuaHD5ActionPerformed
+        new EditAuthor().setVisible(true);
+    }//GEN-LAST:event_btSuaHD5ActionPerformed
+
+    private void btThemHD5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemHD5ActionPerformed
+        CreateAuthor createB = new CreateAuthor(this, rootPaneCheckingEnabled);
+        createB.setVisible(true);
+    }//GEN-LAST:event_btThemHD5ActionPerformed
+
+    private void btTimHD5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimHD5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btTimHD5ActionPerformed
+
+    private void RadioSearchByMaHD5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioSearchByMaHD5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RadioSearchByMaHD5ActionPerformed
+
+    private void tblSachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSachMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblSachMouseClicked
+
+    private void jbtXep4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtXep4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtXep4ActionPerformed
+
+    private void RadioSortByTime4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioSortByTime4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RadioSortByTime4ActionPerformed
+
+    private void btnReset4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReset4ActionPerformed
+        tblModelSach = (DefaultTableModel) tblSach.getModel();
+        this.bookController = new BookController();
+        showBookList();
+    }//GEN-LAST:event_btnReset4ActionPerformed
+
+    private void btXoaHD4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoaHD4ActionPerformed
+        //        Lấy ra chỉ số dòng chọn của người dùng click vào
+        dongChon = tblSach.getSelectedRow();
+        /*       Nếu danh sách rỗng hoặc người dùng chưa chọn dòng  thì in ra thông báo
+        còn nếu không thì show ra màn hình xác nhận xóa */
+        if (dongChon == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Hãy chọn một dòng cần xóa!");
+        } else if (book_list.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Không có thông tin để xóa!");
+        } else {
+            int confirm = JOptionPane.showConfirmDialog(
+                rootPane,
+                "Bạn có chắc chắn muốn xóa?",
+                "Xác nhận xóa",
+                JOptionPane.YES_NO_OPTION
+            );
+            /*           Người dùng chọn Yes sẽ tiến hành xóa thông tin khỏi danh sách và
+            show lại danh sách sau khi xóa */
+            if (confirm == JOptionPane.YES_OPTION) {
+                book_list.remove(dongChon);
+                bookController.writeToFile(book_list, "books.txt");
+                this.showData(book_list, tblModelSach);
+            }
+        }
+    }//GEN-LAST:event_btXoaHD4ActionPerformed
 
     private void btSuaHD4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSuaHD4ActionPerformed
-        //        Lấy ra chỉ số dòng chọn của người dùng click vào 
+        //        Lấy ra chỉ số dòng chọn của người dùng click vào
         dongChon = tblSach.getSelectedRow();
         /*       Nếu danh sách rỗng hoặc người dùng chưa chọn dòng  thì in ra thông báo
         còn nếu không thì gọi đến màn hình sửa */
@@ -1816,130 +2007,161 @@ public class HomePage extends javax.swing.JFrame implements View {
             sua.setEditData(book_list.get(dongChon));
             sua.setVisible(true);
         }
-        
-        
+
     }//GEN-LAST:event_btSuaHD4ActionPerformed
 
-    private void btXoaHD4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoaHD4ActionPerformed
-       //        Lấy ra chỉ số dòng chọn của người dùng click vào       
-        dongChon = tblSach.getSelectedRow();
-        /*       Nếu danh sách rỗng hoặc người dùng chưa chọn dòng  thì in ra thông báo
-        còn nếu không thì show ra màn hình xác nhận xóa */
-        if (dongChon == -1) {
-            JOptionPane.showMessageDialog(rootPane, "Hãy chọn một dòng cần xóa!");
-        } else if (book_list.isEmpty()) {
-            JOptionPane.showMessageDialog(rootPane, "Không có thông tin để xóa!");
-        } else {
-            int confirm = JOptionPane.showConfirmDialog(
-                    rootPane,
-                    "Bạn có chắc chắn muốn xóa?",
-                    "Xác nhận xóa",
-                    JOptionPane.YES_NO_OPTION
-            );
-            /*           Người dùng chọn Yes sẽ tiến hành xóa thông tin khỏi danh sách và 
-            show lại danh sách sau khi xóa */
-            if (confirm == JOptionPane.YES_OPTION) {
-                book_list.remove(dongChon);
-                bookController.writeToFile(book_list, "books.txt");
-                this.showData(book_list, tblModelSach);
-            }
+    private void btThemHD4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemHD4ActionPerformed
+        CreateBook createB = new CreateBook(this, rootPaneCheckingEnabled);
+        createB.setVisible(true);
+    }//GEN-LAST:event_btThemHD4ActionPerformed
+
+    private void btTimHD4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimHD4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btTimHD4ActionPerformed
+
+    private void btXoaHD3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoaHD3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btXoaHD3ActionPerformed
+    private void showBookList() {
+        book_list = (ArrayList<Book>) bookController.readDataFromFile("books.txt");
+        if (book_list == null) {
+            book_list = new ArrayList<>();
         }
-    }//GEN-LAST:event_btXoaHD4ActionPerformed
-
-    private void btXemChiTietHD4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXemChiTietHD4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btXemChiTietHD4ActionPerformed
-
-    private void btnReset4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReset4ActionPerformed
-        tblModelSach = (DefaultTableModel) tblSach.getModel();
-        this.bookController = new BookController();
-        showBookList();        
-    }//GEN-LAST:event_btnReset4ActionPerformed
-
-    private void jbtXep4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtXep4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtXep4ActionPerformed
-
-    private void tblSachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSachMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tblSachMouseClicked
-
-    private void btTimHD5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimHD5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btTimHD5ActionPerformed
-
-    private void btThemHD5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemHD5ActionPerformed
-        new CreateAuthor().setVisible(true);
-    }//GEN-LAST:event_btThemHD5ActionPerformed
-
-    private void btSuaHD5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSuaHD5ActionPerformed
-        new EditAuthor().setVisible(true);
-    }//GEN-LAST:event_btSuaHD5ActionPerformed
-
-    private void btXoaHD5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoaHD5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btXoaHD5ActionPerformed
-
-    private void btXemChiTietHD5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXemChiTietHD5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btXemChiTietHD5ActionPerformed
-
-    private void btnReset5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReset5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnReset5ActionPerformed
-
-    private void jbtXep5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtXep5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtXep5ActionPerformed
-
-    private void tblQLHD5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblQLHD5MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tblQLHD5MouseClicked
-
-    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSearchActionPerformed
-
-    private void RadioSearchByMaHD5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioSearchByMaHD5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RadioSearchByMaHD5ActionPerformed
-
-    private void RadioSortByTime4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioSortByTime4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RadioSortByTime4ActionPerformed
-
-    private void btTimHD6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimHD6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btTimHD6ActionPerformed
-
-    private void btThemHD6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemHD6ActionPerformed
-        new CreateBranch().setVisible(true);
-    }//GEN-LAST:event_btThemHD6ActionPerformed
-
-    private void btSuaHD6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSuaHD6ActionPerformed
-        new EditBranch().setVisible(true);
-    }//GEN-LAST:event_btSuaHD6ActionPerformed
-
-    private void btXoaHD6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoaHD6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btXoaHD6ActionPerformed
-
-    private void btXemChiTietHD6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXemChiTietHD6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btXemChiTietHD6ActionPerformed
-
-    private void btnReset6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReset6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnReset6ActionPerformed
-
-    private void jbtXep6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtXep6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtXep6ActionPerformed
-
-    private void tblQLHD6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblQLHD6MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tblQLHD6MouseClicked
-
+        this.showData(book_list, tblModelSach);
+    }
+    
+    private void showAuthorList() {
+        author_list = (ArrayList<Author>) authorController.readDataFromFile("authors.txt");
+        if (author_list == null) {
+            author_list = new ArrayList<>();
+        }
+        this.showData(author_list, tblModelAuthor);
+    }
+    
+    private void showCategoryList() {
+        category_list = (ArrayList<Category>) categoryController.readDataFromFile("categories.txt");
+        if (category_list == null) {
+            category_list = new ArrayList<>();
+        }
+        this.showData(category_list, tblModelCategory);
+    }
+    
+    private void showBranchList() {
+        branch_list = (ArrayList<Branch>) branchController.readDataFromFile("branches.txt");
+        if (branch_list == null) {
+            branch_list = new ArrayList<>();
+        }
+        this.showData(branch_list, tblModelBranch);
+    }
+    
+    private void showCustomerList() {
+        customer_list = (ArrayList<Customer>) customerController.readDataFromFile("customers.txt");
+        if (customer_list == null) {
+            customer_list = new ArrayList<>();
+        }
+        this.showData(customer_list, tblModelCustomer);
+    }
+    
+    private void showEmployeeList() {
+        employee_list = (ArrayList<Employee>) employeeController.readDataFromFile("employees.txt");
+        if (employee_list == null) {
+            employee_list = new ArrayList<>();
+        }
+        this.showData(employee_list, tblModelEmployee);
+    }
+    
+    private void showOrderList() {
+        order_list = (ArrayList<Order>) orderController.readDataFromFile("orders.txt");
+        if (order_list == null) {
+            order_list = new ArrayList<>();
+        }
+        this.showData(order_list, tblModelOrder);
+    }
+    
+    private void showPublisherList() {
+        publisher_list = (ArrayList<Publisher>) publisherController.readDataFromFile("publishers.txt");
+        if (publisher_list == null) {
+            publisher_list = new ArrayList<>();
+        }
+        this.showData(publisher_list, tblModelPublisher);
+    }
+    
+    private void showReceiptList() {
+        receipt_list = (ArrayList<Receipt>) receiptController.readDataFromFile("receipts.txt");
+        if (receipt_list == null) {
+            receipt_list = new ArrayList<>();
+        }
+        this.showData(receipt_list, tblModelReceipt);
+    }
+    
+    private void showSupplierList() {
+        supplier_list = (ArrayList<Supplier>) supplierController.readDataFromFile("suppliers.txt");
+        if (supplier_list == null) {
+            supplier_list = new ArrayList<>();
+        }
+        this.showData(supplier_list, tblModelSupplier);
+    }
+    
+    public void handleCreateBook(Book x) {
+        book_list.add(x);
+        this.showData(book_list, tblModelSach);
+        bookController.writeToFile(book_list, "books.txt");  
+    }
+    
+    public void handleCreateAuthor(Author x) {
+        author_list.add(x);
+        this.showData(author_list, tblModelAuthor);
+        authorController.writeToFile(author_list, "authors.txt");  
+    }
+    
+    public void handleCreateCategory(Category x) {
+        category_list.add(x);
+        this.showData(category_list, tblModelCategory);
+        categoryController.writeToFile(category_list, "categories.txt");  
+    }
+    
+    public void handleCreateBranch(Branch x) {
+        branch_list.add(x);
+        this.showData(branch_list, tblModelBranch);
+        branchController.writeToFile(branch_list, "branches.txt");  
+    }
+    
+    public void handleCreateCustomer(Customer x) {
+        customer_list.add(x);
+        this.showData(customer_list, tblModelCustomer);
+        customerController.writeToFile(customer_list, "customers.txt");  
+    }
+    
+    public void handleCreateEmployee(Employee x) {
+        employee_list.add(x);
+        this.showData(employee_list, tblModelEmployee);
+        employeeController.writeToFile(employee_list, "employees.txt");  
+    }
+    
+    public void handleCreateOrder(Order x) {
+        order_list.add(x);
+        this.showData(order_list, tblModelOrder);
+        orderController.writeToFile(order_list, "orders.txt");  
+    }
+    
+    public void handleCreatePublisher(Publisher x) {
+        publisher_list.add(x);
+        this.showData(publisher_list, tblModelPublisher);
+        publisherController.writeToFile(publisher_list, "publishers.txt");  
+    }
+    
+    public void handleCreateReceipt(Receipt x) {
+        receipt_list.add(x);
+        this.showData(receipt_list, tblModelReceipt);
+        receiptController.writeToFile(receipt_list, "receipts.txt");  
+    }
+    
+    public void handleCreateSupplier(Supplier x) {
+        supplier_list.add(x);
+        this.showData(supplier_list, tblModelSupplier);
+        supplierController.writeToFile(supplier_list, "suppliers.txt");  
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -2027,13 +2249,7 @@ public class HomePage extends javax.swing.JFrame implements View {
     private javax.swing.JButton btTimHD4;
     private javax.swing.JButton btTimHD5;
     private javax.swing.JButton btTimHD6;
-    private javax.swing.JButton btXemChiTietHD;
-    private javax.swing.JButton btXemChiTietHD1;
     private javax.swing.JButton btXemChiTietHD2;
-    private javax.swing.JButton btXemChiTietHD3;
-    private javax.swing.JButton btXemChiTietHD4;
-    private javax.swing.JButton btXemChiTietHD5;
-    private javax.swing.JButton btXemChiTietHD6;
     private javax.swing.JButton btXoaHD;
     private javax.swing.JButton btXoaHD1;
     private javax.swing.JButton btXoaHD2;
@@ -2096,13 +2312,13 @@ public class HomePage extends javax.swing.JFrame implements View {
     private javax.swing.JButton jbtXep4;
     private javax.swing.JButton jbtXep5;
     private javax.swing.JButton jbtXep6;
-    private javax.swing.JTable tblQLHD;
-    private javax.swing.JTable tblQLHD1;
+    private javax.swing.JTable tblAuthor;
+    private javax.swing.JTable tblBranch;
+    private javax.swing.JTable tblCategory;
     private javax.swing.JTable tblQLHD2;
-    private javax.swing.JTable tblQLHD3;
-    private javax.swing.JTable tblQLHD5;
-    private javax.swing.JTable tblQLHD6;
+    private javax.swing.JTable tblReceipt;
     private javax.swing.JTable tblSach;
+    private javax.swing.JTable tblSupplier;
     private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtSearch1;
     private javax.swing.JTextField txtSearch2;

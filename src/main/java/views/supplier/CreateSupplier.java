@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package views.supplier;
-
+import models.Supplier;
+import view.HomePage;
 /**
  *
  * @author Admin
@@ -13,7 +14,12 @@ public class CreateSupplier extends javax.swing.JFrame {
     /**
      * Creates new form CreateSupplier
      */
-    public CreateSupplier() {
+    private HomePage home;
+    public CreateSupplier(java.awt.Frame parent, boolean modal) {
+        this.setLocationRelativeTo(null);
+        home = (HomePage) parent;
+        
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         initComponents();
     }
 
@@ -28,14 +34,14 @@ public class CreateSupplier extends javax.swing.JFrame {
 
         btnHuyBo = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        txtSDT = new javax.swing.JTextField();
+        txtSupplierAddress = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtChuSoHuu = new javax.swing.JTextField();
+        txtSupplierEmail = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        txtSuaChua1 = new javax.swing.JTextField();
+        txtSupplierPhone = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         btnThem = new javax.swing.JButton();
-        txtBSX = new javax.swing.JTextField();
+        txtSupplierName = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -47,27 +53,27 @@ public class CreateSupplier extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Họ tên:");
+        jLabel2.setText("Tên NCC:");
 
-        txtSDT.addActionListener(new java.awt.event.ActionListener() {
+        txtSupplierAddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSDTActionPerformed(evt);
+                txtSupplierAddressActionPerformed(evt);
             }
         });
 
         jLabel3.setText("Điện thoại:");
 
-        txtChuSoHuu.addActionListener(new java.awt.event.ActionListener() {
+        txtSupplierEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtChuSoHuuActionPerformed(evt);
+                txtSupplierEmailActionPerformed(evt);
             }
         });
 
         jLabel6.setText("Địa chỉ:");
 
-        txtSuaChua1.addActionListener(new java.awt.event.ActionListener() {
+        txtSupplierPhone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSuaChua1ActionPerformed(evt);
+                txtSupplierPhoneActionPerformed(evt);
             }
         });
 
@@ -81,9 +87,9 @@ public class CreateSupplier extends javax.swing.JFrame {
             }
         });
 
-        txtBSX.addActionListener(new java.awt.event.ActionListener() {
+        txtSupplierName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBSXActionPerformed(evt);
+                txtSupplierNameActionPerformed(evt);
             }
         });
 
@@ -108,10 +114,10 @@ public class CreateSupplier extends javax.swing.JFrame {
                         .addGap(87, 87, 87)
                         .addComponent(btnHuyBo))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtBSX, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-                        .addComponent(txtSDT, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(txtChuSoHuu, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(txtSuaChua1, javax.swing.GroupLayout.Alignment.TRAILING)))
+                        .addComponent(txtSupplierName, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                        .addComponent(txtSupplierAddress, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(txtSupplierEmail, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(txtSupplierPhone, javax.swing.GroupLayout.Alignment.TRAILING)))
                 .addContainerGap(130, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -122,19 +128,19 @@ public class CreateSupplier extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtBSX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSupplierName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtSuaChua1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSupplierPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtChuSoHuu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSupplierEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(txtSupplierAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThem)
@@ -149,25 +155,34 @@ public class CreateSupplier extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnHuyBoActionPerformed
 
-    private void txtSDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSDTActionPerformed
+    private void txtSupplierAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSupplierAddressActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSDTActionPerformed
+    }//GEN-LAST:event_txtSupplierAddressActionPerformed
 
-    private void txtChuSoHuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtChuSoHuuActionPerformed
+    private void txtSupplierEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSupplierEmailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtChuSoHuuActionPerformed
+    }//GEN-LAST:event_txtSupplierEmailActionPerformed
 
-    private void txtSuaChua1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSuaChua1ActionPerformed
+    private void txtSupplierPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSupplierPhoneActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSuaChua1ActionPerformed
+    }//GEN-LAST:event_txtSupplierPhoneActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-
+        String name, phone, email, address;
+        
+        name = txtSupplierName.getText();
+        phone = txtSupplierPhone.getText();
+        email = txtSupplierEmail.getText();
+        address = txtSupplierAddress.getText();
+        
+        Supplier a = new Supplier( name,  address,  phone,  email);
+        
+        home.handleCreateSupplier(a);
     }//GEN-LAST:event_btnThemActionPerformed
 
-    private void txtBSXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBSXActionPerformed
+    private void txtSupplierNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSupplierNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtBSXActionPerformed
+    }//GEN-LAST:event_txtSupplierNameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,7 +214,7 @@ public class CreateSupplier extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CreateSupplier().setVisible(true);
+                new CreateSupplier(null, false).setVisible(true);
             }
         });
     }
@@ -212,9 +227,9 @@ public class CreateSupplier extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField txtBSX;
-    private javax.swing.JTextField txtChuSoHuu;
-    private javax.swing.JTextField txtSDT;
-    private javax.swing.JTextField txtSuaChua1;
+    private javax.swing.JTextField txtSupplierAddress;
+    private javax.swing.JTextField txtSupplierEmail;
+    private javax.swing.JTextField txtSupplierName;
+    private javax.swing.JTextField txtSupplierPhone;
     // End of variables declaration//GEN-END:variables
 }

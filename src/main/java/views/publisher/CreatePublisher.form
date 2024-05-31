@@ -41,10 +41,10 @@
                           <Component id="btnHuyBo" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="txtBSX" alignment="0" pref="251" max="32767" attributes="0"/>
-                          <Component id="txtSDT" alignment="1" max="32767" attributes="0"/>
-                          <Component id="txtChuSoHuu" alignment="1" max="32767" attributes="0"/>
-                          <Component id="txtSuaChua1" alignment="1" max="32767" attributes="0"/>
+                          <Component id="txtPublisherName" alignment="0" pref="251" max="32767" attributes="0"/>
+                          <Component id="txtPublisherAddress" alignment="1" max="32767" attributes="0"/>
+                          <Component id="txtPublisherEmail" alignment="1" max="32767" attributes="0"/>
+                          <Component id="txtPublisherPhone" alignment="1" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -60,22 +60,22 @@
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtBSX" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtPublisherName" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtSuaChua1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtPublisherPhone" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtChuSoHuu" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtPublisherEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtSDT" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtPublisherAddress" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -88,9 +88,9 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JTextField" name="txtSDT">
+    <Component class="javax.swing.JTextField" name="txtPublisherAddress">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSDTActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPublisherAddressActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
@@ -103,9 +103,9 @@
         <Property name="text" type="java.lang.String" value="&#x110;&#x1ecb;a ch&#x1ec9;:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtSuaChua1">
+    <Component class="javax.swing.JTextField" name="txtPublisherPhone">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSuaChua1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPublisherPhoneActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel10">
@@ -124,9 +124,9 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThemActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtBSX">
+    <Component class="javax.swing.JTextField" name="txtPublisherName">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtBSXActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPublisherNameActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
@@ -147,9 +147,9 @@
         <Property name="text" type="java.lang.String" value="T&#xea;n NXB:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtChuSoHuu">
+    <Component class="javax.swing.JTextField" name="txtPublisherEmail">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtChuSoHuuActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPublisherEmailActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package views.branch;
+import models.Branch;
+import view.HomePage;
+
 
 /**
  *
@@ -13,7 +16,12 @@ public class CreateBranch extends javax.swing.JFrame {
     /**
      * Creates new form CreateBranch
      */
-    public CreateBranch() {
+    private HomePage home;
+    public CreateBranch(java.awt.Frame parent, boolean modal) {
+        this.setLocationRelativeTo(null);
+        home = (HomePage) parent;
+        
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         initComponents();
     }
 
@@ -26,25 +34,25 @@ public class CreateBranch extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtBSX = new javax.swing.JTextField();
+        txtBranchName = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         btnThem = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         btnHuyBo = new javax.swing.JButton();
-        txtChuSoHuu = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        txtSuaChua = new javax.swing.JTextField();
-        txtSDT = new javax.swing.JTextField();
+        txtBranchHotline = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtSuaChua1 = new javax.swing.JTextField();
+        txtBranchAddress = new javax.swing.JTextField();
+        txtBranchStatus = new javax.swing.JComboBox<>();
+        txtBranchManager = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        txtBSX.addActionListener(new java.awt.event.ActionListener() {
+        txtBranchName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBSXActionPerformed(evt);
+                txtBranchNameActionPerformed(evt);
             }
         });
 
@@ -66,23 +74,11 @@ public class CreateBranch extends javax.swing.JFrame {
             }
         });
 
-        txtChuSoHuu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtChuSoHuuActionPerformed(evt);
-            }
-        });
-
         jLabel7.setText("Trạng thái:");
 
-        txtSuaChua.addActionListener(new java.awt.event.ActionListener() {
+        txtBranchHotline.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSuaChuaActionPerformed(evt);
-            }
-        });
-
-        txtSDT.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSDTActionPerformed(evt);
+                txtBranchHotlineActionPerformed(evt);
             }
         });
 
@@ -93,18 +89,32 @@ public class CreateBranch extends javax.swing.JFrame {
 
         jLabel2.setText("Tên chi nhánh:");
 
-        txtSuaChua1.addActionListener(new java.awt.event.ActionListener() {
+        txtBranchAddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSuaChua1ActionPerformed(evt);
+                txtBranchAddressActionPerformed(evt);
             }
         });
+
+        txtBranchStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Đang hoạt động", "Không hoạt động" }));
+        txtBranchStatus.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentRemoved(java.awt.event.ContainerEvent evt) {
+                txtBranchStatusComponentRemoved(evt);
+            }
+        });
+        txtBranchStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBranchStatusActionPerformed(evt);
+            }
+        });
+
+        txtBranchManager.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(183, Short.MAX_VALUE)
+                .addContainerGap(227, Short.MAX_VALUE)
                 .addComponent(jLabel10)
                 .addGap(195, 195, 195))
             .addGroup(layout.createSequentialGroup()
@@ -112,7 +122,7 @@ public class CreateBranch extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnThem)
-                        .addGap(87, 87, 87)
+                        .addGap(67, 67, 67)
                         .addComponent(btnHuyBo))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -122,12 +132,12 @@ public class CreateBranch extends javax.swing.JFrame {
                             .addComponent(jLabel6)
                             .addComponent(jLabel7))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtBSX, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-                            .addComponent(txtSuaChua)
-                            .addComponent(txtSDT)
-                            .addComponent(txtChuSoHuu)
-                            .addComponent(txtSuaChua1))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtBranchHotline, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtBranchAddress, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtBranchName, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtBranchStatus, 0, 326, Short.MAX_VALUE)
+                            .addComponent(txtBranchManager, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -138,23 +148,23 @@ public class CreateBranch extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtBSX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBranchName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtSuaChua1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBranchAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtChuSoHuu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel4)
+                    .addComponent(txtBranchManager, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBranchHotline, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSuaChua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                    .addComponent(jLabel7)
+                    .addComponent(txtBranchStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThem)
@@ -165,33 +175,43 @@ public class CreateBranch extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtBSXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBSXActionPerformed
+    private void txtBranchNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBranchNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtBSXActionPerformed
+    }//GEN-LAST:event_txtBranchNameActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        String name, address, hotline, status, manager;
         
+        name = txtBranchName.getText();
+        address = txtBranchAddress.getText();
+        hotline = txtBranchHotline.getText();
+        status = (String)txtBranchStatus.getSelectedItem();
+        manager = (String)txtBranchManager.getSelectedItem();
+        
+        Branch a = new Branch( name,  status,  hotline,  address, manager);
+        
+        home.handleCreateBranch(a);        
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnHuyBoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyBoActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnHuyBoActionPerformed
 
-    private void txtChuSoHuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtChuSoHuuActionPerformed
+    private void txtBranchHotlineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBranchHotlineActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtChuSoHuuActionPerformed
+    }//GEN-LAST:event_txtBranchHotlineActionPerformed
 
-    private void txtSuaChuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSuaChuaActionPerformed
+    private void txtBranchAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBranchAddressActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSuaChuaActionPerformed
+    }//GEN-LAST:event_txtBranchAddressActionPerformed
 
-    private void txtSDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSDTActionPerformed
+    private void txtBranchStatusComponentRemoved(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_txtBranchStatusComponentRemoved
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSDTActionPerformed
+    }//GEN-LAST:event_txtBranchStatusComponentRemoved
 
-    private void txtSuaChua1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSuaChua1ActionPerformed
+    private void txtBranchStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBranchStatusActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSuaChua1ActionPerformed
+    }//GEN-LAST:event_txtBranchStatusActionPerformed
 
     /**
      * @param args the command line arguments
@@ -223,7 +243,7 @@ public class CreateBranch extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CreateBranch().setVisible(true);
+                new CreateBranch(null, false).setVisible(true);
             }
         });
     }
@@ -237,10 +257,10 @@ public class CreateBranch extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField txtBSX;
-    private javax.swing.JTextField txtChuSoHuu;
-    private javax.swing.JTextField txtSDT;
-    private javax.swing.JTextField txtSuaChua;
-    private javax.swing.JTextField txtSuaChua1;
+    private javax.swing.JTextField txtBranchAddress;
+    private javax.swing.JTextField txtBranchHotline;
+    private javax.swing.JComboBox<String> txtBranchManager;
+    private javax.swing.JTextField txtBranchName;
+    private javax.swing.JComboBox<String> txtBranchStatus;
     // End of variables declaration//GEN-END:variables
 }

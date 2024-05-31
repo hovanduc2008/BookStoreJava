@@ -127,7 +127,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
-        <Property name="text" type="java.lang.String" value="V&#x1ecb; tr&#xed;:"/>
+        <Property name="text" type="java.lang.String" value="Ng&#xe0;y sinh:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">

@@ -38,17 +38,17 @@
                   <Component id="txtSDT" alignment="1" max="32767" attributes="0"/>
                   <Component id="txtChuSoHuu" alignment="1" max="32767" attributes="0"/>
                   <Component id="txtSuaChua1" alignment="1" max="32767" attributes="0"/>
-                  <Component id="txtBSX1" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="btnThem" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
                       <Component id="btnHuyBo" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="fieldSupplierID" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="115" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="150" max="32767" attributes="0"/>
               <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="166" max="-2" attributes="0"/>
           </Group>
@@ -62,7 +62,7 @@
               <EmptySpace pref="14" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtBSX1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="fieldSupplierID" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -164,10 +164,10 @@
         <Property name="text" type="java.lang.String" value="M&#xe3; NCC:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtBSX1">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtBSX1ActionPerformed"/>
-      </Events>
+    <Component class="javax.swing.JTextField" name="fieldSupplierID">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="1"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

@@ -8,17 +8,40 @@ package models;
  *
  * @author Admin
  */
-public class Author {
+
+import java.io.Serializable;
+
+public class Author implements Serializable {
     private String name;
     private String authorId;
     private String phoneNumber;
     private String email;
 
-    public Author(String name, String authorId, String phoneNumber, String email) {
+    public String getDate_of_birth() {
+        return date_of_birth;
+    }
+
+    public void setDate_of_birth(String date_of_birth) {
+        this.date_of_birth = date_of_birth;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+    private String date_of_birth;
+    private String address;
+
+    public Author(String authorId, String name, String phoneNumber, String email, String address, String date_birth) {
         this.name = name;
         this.authorId = authorId;
         this.phoneNumber = phoneNumber;
         this.email = email;
+        this.address = address;
+        this.date_of_birth = date_birth;
     }
 
     // Getter và setter cho các thuộc tính

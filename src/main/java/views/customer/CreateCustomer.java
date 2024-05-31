@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package views.customer;
-
+import view.HomePage;
 /**
  *
  * @author Admin
@@ -13,7 +13,12 @@ public class CreateCustomer extends javax.swing.JFrame {
     /**
      * Creates new form CreateCustomer
      */
-    public CreateCustomer() {
+    private HomePage home;
+    public CreateCustomer(java.awt.Frame parent, boolean modal) {
+        this.setLocationRelativeTo(null);
+        home = (HomePage) parent;
+        
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         initComponents();
     }
 
@@ -200,7 +205,7 @@ public class CreateCustomer extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CreateCustomer().setVisible(true);
+                new CreateCustomer(null, false).setVisible(true);
             }
         });
     }

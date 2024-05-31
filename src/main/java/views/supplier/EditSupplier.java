@@ -38,7 +38,7 @@ public class EditSupplier extends javax.swing.JFrame {
         btnHuyBo = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txtBSX1 = new javax.swing.JTextField();
+        fieldSupplierID = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,11 +93,7 @@ public class EditSupplier extends javax.swing.JFrame {
 
         jLabel5.setText("Mã NCC:");
 
-        txtBSX1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBSX1ActionPerformed(evt);
-            }
-        });
+        fieldSupplierID.setText("1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -117,14 +113,14 @@ public class EditSupplier extends javax.swing.JFrame {
                     .addComponent(txtSDT, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtChuSoHuu, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtSuaChua1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtBSX1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnThem)
                         .addGap(87, 87, 87)
-                        .addComponent(btnHuyBo)))
-                .addContainerGap(115, Short.MAX_VALUE))
+                        .addComponent(btnHuyBo))
+                    .addComponent(fieldSupplierID))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(150, Short.MAX_VALUE)
                 .addComponent(jLabel10)
                 .addGap(166, 166, 166))
         );
@@ -136,7 +132,7 @@ public class EditSupplier extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtBSX1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fieldSupplierID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -187,10 +183,6 @@ public class EditSupplier extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnHuyBoActionPerformed
 
-    private void txtBSX1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBSX1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBSX1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -229,6 +221,7 @@ public class EditSupplier extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHuyBo;
     private javax.swing.JButton btnThem;
+    private javax.swing.JTextField fieldSupplierID;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -236,7 +229,6 @@ public class EditSupplier extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField txtBSX;
-    private javax.swing.JTextField txtBSX1;
     private javax.swing.JTextField txtChuSoHuu;
     private javax.swing.JTextField txtSDT;
     private javax.swing.JTextField txtSuaChua1;

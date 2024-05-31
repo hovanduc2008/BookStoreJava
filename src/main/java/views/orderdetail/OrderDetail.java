@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package views.orderdetail;
-
+import view.HomePage;
 /**
  *
  * @author Admin
@@ -13,7 +13,12 @@ public class OrderDetail extends javax.swing.JFrame {
     /**
      * Creates new form OrderDetail
      */
-    public OrderDetail() {
+    private HomePage home;
+    public OrderDetail(java.awt.Frame parent, boolean modal) {
+        this.setLocationRelativeTo(null);
+        home = (HomePage) parent;
+        
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         initComponents();
     }
 
@@ -245,7 +250,7 @@ public class OrderDetail extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new OrderDetail().setVisible(true);
+                new OrderDetail(null, false).setVisible(true);
             }
         });
     }

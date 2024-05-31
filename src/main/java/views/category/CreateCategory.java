@@ -4,6 +4,11 @@
  */
 package views.category;
 
+
+import models.Book;
+import models.Category;
+import view.HomePage;
+
 /**
  *
  * @author Admin
@@ -13,8 +18,15 @@ public class CreateCategory extends javax.swing.JFrame {
     /**
      * Creates new form CreateCategory
      */
-    public CreateCategory() {
+    private HomePage home;
+    public CreateCategory(java.awt.Frame parent, boolean modal) {
         initComponents();
+        
+         initComponents();
+        this.setLocationRelativeTo(null);
+        home = (HomePage) parent;
+        
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -27,10 +39,10 @@ public class CreateCategory extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel10 = new javax.swing.JLabel();
-        txtBSX = new javax.swing.JTextField();
+        txtCateName = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtSuaChua1 = new javax.swing.JTextField();
+        txtCateDes = new javax.swing.JTextField();
         btnThem = new javax.swing.JButton();
         btnHuyBo = new javax.swing.JButton();
 
@@ -39,9 +51,9 @@ public class CreateCategory extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel10.setText("THÊM DANH MỤC");
 
-        txtBSX.addActionListener(new java.awt.event.ActionListener() {
+        txtCateName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBSXActionPerformed(evt);
+                txtCateNameActionPerformed(evt);
             }
         });
 
@@ -49,9 +61,9 @@ public class CreateCategory extends javax.swing.JFrame {
 
         jLabel3.setText("Mô tả:");
 
-        txtSuaChua1.addActionListener(new java.awt.event.ActionListener() {
+        txtCateDes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSuaChua1ActionPerformed(evt);
+                txtCateDesActionPerformed(evt);
             }
         });
 
@@ -84,8 +96,8 @@ public class CreateCategory extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtBSX, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-                    .addComponent(txtSuaChua1)
+                    .addComponent(txtCateName, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                    .addComponent(txtCateDes)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnThem)
                         .addGap(87, 87, 87)
@@ -100,31 +112,38 @@ public class CreateCategory extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtBSX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCateName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtSuaChua1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCateDes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThem)
                     .addComponent(btnHuyBo))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtBSXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBSXActionPerformed
+    private void txtCateNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCateNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtBSXActionPerformed
+    }//GEN-LAST:event_txtCateNameActionPerformed
 
-    private void txtSuaChua1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSuaChua1ActionPerformed
+    private void txtCateDesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCateDesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSuaChua1ActionPerformed
+    }//GEN-LAST:event_txtCateDesActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-
+        String name, des;
+        
+        name = txtCateName.getText();
+        des = txtCateDes.getText();
+        
+        Category b = new Category("1", name, des);
+        
+        home.handleCreateCategory(b);
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnHuyBoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyBoActionPerformed
@@ -161,7 +180,7 @@ public class CreateCategory extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CreateCategory().setVisible(true);
+                new CreateCategory(null, false).setVisible(true);
             }
         });
     }
@@ -172,7 +191,7 @@ public class CreateCategory extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField txtBSX;
-    private javax.swing.JTextField txtSuaChua1;
+    private javax.swing.JTextField txtCateDes;
+    private javax.swing.JTextField txtCateName;
     // End of variables declaration//GEN-END:variables
 }

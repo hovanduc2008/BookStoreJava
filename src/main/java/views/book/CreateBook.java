@@ -53,11 +53,11 @@ public class CreateBook extends javax.swing.JFrame  {
         bookauthor = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         bookPrice = new javax.swing.JTextField();
-        txtSDT1 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         txtSuaChua3 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -124,12 +124,6 @@ public class CreateBook extends javax.swing.JFrame  {
             }
         });
 
-        txtSDT1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSDT1ActionPerformed(evt);
-            }
-        });
-
         jLabel8.setText("Giá bán:");
 
         jLabel9.setText("Danh mục:");
@@ -141,6 +135,8 @@ public class CreateBook extends javax.swing.JFrame  {
         });
 
         jLabel11.setText("NCC:");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Truyện Ngắn", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -164,7 +160,6 @@ public class CreateBook extends javax.swing.JFrame  {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(isbn, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-                    .addComponent(txtSDT1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(bookPrice, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(booknumberOfPages, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(publicationY, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -174,7 +169,8 @@ public class CreateBook extends javax.swing.JFrame  {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnThem)
                         .addGap(87, 87, 87)
-                        .addComponent(btnHuyBo)))
+                        .addComponent(btnHuyBo))
+                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(97, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -208,8 +204,8 @@ public class CreateBook extends javax.swing.JFrame  {
                     .addComponent(booknumberOfPages, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSDT1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
+                    .addComponent(jLabel9)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bookPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -268,10 +264,6 @@ public class CreateBook extends javax.swing.JFrame  {
         // TODO add your handling code here:
     }//GEN-LAST:event_bookPriceActionPerformed
 
-    private void txtSDT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSDT1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSDT1ActionPerformed
-
     private void txtSuaChua3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSuaChua3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSuaChua3ActionPerformed
@@ -319,6 +311,7 @@ public class CreateBook extends javax.swing.JFrame  {
     private javax.swing.JButton btnHuyBo;
     private javax.swing.JButton btnThem;
     private javax.swing.JTextField isbn;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
@@ -329,7 +322,6 @@ public class CreateBook extends javax.swing.JFrame  {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField publicationY;
-    private javax.swing.JTextField txtSDT1;
     private javax.swing.JTextField txtSuaChua3;
     // End of variables declaration//GEN-END:variables
 }

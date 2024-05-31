@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package views.receipt;
-
+import models.Receipt;
+import view.HomePage;
 /**
  *
  * @author Admin
@@ -13,7 +14,12 @@ public class CreateReceipt extends javax.swing.JFrame {
     /**
      * Creates new form CreateReceipt
      */
-    public CreateReceipt() {
+    private HomePage home;
+    public CreateReceipt(java.awt.Frame parent, boolean modal) {
+        this.setLocationRelativeTo(null);
+        home = (HomePage) parent;
+        
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         initComponents();
     }
 
@@ -28,15 +34,17 @@ public class CreateReceipt extends javax.swing.JFrame {
 
         btnHuyBo = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        txtSDT = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtChuSoHuu = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        txtSuaChua1 = new javax.swing.JTextField();
+        txtReceiptQuantity = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         btnThem = new javax.swing.JButton();
-        txtBSX = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        comboReceiptBook = new javax.swing.JComboBox<>();
+        comboReceiptEmployee = new javax.swing.JComboBox<>();
+        comboReceiptSupplier = new javax.swing.JComboBox<>();
+        txtReceiptQuantity1 = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,25 +57,13 @@ public class CreateReceipt extends javax.swing.JFrame {
 
         jLabel2.setText("Sách:");
 
-        txtSDT.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSDTActionPerformed(evt);
-            }
-        });
-
         jLabel3.setText("Số lượng:");
-
-        txtChuSoHuu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtChuSoHuuActionPerformed(evt);
-            }
-        });
 
         jLabel6.setText("Nhà cung cấp:");
 
-        txtSuaChua1.addActionListener(new java.awt.event.ActionListener() {
+        txtReceiptQuantity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSuaChua1ActionPerformed(evt);
+                txtReceiptQuantityActionPerformed(evt);
             }
         });
 
@@ -81,13 +77,31 @@ public class CreateReceipt extends javax.swing.JFrame {
             }
         });
 
-        txtBSX.addActionListener(new java.awt.event.ActionListener() {
+        jLabel4.setText("Phụ trách:");
+
+        comboReceiptBook.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        comboReceiptEmployee.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nguyễn Văn An", "Đặng Ngọc Mai" }));
+
+        comboReceiptSupplier.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fahasa", "Sách mới"}));
+        comboReceiptSupplier.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboReceiptSupplierItemStateChanged(evt);
+            }
+        });
+        comboReceiptSupplier.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBSXActionPerformed(evt);
+                comboReceiptSupplierActionPerformed(evt);
             }
         });
 
-        jLabel4.setText("Phụ trách:");
+        txtReceiptQuantity1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtReceiptQuantity1ActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Giá nhập:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -99,47 +113,54 @@ public class CreateReceipt extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel6))
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel5))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(txtReceiptQuantity1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(btnThem)
                         .addGap(87, 87, 87)
                         .addComponent(btnHuyBo))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtBSX, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-                        .addComponent(txtSDT, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(txtChuSoHuu, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(txtSuaChua1, javax.swing.GroupLayout.Alignment.TRAILING)))
-                .addContainerGap(99, Short.MAX_VALUE))
+                    .addComponent(txtReceiptQuantity, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(comboReceiptEmployee, javax.swing.GroupLayout.Alignment.LEADING, 0, 352, Short.MAX_VALUE)
+                    .addComponent(comboReceiptSupplier, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(comboReceiptBook, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(jLabel10)))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(22, 22, 22)
                 .addComponent(jLabel10)
-                .addGap(30, 30, 30)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtBSX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboReceiptBook, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtReceiptQuantity1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtSuaChua1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtReceiptQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtChuSoHuu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel4)
+                    .addComponent(comboReceiptEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(comboReceiptSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThem)
                     .addComponent(btnHuyBo))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
 
         pack();
@@ -149,25 +170,34 @@ public class CreateReceipt extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnHuyBoActionPerformed
 
-    private void txtSDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSDTActionPerformed
+    private void txtReceiptQuantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtReceiptQuantityActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSDTActionPerformed
-
-    private void txtChuSoHuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtChuSoHuuActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtChuSoHuuActionPerformed
-
-    private void txtSuaChua1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSuaChua1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSuaChua1ActionPerformed
+    }//GEN-LAST:event_txtReceiptQuantityActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-
+        String book, employee, supplier, quantity;
+        
+        book = (String)comboReceiptBook.getSelectedItem();
+        employee = (String)comboReceiptEmployee.getSelectedItem();
+        supplier = (String)comboReceiptEmployee.getSelectedItem();
+        quantity = txtReceiptQuantity.getText();
+        
+        Receipt b = new Receipt("1","10/10/2023",supplier, book,quantity, employee, "1000000");
+        
+        home.handleCreateReceipt(b);        
     }//GEN-LAST:event_btnThemActionPerformed
 
-    private void txtBSXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBSXActionPerformed
+    private void txtReceiptQuantity1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtReceiptQuantity1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtBSXActionPerformed
+    }//GEN-LAST:event_txtReceiptQuantity1ActionPerformed
+
+    private void comboReceiptSupplierItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboReceiptSupplierItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboReceiptSupplierItemStateChanged
+
+    private void comboReceiptSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboReceiptSupplierActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboReceiptSupplierActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,7 +229,7 @@ public class CreateReceipt extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CreateReceipt().setVisible(true);
+                new CreateReceipt(null, false).setVisible(true);
             }
         });
     }
@@ -207,14 +237,16 @@ public class CreateReceipt extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHuyBo;
     private javax.swing.JButton btnThem;
+    private javax.swing.JComboBox<String> comboReceiptBook;
+    private javax.swing.JComboBox<String> comboReceiptEmployee;
+    private javax.swing.JComboBox<String> comboReceiptSupplier;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField txtBSX;
-    private javax.swing.JTextField txtChuSoHuu;
-    private javax.swing.JTextField txtSDT;
-    private javax.swing.JTextField txtSuaChua1;
+    private javax.swing.JTextField txtReceiptQuantity;
+    private javax.swing.JTextField txtReceiptQuantity1;
     // End of variables declaration//GEN-END:variables
 }

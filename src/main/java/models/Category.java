@@ -1,20 +1,18 @@
 package models;
 
-import java.util.ArrayList;
-import java.util.List;
 
-public class Category {
-    private String name;
-    private String description;
-    private List<Book> books;
+import java.io.Serializable;
 
-    public Category(String name, String description) {
-        this.name = name;
-        this.description = description;
-        this.books = new ArrayList<>();
+public class Category implements Serializable {
+
+    public String getCateID() {
+        return cateID;
     }
 
-    // Getter và setter cho các thuộc tính
+    public void setCateID(String cateID) {
+        this.cateID = cateID;
+    }
+
     public String getName() {
         return name;
     }
@@ -31,21 +29,13 @@ public class Category {
         this.description = description;
     }
 
-    public List<Book> getBooks() {
-        return books;
+    public Category(String cateID, String name, String description) {
+        this.cateID = cateID;
+        this.name = name;
+        this.description = description;
     }
 
-    public void setBooks(List<Book> books) {
-        this.books = books;
-    }
-
-    // Phương thức thêm sách vào danh mục
-    public void addBook(Book book) {
-        books.add(book);
-    }
-
-    // Phương thức xóa sách khỏi danh mục
-    public void removeBook(Book book) {
-        books.remove(book);
-    }
+    private String cateID;
+    private String name;
+    private String description;
 }

@@ -61,7 +61,7 @@ public class EditAuthor extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setText("Vị trí:");
+        jLabel7.setText("Ngày sinh:");
 
         jLabel4.setText("Email:");
 

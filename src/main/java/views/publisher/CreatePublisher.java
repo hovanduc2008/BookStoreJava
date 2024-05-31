@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package views.publisher;
-
+import models.Publisher;
+import view.HomePage;
 /**
  *
  * @author Admin
@@ -13,7 +14,12 @@ public class CreatePublisher extends javax.swing.JFrame {
     /**
      * Creates new form CreatePublisher
      */
-    public CreatePublisher() {
+    private HomePage home;
+    public CreatePublisher(java.awt.Frame parent, boolean modal) {
+        this.setLocationRelativeTo(null);
+        home = (HomePage) parent;
+        
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         initComponents();
     }
 
@@ -26,23 +32,23 @@ public class CreatePublisher extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtSDT = new javax.swing.JTextField();
+        txtPublisherAddress = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        txtSuaChua1 = new javax.swing.JTextField();
+        txtPublisherPhone = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         btnThem = new javax.swing.JButton();
-        txtBSX = new javax.swing.JTextField();
+        txtPublisherName = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         btnHuyBo = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        txtChuSoHuu = new javax.swing.JTextField();
+        txtPublisherEmail = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        txtSDT.addActionListener(new java.awt.event.ActionListener() {
+        txtPublisherAddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSDTActionPerformed(evt);
+                txtPublisherAddressActionPerformed(evt);
             }
         });
 
@@ -50,9 +56,9 @@ public class CreatePublisher extends javax.swing.JFrame {
 
         jLabel6.setText("Địa chỉ:");
 
-        txtSuaChua1.addActionListener(new java.awt.event.ActionListener() {
+        txtPublisherPhone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSuaChua1ActionPerformed(evt);
+                txtPublisherPhoneActionPerformed(evt);
             }
         });
 
@@ -66,9 +72,9 @@ public class CreatePublisher extends javax.swing.JFrame {
             }
         });
 
-        txtBSX.addActionListener(new java.awt.event.ActionListener() {
+        txtPublisherName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBSXActionPerformed(evt);
+                txtPublisherNameActionPerformed(evt);
             }
         });
 
@@ -83,9 +89,9 @@ public class CreatePublisher extends javax.swing.JFrame {
 
         jLabel2.setText("Tên NXB:");
 
-        txtChuSoHuu.addActionListener(new java.awt.event.ActionListener() {
+        txtPublisherEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtChuSoHuuActionPerformed(evt);
+                txtPublisherEmailActionPerformed(evt);
             }
         });
 
@@ -109,10 +115,10 @@ public class CreatePublisher extends javax.swing.JFrame {
                             .addGap(87, 87, 87)
                             .addComponent(btnHuyBo))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtBSX, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-                            .addComponent(txtSDT, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtChuSoHuu, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtSuaChua1, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addComponent(txtPublisherName, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                            .addComponent(txtPublisherAddress, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtPublisherEmail, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtPublisherPhone, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap(139, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -123,19 +129,19 @@ public class CreatePublisher extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtBSX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPublisherName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtSuaChua1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPublisherPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtChuSoHuu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPublisherEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPublisherAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThem)
@@ -146,29 +152,38 @@ public class CreatePublisher extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtSDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSDTActionPerformed
+    private void txtPublisherAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPublisherAddressActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSDTActionPerformed
+    }//GEN-LAST:event_txtPublisherAddressActionPerformed
 
-    private void txtSuaChua1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSuaChua1ActionPerformed
+    private void txtPublisherPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPublisherPhoneActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSuaChua1ActionPerformed
+    }//GEN-LAST:event_txtPublisherPhoneActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-
+        String name, phone, email, address;
+        
+        name = txtPublisherName.getText();
+        phone = txtPublisherPhone.getText();
+        email = txtPublisherEmail.getText();
+        address = txtPublisherAddress.getText();
+        
+        Publisher a = new Publisher( name,  address,  phone,  email);
+        
+        home.handleCreatePublisher(a);
     }//GEN-LAST:event_btnThemActionPerformed
 
-    private void txtBSXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBSXActionPerformed
+    private void txtPublisherNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPublisherNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtBSXActionPerformed
+    }//GEN-LAST:event_txtPublisherNameActionPerformed
 
     private void btnHuyBoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyBoActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnHuyBoActionPerformed
 
-    private void txtChuSoHuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtChuSoHuuActionPerformed
+    private void txtPublisherEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPublisherEmailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtChuSoHuuActionPerformed
+    }//GEN-LAST:event_txtPublisherEmailActionPerformed
 
     /**
      * @param args the command line arguments
@@ -200,7 +215,7 @@ public class CreatePublisher extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CreatePublisher().setVisible(true);
+                new CreatePublisher(null, false).setVisible(true);
             }
         });
     }
@@ -213,9 +228,9 @@ public class CreatePublisher extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField txtBSX;
-    private javax.swing.JTextField txtChuSoHuu;
-    private javax.swing.JTextField txtSDT;
-    private javax.swing.JTextField txtSuaChua1;
+    private javax.swing.JTextField txtPublisherAddress;
+    private javax.swing.JTextField txtPublisherEmail;
+    private javax.swing.JTextField txtPublisherName;
+    private javax.swing.JTextField txtPublisherPhone;
     // End of variables declaration//GEN-END:variables
 }
