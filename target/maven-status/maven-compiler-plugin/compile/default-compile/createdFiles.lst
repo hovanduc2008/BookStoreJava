@@ -7,6 +7,7 @@ views\branch\EditBranch.class
 views\employee\CreateEmployee$4.class
 controllers\employee\EmployeeController.class
 views\order\CreateOrder$2.class
+controllers\supplier\SupplierController$2.class
 views\order\CreateOrder$8.class
 views\publisher\EditPublisher$3.class
 views\author\EditAuthor$5.class
@@ -19,6 +20,8 @@ views\book\CreateBook$3.class
 views\orderdetail\OrderDetail.class
 views\publisher\CreatePublisher.class
 views\supplier\CreateSupplier.class
+view\HomePage$53.class
+controllers\category\CategoryController$1.class
 views\orderdetail\OrderDetail$3.class
 view\HomePage$45.class
 views\customer\CreateCustomer.class
@@ -29,6 +32,7 @@ views\employee\EditEmployee$2.class
 view\HomePage$25.class
 views\publisher\CreatePublisher$7.class
 controllers\reciept\ReceiptController.class
+view\HomePage$52.class
 controllers\orderdetail\OrderDetailController.class
 views\book\CreateBook$2.class
 views\book\CreateBook$9.class
@@ -52,6 +56,7 @@ views\category\CreateCategory$5.class
 views\book\CreateBook$8.class
 view\HomePage$9.class
 views\category\EditCategory$2.class
+controllers\supplier\SupplierController$1.class
 view\HomePage$18.class
 views\branch\CreateBranch$5.class
 com\myproject\bookstore\NewJFrame$1.class
@@ -76,6 +81,7 @@ views\publisher\CreatePublisher$3.class
 views\book\CreateBook$1.class
 view\HomePage$31.class
 view\HomePage$34.class
+view\HomePage$54.class
 controllers\book\BookController.class
 views\category\EditCategory.class
 views\branch\EditBranch$3.class
@@ -99,6 +105,7 @@ views\book\EditBook$5.class
 views\branch\EditBranch$1.class
 views\order\CreateOrder$7.class
 view\HomePage$26.class
+view\HomePage$56.class
 models\OrderDetail.class
 views\publisher\CreatePublisher$1.class
 views\order\CreateBookOrder$1.class
@@ -112,6 +119,7 @@ views\customer\EditCustomer$4.class
 views\supplier\CreateSupplier$2.class
 views\author\CreateAuthor.class
 views\branch\CreateBranch$8.class
+view\HomePage$55.class
 views\receipt\CreateReceipt$4.class
 views\branch\EditBranch$2.class
 views\order\CreateBookOrder$2.class
@@ -189,6 +197,7 @@ views\publisher\CreatePublisher$6.class
 view\HomePage$14.class
 views\customer\EditCustomer$8.class
 views\book\CreateBook$4.class
+controllers\book\BookController$2.class
 view\LoginFrm.class
 views\book\CreateBook.class
 views\author\EditAuthor$6.class
@@ -213,6 +222,7 @@ views\employee\CreateEmployee$2.class
 view\HomePage$39.class
 view\HomePage$42.class
 controller\Controller.class
+controllers\category\CategoryController$2.class
 views\publisher\EditPublisher$5.class
 views\customer\EditCustomer.class
 views\branch\CreateBranch.class
@@ -220,6 +230,7 @@ views\category\CreateCategory$1.class
 views\supplier\EditSupplier$5.class
 view\HomePage$16.class
 controllers\customer\CustomerController.class
+controllers\author\AuthorController$2.class
 controllers\book\BookController$1.class
 views\branch\CreateBranch$1.class
 views\category\EditCategory$4.class
@@ -241,5 +252,6 @@ view\HomePage$6.class
 views\author\EditAuthor$3.class
 views\book\CreateBook$5.class
 view\HomePage$15.class
+controllers\author\AuthorController$1.class
 views\branch\CreateBranch$2.class
 views\customer\CreateCustomer$3.class

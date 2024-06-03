@@ -191,11 +191,28 @@ public class EditSupplier extends javax.swing.JFrame {
         address = txtSupplierEditAddress.getText();
 
         try {
+            // Validate inputs before creating the Supplier object
+            if (name.isEmpty() || phone.isEmpty() || email.isEmpty() || address.isEmpty()) {
+                throw new IllegalArgumentException("All fields must be filled out.");
+            }
+
+            // Attempt to create a Supplier object
             Supplier a = new Supplier(sp.getId(), name, address, phone, email);
+
+            // Call the updateSupplier method to update the supplier
             home.updateSupplier(a);
+
+            // Display success message to the user
+            JOptionPane.showMessageDialog(null, "Supplier information updated successfully!");
+
+        } catch (IllegalArgumentException ex) {
+            // Handle input validation exceptions
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Input Error", JOptionPane.WARNING_MESSAGE);
         } catch (Exception ex) {
-            ex.printStackTrace(); // In thông tin ngoại lệ ra console (để kiểm tra)
-            JOptionPane.showMessageDialog(null, "Đã xảy ra lỗi khi cập nhật thông tin nhà cung cấp. Vui lòng thử lại hoặc liên hệ với người quản trị.");
+            // Handle other exceptions here
+            ex.printStackTrace(); // Print exception details to the console (for debugging)
+            // Display error message to the user
+            JOptionPane.showMessageDialog(null, "An error occurred while updating the supplier information. Please try again or contact the administrator.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnThemActionPerformed
 

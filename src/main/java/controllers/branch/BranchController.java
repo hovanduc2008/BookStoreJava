@@ -11,20 +11,11 @@ import java.util.Comparator;
 import models.Branch;
 
 public class BranchController extends ControllerFile {
-    public void sortByPrice(ArrayList<Branch> x) {
-//        x.sort(new Comparator<Branch>() {
-//            @Override
-//            public int compare(Branch o1, Branch o2) {
-//                return Double.compare(o1.getPrice(), o2.getPrice());
-//            }
-//        }); 
-    }
-    
-    public ArrayList searchBranch(ArrayList<Branch> books, String name) {
+    public ArrayList searchBranch(ArrayList<Branch> branches, String name) {
         ArrayList<Branch> list = new ArrayList<>();
         if(name.length() > 0) {
-            for(Branch x : list) {
-                if(x.getName().equals(name)) {
+            for(Branch x : branches) {
+                if(x.getName().equalsIgnoreCase(name)) {
                     list.add(x);
                 }
             }

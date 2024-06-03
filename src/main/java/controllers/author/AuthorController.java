@@ -11,20 +11,29 @@ import java.util.Comparator;
 import models.Author;
 
 public class AuthorController extends ControllerFile {
-    public void sortByPrice(ArrayList<Author> x) {
-//        x.sort(new Comparator<Author>() {
-//            @Override
-//            public int compare(Author o1, Author o2) {
-//                return Double.compare(o1.getAuthorId(), o2.getAuthorId());
-//            }
-//        }); 
+    public void sortByName(ArrayList<Author> x) {
+        x.sort(new Comparator<Author>() {
+            @Override
+            public int compare(Author o1, Author o2) {
+                return o2.getName().compareTo(o1.getName());
+            }
+        }); 
     }
     
-    public ArrayList searchAuthor(ArrayList<Author> books, String name) {
+    public void sortByName2(ArrayList<Author> x) {
+        x.sort(new Comparator<Author>() {
+            @Override
+            public int compare(Author o1, Author o2) {
+                return o1.getName().compareTo(o2.getName());
+            }
+        }); 
+    }
+    
+    public ArrayList searchAuthor(ArrayList<Author> authors, String name) {
         ArrayList<Author> list = new ArrayList<>();
         if(name.length() > 0) {
-            for(Author x : list) {
-                if(x.getName().equals(name)) {
+            for(Author x : authors) {
+                if(x.getName().equalsIgnoreCase(name)) {
                     list.add(x);
                 }
             }

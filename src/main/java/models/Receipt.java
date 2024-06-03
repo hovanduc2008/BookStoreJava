@@ -6,15 +6,15 @@ import java.io.Serializable;
 public class Receipt implements Serializable {
 
    
-    private String receiptId;
+    private int receiptId;
     private String receiptDate;
     private String supplier;
     private String book;
-    private String quantity;
-    private String totalPrice;
+    private int quantity;
+    private int totalPrice;
     private String employee;
 
-    public Receipt(String receiptId, String receiptDate, String supplier, String book, String quantity,  String employee, String totalPrice) {
+    public Receipt(int receiptId, String receiptDate, String supplier, String book, int quantity,  String employee, int totalPrice) {
         this.receiptId = receiptId;
         this.receiptDate = receiptDate;
         this.supplier = supplier;
@@ -24,11 +24,11 @@ public class Receipt implements Serializable {
         this.employee = employee;
     }
 
-    public String getReceiptId() {
+    public int getReceiptId() {
         return receiptId;
     }
 
-    public void setReceiptId(String receiptId) {
+    public void setReceiptId(int receiptId) {
         this.receiptId = receiptId;
     }
 
@@ -56,19 +56,19 @@ public class Receipt implements Serializable {
         this.book = book;
     }
 
-    public String getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(String quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
-    public String getTotalPrice() {
+    public int getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(String totalPrice) {
+    public void setTotalPrice(int totalPrice) {
         this.totalPrice = totalPrice;
     }
 

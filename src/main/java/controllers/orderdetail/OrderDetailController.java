@@ -24,7 +24,7 @@ public class OrderDetailController extends ControllerFile {
     public ArrayList searchOrderDetail(ArrayList<OrderDetail> order_details, int id) {
         ArrayList<OrderDetail> list = new ArrayList<>();
         if(true) {
-            for(OrderDetail x : list) {
+            for(OrderDetail x : order_details) {
                 if(x.getOrderID() == id) {
                     list.add(x);
                 }

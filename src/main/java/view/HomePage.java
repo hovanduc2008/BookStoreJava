@@ -262,6 +262,8 @@ public class HomePage extends javax.swing.JFrame implements View {
         this.orderController = new OrderController();
         showOrderList(); 
         
+        this.orderDetailController = new OrderDetailController();
+        
         // supplier
 //        tblModelPublisher = (DefaultTableModel) tblPublisher.getModel();
 //        this.supplierController = new SupplierController();
@@ -284,8 +286,6 @@ public class HomePage extends javax.swing.JFrame implements View {
         jLabel5 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         Panle_timKiem4 = new javax.swing.JPanel();
-        RadioSearchByMaHD4 = new javax.swing.JRadioButton();
-        RadioSearchByKH4 = new javax.swing.JRadioButton();
         txtSearch4 = new javax.swing.JTextField();
         btTimHD4 = new javax.swing.JButton();
         jPanel18 = new javax.swing.JPanel();
@@ -294,17 +294,13 @@ public class HomePage extends javax.swing.JFrame implements View {
         btXoaHD4 = new javax.swing.JButton();
         btnReset4 = new javax.swing.JButton();
         jPanel19 = new javax.swing.JPanel();
-        RadioSortTT4 = new javax.swing.JRadioButton();
-        RadioSortByTime4 = new javax.swing.JRadioButton();
-        jbtXep4 = new javax.swing.JButton();
+        comboSapXepBook = new javax.swing.JComboBox<>();
         jScrollPane9 = new javax.swing.JScrollPane();
         tblSach = new javax.swing.JTable();
         jLabel13 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         Panle_timKiem5 = new javax.swing.JPanel();
-        RadioSearchByMaHD5 = new javax.swing.JRadioButton();
-        RadioSearchByKH5 = new javax.swing.JRadioButton();
-        txtSearch5 = new javax.swing.JTextField();
+        txtSearchAuthor = new javax.swing.JTextField();
         btTimHD5 = new javax.swing.JButton();
         jPanel20 = new javax.swing.JPanel();
         btThemHD5 = new javax.swing.JButton();
@@ -312,33 +308,27 @@ public class HomePage extends javax.swing.JFrame implements View {
         btXoaHD5 = new javax.swing.JButton();
         btnReset5 = new javax.swing.JButton();
         jPanel21 = new javax.swing.JPanel();
-        RadioSortTT5 = new javax.swing.JRadioButton();
-        RadioSortByTime5 = new javax.swing.JRadioButton();
-        jbtXep5 = new javax.swing.JButton();
+        comboSapXepAuthor = new javax.swing.JComboBox<>();
         jScrollPane10 = new javax.swing.JScrollPane();
         tblAuthor = new javax.swing.JTable();
         jLabel14 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         Panle_timKiem = new javax.swing.JPanel();
-        txtSearch = new javax.swing.JTextField();
+        txtSearchCategory = new javax.swing.JTextField();
         btTimHD = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         btThemHD = new javax.swing.JButton();
         btSuaHD = new javax.swing.JButton();
         btXoaHD = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
-        jPanel10 = new javax.swing.JPanel();
-        RadioSortTT = new javax.swing.JRadioButton();
-        RadioSortByTime = new javax.swing.JRadioButton();
-        jbtXep = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblCategory = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
+        jPanel23 = new javax.swing.JPanel();
+        comboSapXepCategory = new javax.swing.JComboBox<>();
         jPanel8 = new javax.swing.JPanel();
         Panle_timKiem1 = new javax.swing.JPanel();
-        RadioSearchByMaHD1 = new javax.swing.JRadioButton();
-        RadioSearchByKH1 = new javax.swing.JRadioButton();
-        txtSearch1 = new javax.swing.JTextField();
+        txtSearchSupplier = new javax.swing.JTextField();
         btTimHD1 = new javax.swing.JButton();
         jPanel11 = new javax.swing.JPanel();
         btThemHD1 = new javax.swing.JButton();
@@ -346,9 +336,7 @@ public class HomePage extends javax.swing.JFrame implements View {
         btXoaHD1 = new javax.swing.JButton();
         btnReset1 = new javax.swing.JButton();
         jPanel12 = new javax.swing.JPanel();
-        RadioSortTT1 = new javax.swing.JRadioButton();
-        RadioSortByTime1 = new javax.swing.JRadioButton();
-        jbtXep1 = new javax.swing.JButton();
+        comboSapXepSupplier = new javax.swing.JComboBox<>();
         jScrollPane6 = new javax.swing.JScrollPane();
         tblSupplier = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
@@ -372,8 +360,7 @@ public class HomePage extends javax.swing.JFrame implements View {
         jLabel11 = new javax.swing.JLabel();
         iPanel11 = new javax.swing.JPanel();
         Panle_timKiem6 = new javax.swing.JPanel();
-        RadioSearchByMaHD6 = new javax.swing.JRadioButton();
-        txtSearch6 = new javax.swing.JTextField();
+        txtSearchBranch = new javax.swing.JTextField();
         btTimHD6 = new javax.swing.JButton();
         jPanel22 = new javax.swing.JPanel();
         btThemHD6 = new javax.swing.JButton();
@@ -385,18 +372,12 @@ public class HomePage extends javax.swing.JFrame implements View {
         jLabel15 = new javax.swing.JLabel();
         iPanel10 = new javax.swing.JPanel();
         Panle_timKiem3 = new javax.swing.JPanel();
-        RadioSearchByMaHD3 = new javax.swing.JRadioButton();
-        RadioSearchByKH3 = new javax.swing.JRadioButton();
         txtSearch3 = new javax.swing.JTextField();
         btTimHD3 = new javax.swing.JButton();
         jPanel16 = new javax.swing.JPanel();
         btThemHD3 = new javax.swing.JButton();
         btXoaHD3 = new javax.swing.JButton();
         btnReset3 = new javax.swing.JButton();
-        jPanel17 = new javax.swing.JPanel();
-        RadioSortTT3 = new javax.swing.JRadioButton();
-        RadioSortByTime3 = new javax.swing.JRadioButton();
-        jbtXep3 = new javax.swing.JButton();
         jScrollPane8 = new javax.swing.JScrollPane();
         tblReceipt = new javax.swing.JTable();
         jLabel12 = new javax.swing.JLabel();
@@ -416,7 +397,7 @@ public class HomePage extends javax.swing.JFrame implements View {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 951, Short.MAX_VALUE)
+            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 963, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -430,12 +411,6 @@ public class HomePage extends javax.swing.JFrame implements View {
 
         Panle_timKiem4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm kiếm hóa đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
         Panle_timKiem4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
-        RadioSearchByMaHD4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        RadioSearchByMaHD4.setText("Mã ISBN");
-
-        RadioSearchByKH4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        RadioSearchByKH4.setText("Tên sách");
 
         txtSearch4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
@@ -451,33 +426,23 @@ public class HomePage extends javax.swing.JFrame implements View {
         Panle_timKiem4.setLayout(Panle_timKiem4Layout);
         Panle_timKiem4Layout.setHorizontalGroup(
             Panle_timKiem4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panle_timKiem4Layout.createSequentialGroup()
+            .addGroup(Panle_timKiem4Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
                 .addGroup(Panle_timKiem4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(Panle_timKiem4Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btTimHD4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Panle_timKiem4Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(Panle_timKiem4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtSearch4)
-                            .addGroup(Panle_timKiem4Layout.createSequentialGroup()
-                                .addComponent(RadioSearchByMaHD4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                                .addComponent(RadioSearchByKH4)))))
-                .addGap(30, 30, 30))
+                    .addComponent(txtSearch4))
+                .addGap(31, 31, 31))
         );
         Panle_timKiem4Layout.setVerticalGroup(
             Panle_timKiem4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Panle_timKiem4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(Panle_timKiem4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(RadioSearchByMaHD4)
-                    .addComponent(RadioSearchByKH4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtSearch4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btTimHD4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         btThemHD4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -519,22 +484,16 @@ public class HomePage extends javax.swing.JFrame implements View {
         jPanel19.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sắp xếp", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
         jPanel19.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        RadioSortTT4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        RadioSortTT4.setText("Giá bán tăng dần");
-
-        RadioSortByTime4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        RadioSortByTime4.setText("Giá bán giảm dần");
-        RadioSortByTime4.addActionListener(new java.awt.event.ActionListener() {
+        comboSapXepBook.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        comboSapXepBook.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tăng dần giá bán", "Giảm dần giá bán"}));
+        comboSapXepBook.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RadioSortByTime4ActionPerformed(evt);
+                comboSapXepBookActionPerformed(evt);
             }
         });
-
-        jbtXep4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jbtXep4.setText("Xếp");
-        jbtXep4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtXep4ActionPerformed(evt);
+        comboSapXepBook.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                comboSapXepBookPropertyChange(evt);
             }
         });
 
@@ -543,24 +502,16 @@ public class HomePage extends javax.swing.JFrame implements View {
         jPanel19Layout.setHorizontalGroup(
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel19Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jbtXep4, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(RadioSortTT4)
-                        .addComponent(RadioSortByTime4)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(comboSapXepBook, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel19Layout.setVerticalGroup(
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel19Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(RadioSortTT4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(RadioSortByTime4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jbtXep4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
+                .addComponent(comboSapXepBook, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         tblSach.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14)), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
@@ -593,13 +544,13 @@ public class HomePage extends javax.swing.JFrame implements View {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(Panle_timKiem4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 405, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 398, Short.MAX_VALUE)
                 .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36))
             .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 939, Short.MAX_VALUE)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 951, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -607,14 +558,14 @@ public class HomePage extends javax.swing.JFrame implements View {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Panle_timKiem4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Panle_timKiem4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
                 .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         Panle_timKiem4.getAccessibleContext().setAccessibleName("Tìm kiếm sách");
@@ -625,18 +576,7 @@ public class HomePage extends javax.swing.JFrame implements View {
         Panle_timKiem5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm kiếm hóa đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
         Panle_timKiem5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        RadioSearchByMaHD5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        RadioSearchByMaHD5.setText("ID");
-        RadioSearchByMaHD5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RadioSearchByMaHD5ActionPerformed(evt);
-            }
-        });
-
-        RadioSearchByKH5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        RadioSearchByKH5.setText("SĐT");
-
-        txtSearch5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtSearchAuthor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         btTimHD5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btTimHD5.setText("Tìm");
@@ -651,30 +591,18 @@ public class HomePage extends javax.swing.JFrame implements View {
         Panle_timKiem5Layout.setHorizontalGroup(
             Panle_timKiem5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panle_timKiem5Layout.createSequentialGroup()
-                .addGroup(Panle_timKiem5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(Panle_timKiem5Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btTimHD5, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Panle_timKiem5Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(Panle_timKiem5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtSearch5)
-                            .addGroup(Panle_timKiem5Layout.createSequentialGroup()
-                                .addComponent(RadioSearchByMaHD5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                                .addComponent(RadioSearchByKH5)))))
-                .addGap(30, 30, 30))
+                .addContainerGap(21, Short.MAX_VALUE)
+                .addGroup(Panle_timKiem5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtSearchAuthor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btTimHD5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17))
         );
         Panle_timKiem5Layout.setVerticalGroup(
             Panle_timKiem5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Panle_timKiem5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(Panle_timKiem5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(RadioSearchByMaHD5)
-                    .addComponent(RadioSearchByKH5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtSearch5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtSearchAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btTimHD5)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -718,17 +646,21 @@ public class HomePage extends javax.swing.JFrame implements View {
         jPanel21.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sắp xếp", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
         jPanel21.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        RadioSortTT5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        RadioSortTT5.setText("Từ A-Z");
-
-        RadioSortByTime5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        RadioSortByTime5.setText("Từ Z-A");
-
-        jbtXep5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jbtXep5.setText("Xếp");
-        jbtXep5.addActionListener(new java.awt.event.ActionListener() {
+        comboSapXepAuthor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        comboSapXepAuthor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tên từ A-Z", "Tên từ Z-A"}));
+        comboSapXepAuthor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtXep5ActionPerformed(evt);
+                comboSapXepAuthorActionPerformed(evt);
+            }
+        });
+        comboSapXepAuthor.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                comboSapXepAuthorPropertyChange(evt);
+            }
+        });
+        comboSapXepAuthor.addVetoableChangeListener(new java.beans.VetoableChangeListener() {
+            public void vetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {
+                comboSapXepAuthorVetoableChange(evt);
             }
         });
 
@@ -737,24 +669,16 @@ public class HomePage extends javax.swing.JFrame implements View {
         jPanel21Layout.setHorizontalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel21Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jbtXep5, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(RadioSortTT5)
-                        .addComponent(RadioSortByTime5)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(comboSapXepAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel21Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(RadioSortTT5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(RadioSortByTime5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jbtXep5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
+                .addComponent(comboSapXepAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         tblAuthor.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14)), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
@@ -790,7 +714,7 @@ public class HomePage extends javax.swing.JFrame implements View {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36))
-            .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 951, Short.MAX_VALUE)
+            .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 963, Short.MAX_VALUE)
             .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
@@ -798,14 +722,14 @@ public class HomePage extends javax.swing.JFrame implements View {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Panle_timKiem5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Panle_timKiem5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
         Panle_timKiem5.getAccessibleContext().setAccessibleName("Tìm kiếm tác giả");
@@ -815,10 +739,10 @@ public class HomePage extends javax.swing.JFrame implements View {
         Panle_timKiem.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm kiếm hóa đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
         Panle_timKiem.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        txtSearch.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtSearch.addActionListener(new java.awt.event.ActionListener() {
+        txtSearchCategory.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtSearchCategory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSearchActionPerformed(evt);
+                txtSearchCategoryActionPerformed(evt);
             }
         });
 
@@ -841,17 +765,17 @@ public class HomePage extends javax.swing.JFrame implements View {
                         .addComponent(btTimHD, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Panle_timKiemLayout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addComponent(txtSearch)))
+                        .addComponent(txtSearchCategory)))
                 .addGap(30, 30, 30))
         );
         Panle_timKiemLayout.setVerticalGroup(
             Panle_timKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Panle_timKiemLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addContainerGap()
+                .addComponent(txtSearchCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btTimHD)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         btThemHD.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -890,48 +814,6 @@ public class HomePage extends javax.swing.JFrame implements View {
         });
         jPanel9.add(btnReset);
 
-        jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sắp xếp", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
-        jPanel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
-        RadioSortTT.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        RadioSortTT.setText("Từ A-Z");
-
-        RadioSortByTime.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        RadioSortByTime.setText("Từ Z-A");
-
-        jbtXep.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jbtXep.setText("Xếp");
-        jbtXep.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtXepActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jbtXep, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(RadioSortTT)
-                        .addComponent(RadioSortByTime)))
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(RadioSortTT)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(RadioSortByTime)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jbtXep)
-                .addContainerGap(9, Short.MAX_VALUE))
-        );
-
         tblCategory.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14)), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
         tblCategory.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tblCategory.setModel(new javax.swing.table.DefaultTableModel(
@@ -954,6 +836,44 @@ public class HomePage extends javax.swing.JFrame implements View {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("QUẢN LÝ DANH MỤC");
 
+        jPanel23.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sắp xếp", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
+        jPanel23.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        comboSapXepCategory.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        comboSapXepCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tên từ A-Z", "Tên từ Z-A"}));
+        comboSapXepCategory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboSapXepCategoryActionPerformed(evt);
+            }
+        });
+        comboSapXepCategory.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                comboSapXepCategoryPropertyChange(evt);
+            }
+        });
+        comboSapXepCategory.addVetoableChangeListener(new java.beans.VetoableChangeListener() {
+            public void vetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {
+                comboSapXepCategoryVetoableChange(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
+        jPanel23.setLayout(jPanel23Layout);
+        jPanel23Layout.setHorizontalGroup(
+            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel23Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(comboSapXepCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel23Layout.setVerticalGroup(
+            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel23Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(comboSapXepCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -962,25 +882,28 @@ public class HomePage extends javax.swing.JFrame implements View {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(Panle_timKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 443, Short.MAX_VALUE)
-                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36))
-            .addComponent(jScrollPane3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 963, Short.MAX_VALUE)
             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Panle_timKiem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Panle_timKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(27, 27, 27)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Quản lý danh mục", jPanel7);
@@ -988,13 +911,12 @@ public class HomePage extends javax.swing.JFrame implements View {
         Panle_timKiem1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm kiếm hóa đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
         Panle_timKiem1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        RadioSearchByMaHD1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        RadioSearchByMaHD1.setText("Mã NCC");
-
-        RadioSearchByKH1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        RadioSearchByKH1.setText("SĐT");
-
-        txtSearch1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtSearchSupplier.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtSearchSupplier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchSupplierActionPerformed(evt);
+            }
+        });
 
         btTimHD1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btTimHD1.setText("Tìm");
@@ -1009,32 +931,20 @@ public class HomePage extends javax.swing.JFrame implements View {
         Panle_timKiem1Layout.setHorizontalGroup(
             Panle_timKiem1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panle_timKiem1Layout.createSequentialGroup()
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addGroup(Panle_timKiem1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(Panle_timKiem1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btTimHD1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Panle_timKiem1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(Panle_timKiem1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtSearch1)
-                            .addGroup(Panle_timKiem1Layout.createSequentialGroup()
-                                .addComponent(RadioSearchByMaHD1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                                .addComponent(RadioSearchByKH1)))))
-                .addGap(30, 30, 30))
+                    .addComponent(btTimHD1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSearchSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18))
         );
         Panle_timKiem1Layout.setVerticalGroup(
             Panle_timKiem1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Panle_timKiem1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(Panle_timKiem1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(RadioSearchByMaHD1)
-                    .addComponent(RadioSearchByKH1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtSearch1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtSearchSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btTimHD1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         btThemHD1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1076,17 +986,21 @@ public class HomePage extends javax.swing.JFrame implements View {
         jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sắp xếp", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
         jPanel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        RadioSortTT1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        RadioSortTT1.setText("Từ A-Z");
-
-        RadioSortByTime1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        RadioSortByTime1.setText("Từ Z-A");
-
-        jbtXep1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jbtXep1.setText("Xếp");
-        jbtXep1.addActionListener(new java.awt.event.ActionListener() {
+        comboSapXepSupplier.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        comboSapXepSupplier.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tên từ A-Z", "Tên từ Z-A"}));
+        comboSapXepSupplier.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtXep1ActionPerformed(evt);
+                comboSapXepSupplierActionPerformed(evt);
+            }
+        });
+        comboSapXepSupplier.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                comboSapXepSupplierPropertyChange(evt);
+            }
+        });
+        comboSapXepSupplier.addVetoableChangeListener(new java.beans.VetoableChangeListener() {
+            public void vetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {
+                comboSapXepSupplierVetoableChange(evt);
             }
         });
 
@@ -1095,24 +1009,16 @@ public class HomePage extends javax.swing.JFrame implements View {
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jbtXep1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(RadioSortTT1)
-                        .addComponent(RadioSortByTime1)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(comboSapXepSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(RadioSortTT1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(RadioSortByTime1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jbtXep1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
+                .addComponent(comboSapXepSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         tblSupplier.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14)), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
@@ -1152,7 +1058,7 @@ public class HomePage extends javax.swing.JFrame implements View {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36))
-            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 951, Short.MAX_VALUE)
+            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 963, Short.MAX_VALUE)
             .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel8Layout.setVerticalGroup(
@@ -1160,14 +1066,14 @@ public class HomePage extends javax.swing.JFrame implements View {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Panle_timKiem1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Panle_timKiem1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Quản lý NCC", jPanel8);
@@ -1335,7 +1241,7 @@ public class HomePage extends javax.swing.JFrame implements View {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36))
-            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 951, Short.MAX_VALUE)
+            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 963, Short.MAX_VALUE)
             .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         iPanel9Layout.setVerticalGroup(
@@ -1358,10 +1264,7 @@ public class HomePage extends javax.swing.JFrame implements View {
         Panle_timKiem6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm kiếm hóa đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
         Panle_timKiem6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        RadioSearchByMaHD6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        RadioSearchByMaHD6.setText("Mã chi nhánh");
-
-        txtSearch6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtSearchBranch.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         btTimHD6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btTimHD6.setText("Tìm");
@@ -1378,27 +1281,21 @@ public class HomePage extends javax.swing.JFrame implements View {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panle_timKiem6Layout.createSequentialGroup()
                 .addGroup(Panle_timKiem6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(Panle_timKiem6Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(199, Short.MAX_VALUE)
                         .addComponent(btTimHD6, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Panle_timKiem6Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addGroup(Panle_timKiem6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtSearch6)
-                            .addGroup(Panle_timKiem6Layout.createSequentialGroup()
-                                .addComponent(RadioSearchByMaHD6)
-                                .addGap(0, 155, Short.MAX_VALUE)))))
+                        .addComponent(txtSearchBranch)))
                 .addGap(30, 30, 30))
         );
         Panle_timKiem6Layout.setVerticalGroup(
             Panle_timKiem6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Panle_timKiem6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(RadioSearchByMaHD6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtSearch6, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtSearchBranch, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btTimHD6)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         btThemHD6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1467,9 +1364,12 @@ public class HomePage extends javax.swing.JFrame implements View {
             .addGroup(iPanel11Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(Panle_timKiem6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 592, Short.MAX_VALUE))
-            .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 951, Short.MAX_VALUE)
+                .addGap(36, 604, Short.MAX_VALUE))
             .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, iPanel11Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 951, Short.MAX_VALUE)
+                .addContainerGap())
         );
         iPanel11Layout.setVerticalGroup(
             iPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1477,9 +1377,9 @@ public class HomePage extends javax.swing.JFrame implements View {
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Panle_timKiem6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(22, 22, 22)
                 .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(36, Short.MAX_VALUE))
         );
@@ -1488,12 +1388,6 @@ public class HomePage extends javax.swing.JFrame implements View {
 
         Panle_timKiem3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm kiếm hóa đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
         Panle_timKiem3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
-        RadioSearchByMaHD3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        RadioSearchByMaHD3.setText("Mã HĐ");
-
-        RadioSearchByKH3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        RadioSearchByKH3.setText("Khách hàng");
 
         txtSearch3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
@@ -1512,30 +1406,21 @@ public class HomePage extends javax.swing.JFrame implements View {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panle_timKiem3Layout.createSequentialGroup()
                 .addGroup(Panle_timKiem3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(Panle_timKiem3Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(159, Short.MAX_VALUE)
                         .addComponent(btTimHD3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Panle_timKiem3Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addGroup(Panle_timKiem3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtSearch3)
-                            .addGroup(Panle_timKiem3Layout.createSequentialGroup()
-                                .addComponent(RadioSearchByMaHD3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                                .addComponent(RadioSearchByKH3)))))
+                        .addComponent(txtSearch3)))
                 .addGap(30, 30, 30))
         );
         Panle_timKiem3Layout.setVerticalGroup(
             Panle_timKiem3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Panle_timKiem3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(Panle_timKiem3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(RadioSearchByMaHD3)
-                    .addComponent(RadioSearchByKH3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(14, 14, 14)
                 .addComponent(txtSearch3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btTimHD3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
         btThemHD3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1564,48 +1449,6 @@ public class HomePage extends javax.swing.JFrame implements View {
             }
         });
         jPanel16.add(btnReset3);
-
-        jPanel17.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sắp xếp", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
-        jPanel17.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
-        RadioSortTT3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        RadioSortTT3.setText("Tăng dần theo tổng thanh toán");
-
-        RadioSortByTime3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        RadioSortByTime3.setText("Thời gian gần nhất");
-
-        jbtXep3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jbtXep3.setText("Xếp");
-        jbtXep3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtXep3ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
-        jPanel17.setLayout(jPanel17Layout);
-        jPanel17Layout.setHorizontalGroup(
-            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel17Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jbtXep3, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(RadioSortTT3)
-                        .addComponent(RadioSortByTime3)))
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-        jPanel17Layout.setVerticalGroup(
-            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel17Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(RadioSortTT3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(RadioSortByTime3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jbtXep3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
 
         tblReceipt.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14)), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
         tblReceipt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1637,9 +1480,7 @@ public class HomePage extends javax.swing.JFrame implements View {
             .addGroup(iPanel10Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(Panle_timKiem3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 309, Short.MAX_VALUE)
-                .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36))
+                .addGap(36, 644, Short.MAX_VALUE))
             .addComponent(jScrollPane8)
             .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -1648,14 +1489,12 @@ public class HomePage extends javax.swing.JFrame implements View {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, iPanel10Layout.createSequentialGroup()
                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(iPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Panle_timKiem3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Panle_timKiem3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Nhập kho", iPanel10);
@@ -1686,12 +1525,9 @@ public class HomePage extends javax.swing.JFrame implements View {
         // TODO add your handling code here:
     }//GEN-LAST:event_tblReceiptMouseClicked
 
-    private void jbtXep3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtXep3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtXep3ActionPerformed
-
     private void btnReset3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReset3ActionPerformed
-        // TODO add your handling code here:
+        receipt_list = (ArrayList<Receipt>) receiptController.readDataFromFile("receipts.txt");
+        this.showData(receipt_list, tblModelReceipt);
     }//GEN-LAST:event_btnReset3ActionPerformed
 
     private void btThemHD3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemHD3ActionPerformed
@@ -1700,7 +1536,15 @@ public class HomePage extends javax.swing.JFrame implements View {
     }//GEN-LAST:event_btThemHD3ActionPerformed
 
     private void btTimHD3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimHD3ActionPerformed
-        // TODO add your handling code here:
+        receipt_list = (ArrayList<Receipt>) receiptController.readDataFromFile("receipts.txt");
+        
+        int searchKey = Integer.parseInt(txtSearchSupplier.getText());
+        
+        receipt_list = receiptController.searchReceipt(receipt_list, searchKey);
+        if (receipt_list == null) {
+            receipt_list = new ArrayList<>();
+        }
+        this.showData(receipt_list, tblModelReceipt);
     }//GEN-LAST:event_btTimHD3ActionPerformed
 
     private void tblBranchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBranchMouseClicked
@@ -1708,7 +1552,8 @@ public class HomePage extends javax.swing.JFrame implements View {
     }//GEN-LAST:event_tblBranchMouseClicked
 
     private void btnReset6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReset6ActionPerformed
-        // TODO add your handling code here:
+        branch_list = (ArrayList<Branch>) branchController.readDataFromFile("branches.txt");
+        this.showData(branch_list, tblModelBranch);
     }//GEN-LAST:event_btnReset6ActionPerformed
 
     private void btXoaHD6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoaHD6ActionPerformed
@@ -1743,7 +1588,7 @@ public class HomePage extends javax.swing.JFrame implements View {
         /*       Nếu danh sách rỗng hoặc người dùng chưa chọn dòng  thì in ra thông báo
         còn nếu không thì gọi đến màn hình sửa */
         if (branch_list.isEmpty()) {
-            JOptionPane.showMessageDialog(rootPane, "Không có thông tin xe để sửa!");
+            JOptionPane.showMessageDialog(rootPane, "Không có thông tin để sửa!");
         } else if (dongChon == -1) {
             JOptionPane.showMessageDialog(rootPane, "Hãy chọn dòng chứa thông tin cần sửa!");
         } else {
@@ -1759,7 +1604,15 @@ public class HomePage extends javax.swing.JFrame implements View {
     }//GEN-LAST:event_btThemHD6ActionPerformed
 
     private void btTimHD6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimHD6ActionPerformed
-        // TODO add your handling code here:
+        branch_list = (ArrayList<Branch>) branchController.readDataFromFile("branches.txt");
+        
+        String searchKey = txtSearchBranch.getText();
+        
+        branch_list = branchController.searchBranch(branch_list, searchKey);
+        if (branch_list == null) {
+            branch_list = new ArrayList<>();
+        }
+        this.showData(branch_list, tblModelBranch);
     }//GEN-LAST:event_btTimHD6ActionPerformed
 
     private void tblOrderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblOrderMouseClicked
@@ -1790,7 +1643,29 @@ public class HomePage extends javax.swing.JFrame implements View {
     }//GEN-LAST:event_btXemChiTietHD2ActionPerformed
 
     private void btXoaHD2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoaHD2ActionPerformed
-        // TODO add your handling code here:
+        //        Lấy ra chỉ số dòng chọn của người dùng click vào
+        dongChon = tblOrder.getSelectedRow();
+        /*       Nếu danh sách rỗng hoặc người dùng chưa chọn dòng  thì in ra thông báo
+        còn nếu không thì show ra màn hình xác nhận xóa */
+        if (dongChon == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Hãy chọn một dòng cần xóa!");
+        } else if (order_list.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Không có thông tin để xóa!");
+        } else {
+            int confirm = JOptionPane.showConfirmDialog(
+                rootPane,
+                "Bạn có chắc chắn muốn xóa?",
+                "Xác nhận xóa",
+                JOptionPane.YES_NO_OPTION
+            );
+            /*           Người dùng chọn Yes sẽ tiến hành xóa thông tin khỏi danh sách và
+            show lại danh sách sau khi xóa */
+            if (confirm == JOptionPane.YES_OPTION) {
+                order_list.remove(dongChon);
+                orderController.writeToFile(order_list, "orders.txt");
+                this.showData(order_list, tblModelOrder);
+            }
+        }
     }//GEN-LAST:event_btXoaHD2ActionPerformed
 
     private void btThemHD2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemHD2ActionPerformed
@@ -1807,13 +1682,9 @@ public class HomePage extends javax.swing.JFrame implements View {
         // TODO add your handling code here:
     }//GEN-LAST:event_tblSupplierMouseClicked
 
-    private void jbtXep1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtXep1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtXep1ActionPerformed
-
     private void btnReset1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReset1ActionPerformed
-        // TODO add your handling code here:
-
+       supplier_list = (ArrayList<Supplier>) supplierController.readDataFromFile("suppliers.txt");
+       this.showData(supplier_list, tblModelSupplier);
     }//GEN-LAST:event_btnReset1ActionPerformed
 
     private void btXoaHD1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoaHD1ActionPerformed
@@ -1863,19 +1734,24 @@ public class HomePage extends javax.swing.JFrame implements View {
     }//GEN-LAST:event_btThemHD1ActionPerformed
 
     private void btTimHD1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimHD1ActionPerformed
-        // TODO add your handling code here:
+        supplier_list = (ArrayList<Supplier>) supplierController.readDataFromFile("suppliers.txt");
+        
+        String searchKey = txtSearchSupplier.getText();
+        
+        supplier_list = supplierController.searchSupplier(supplier_list, searchKey);
+        if (supplier_list == null) {
+            supplier_list = new ArrayList<>();
+        }
+        this.showData(supplier_list, tblModelSupplier);
     }//GEN-LAST:event_btTimHD1ActionPerformed
 
     private void tblCategoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCategoryMouseClicked
 
     }//GEN-LAST:event_tblCategoryMouseClicked
 
-    private void jbtXepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtXepActionPerformed
-
-    }//GEN-LAST:event_jbtXepActionPerformed
-
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
-
+        category_list = (ArrayList<Category>) categoryController.readDataFromFile("categories.txt");
+        this.showData(category_list, tblModelCategory);
     }//GEN-LAST:event_btnResetActionPerformed
 
     private void btXoaHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoaHDActionPerformed
@@ -1926,24 +1802,29 @@ public class HomePage extends javax.swing.JFrame implements View {
     }//GEN-LAST:event_btThemHDActionPerformed
 
     private void btTimHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimHDActionPerformed
-        //      Lấy thông tin khách hàng tìm kiếm từ JTextField
-
+       category_list = (ArrayList<Category>) categoryController.readDataFromFile("categories.txt");
+        
+        String searchKey = txtSearchCategory.getText();
+        System.out.println(searchKey);
+        
+        category_list = categoryController.searchCategory(category_list, searchKey);
+        if (category_list == null) {
+            category_list = new ArrayList<>();
+        }
+        this.showData(category_list, tblModelCategory);
     }//GEN-LAST:event_btTimHDActionPerformed
 
-    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+    private void txtSearchCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchCategoryActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSearchActionPerformed
+    }//GEN-LAST:event_txtSearchCategoryActionPerformed
 
     private void tblAuthorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblAuthorMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_tblAuthorMouseClicked
 
-    private void jbtXep5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtXep5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtXep5ActionPerformed
-
     private void btnReset5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReset5ActionPerformed
-        // TODO add your handling code here:
+        author_list = (ArrayList<Author>) authorController.readDataFromFile("authors.txt");
+        this.showData(author_list, tblModelAuthor);
     }//GEN-LAST:event_btnReset5ActionPerformed
 
     private void btXoaHD5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoaHD5ActionPerformed
@@ -1994,24 +1875,21 @@ public class HomePage extends javax.swing.JFrame implements View {
     }//GEN-LAST:event_btThemHD5ActionPerformed
 
     private void btTimHD5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimHD5ActionPerformed
-        // TODO add your handling code here:
+        
+        author_list = (ArrayList<Author>) authorController.readDataFromFile("authors.txt");
+        
+        String searchKey = txtSearchAuthor.getText();
+        
+        author_list = authorController.searchAuthor(author_list, searchKey);
+        if (author_list == null) {
+            author_list = new ArrayList<>();
+        }
+        this.showData(author_list, tblModelAuthor);
     }//GEN-LAST:event_btTimHD5ActionPerformed
-
-    private void RadioSearchByMaHD5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioSearchByMaHD5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RadioSearchByMaHD5ActionPerformed
 
     private void tblSachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSachMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_tblSachMouseClicked
-
-    private void jbtXep4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtXep4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtXep4ActionPerformed
-
-    private void RadioSortByTime4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioSortByTime4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RadioSortByTime4ActionPerformed
 
     private void btnReset4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReset4ActionPerformed
         tblModelSach = (DefaultTableModel) tblSach.getModel();
@@ -2068,12 +1946,97 @@ public class HomePage extends javax.swing.JFrame implements View {
     }//GEN-LAST:event_btThemHD4ActionPerformed
 
     private void btTimHD4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimHD4ActionPerformed
-        // TODO add your handling code here:
+        book_list = (ArrayList<Book>) bookController.readDataFromFile("books.txt");
+        
+        String searchValue = txtSearch4.getText();
+        
+        book_list = bookController.searchBook(book_list, searchValue);
+        System.out.println(book_list.size());
+        if (book_list == null) {
+            book_list = new ArrayList<>();
+        }
+        this.showData(book_list, tblModelSach);
     }//GEN-LAST:event_btTimHD4ActionPerformed
 
     private void btXoaHD3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoaHD3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btXoaHD3ActionPerformed
+
+    private void comboSapXepBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboSapXepBookActionPerformed
+        //        Lấy ra chỉ số của JcomboBox
+        int index = comboSapXepBook.getSelectedIndex();
+        //        Nếu chỉ số là 0 thì sắp theo thành tiền còn chỉ số là 1 thì sắp theo ngày sửa
+        if (index == 0) {
+            bookController.sortByPrice(book_list);
+        } else if (index == 1) {
+            bookController.sortByPrice2(book_list);
+        }
+        this.showData(book_list, tblModelSach);
+    }//GEN-LAST:event_comboSapXepBookActionPerformed
+
+    private void comboSapXepBookPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_comboSapXepBookPropertyChange
+        //        Lấy ra chỉ số của JcomboBox
+        
+    }//GEN-LAST:event_comboSapXepBookPropertyChange
+
+    private void comboSapXepAuthorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboSapXepAuthorActionPerformed
+        int index = comboSapXepAuthor.getSelectedIndex();
+        System.out.println(index);
+        if (index == 0) {
+            authorController.sortByName(author_list);
+        } else if (index == 1) {
+            authorController.sortByName2(author_list);
+        }
+        this.showData(author_list, tblModelAuthor);
+    }//GEN-LAST:event_comboSapXepAuthorActionPerformed
+
+    private void comboSapXepAuthorPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_comboSapXepAuthorPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboSapXepAuthorPropertyChange
+
+    private void comboSapXepAuthorVetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {//GEN-FIRST:event_comboSapXepAuthorVetoableChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboSapXepAuthorVetoableChange
+
+    private void comboSapXepCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboSapXepCategoryActionPerformed
+        int index = comboSapXepCategory.getSelectedIndex();
+        if (index == 0) {
+            categoryController.sortByName(category_list);
+        } else if (index == 1) {
+            categoryController.sortByName2(category_list);
+        }
+        this.showData(category_list, tblModelCategory);        // TODO add your handling code here:
+    }//GEN-LAST:event_comboSapXepCategoryActionPerformed
+
+    private void comboSapXepCategoryPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_comboSapXepCategoryPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboSapXepCategoryPropertyChange
+
+    private void comboSapXepCategoryVetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {//GEN-FIRST:event_comboSapXepCategoryVetoableChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboSapXepCategoryVetoableChange
+
+    private void txtSearchSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchSupplierActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchSupplierActionPerformed
+
+    private void comboSapXepSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboSapXepSupplierActionPerformed
+        int index = comboSapXepSupplier.getSelectedIndex();
+        if (index == 0) {
+            supplierController.sortByName(supplier_list);
+        } else if (index == 1) {
+            supplierController.sortByName2(supplier_list);
+        }
+        this.showData(supplier_list, tblModelSupplier);    
+    }//GEN-LAST:event_comboSapXepSupplierActionPerformed
+
+    private void comboSapXepSupplierPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_comboSapXepSupplierPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboSapXepSupplierPropertyChange
+
+    private void comboSapXepSupplierVetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {//GEN-FIRST:event_comboSapXepSupplierVetoableChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboSapXepSupplierVetoableChange
     private void showBookList() {
         book_list = (ArrayList<Book>) bookController.readDataFromFile("books.txt");
         if (book_list == null) {
@@ -2311,29 +2274,10 @@ public class HomePage extends javax.swing.JFrame implements View {
     private javax.swing.JPanel Panle_timKiem4;
     private javax.swing.JPanel Panle_timKiem5;
     private javax.swing.JPanel Panle_timKiem6;
-    private javax.swing.JRadioButton RadioSearchByKH1;
     private javax.swing.JRadioButton RadioSearchByKH2;
-    private javax.swing.JRadioButton RadioSearchByKH3;
-    private javax.swing.JRadioButton RadioSearchByKH4;
-    private javax.swing.JRadioButton RadioSearchByKH5;
-    private javax.swing.JRadioButton RadioSearchByMaHD1;
     private javax.swing.JRadioButton RadioSearchByMaHD2;
-    private javax.swing.JRadioButton RadioSearchByMaHD3;
-    private javax.swing.JRadioButton RadioSearchByMaHD4;
-    private javax.swing.JRadioButton RadioSearchByMaHD5;
-    private javax.swing.JRadioButton RadioSearchByMaHD6;
-    private javax.swing.JRadioButton RadioSortByTime;
-    private javax.swing.JRadioButton RadioSortByTime1;
     private javax.swing.JRadioButton RadioSortByTime2;
-    private javax.swing.JRadioButton RadioSortByTime3;
-    private javax.swing.JRadioButton RadioSortByTime4;
-    private javax.swing.JRadioButton RadioSortByTime5;
-    private javax.swing.JRadioButton RadioSortTT;
-    private javax.swing.JRadioButton RadioSortTT1;
     private javax.swing.JRadioButton RadioSortTT2;
-    private javax.swing.JRadioButton RadioSortTT3;
-    private javax.swing.JRadioButton RadioSortTT4;
-    private javax.swing.JRadioButton RadioSortTT5;
     private javax.swing.JButton btSuaHD;
     private javax.swing.JButton btSuaHD1;
     private javax.swing.JButton btSuaHD4;
@@ -2368,6 +2312,10 @@ public class HomePage extends javax.swing.JFrame implements View {
     private javax.swing.JButton btnReset4;
     private javax.swing.JButton btnReset5;
     private javax.swing.JButton btnReset6;
+    private javax.swing.JComboBox<String> comboSapXepAuthor;
+    private javax.swing.JComboBox<String> comboSapXepBook;
+    private javax.swing.JComboBox<String> comboSapXepCategory;
+    private javax.swing.JComboBox<String> comboSapXepSupplier;
     private javax.swing.JPanel iPanel10;
     private javax.swing.JPanel iPanel11;
     private javax.swing.JPanel iPanel9;
@@ -2382,19 +2330,18 @@ public class HomePage extends javax.swing.JFrame implements View {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
-    private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel22;
+    private javax.swing.JPanel jPanel23;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
@@ -2408,12 +2355,7 @@ public class HomePage extends javax.swing.JFrame implements View {
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JButton jbtXep;
-    private javax.swing.JButton jbtXep1;
     private javax.swing.JButton jbtXep2;
-    private javax.swing.JButton jbtXep3;
-    private javax.swing.JButton jbtXep4;
-    private javax.swing.JButton jbtXep5;
     private javax.swing.JTable tblAuthor;
     private javax.swing.JTable tblBranch;
     private javax.swing.JTable tblCategory;
@@ -2421,12 +2363,12 @@ public class HomePage extends javax.swing.JFrame implements View {
     private javax.swing.JTable tblReceipt;
     private javax.swing.JTable tblSach;
     private javax.swing.JTable tblSupplier;
-    private javax.swing.JTextField txtSearch;
-    private javax.swing.JTextField txtSearch1;
     private javax.swing.JTextField txtSearch2;
     private javax.swing.JTextField txtSearch3;
     private javax.swing.JTextField txtSearch4;
-    private javax.swing.JTextField txtSearch5;
-    private javax.swing.JTextField txtSearch6;
+    private javax.swing.JTextField txtSearchAuthor;
+    private javax.swing.JTextField txtSearchBranch;
+    private javax.swing.JTextField txtSearchCategory;
+    private javax.swing.JTextField txtSearchSupplier;
     // End of variables declaration//GEN-END:variables
 }

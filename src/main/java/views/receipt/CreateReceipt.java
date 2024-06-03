@@ -46,7 +46,7 @@ public class CreateReceipt extends javax.swing.JFrame {
         comboReceiptBook = new javax.swing.JComboBox<>();
         comboReceiptEmployee = new javax.swing.JComboBox<>();
         comboReceiptSupplier = new javax.swing.JComboBox<>();
-        txtReceiptQuantity1 = new javax.swing.JTextField();
+        txtReceiptPrice = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -82,11 +82,11 @@ public class CreateReceipt extends javax.swing.JFrame {
 
         jLabel4.setText("Phụ trách:");
 
-        comboReceiptBook.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboReceiptBook.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tôi thấy hoa vàng trên cỏ xanh", "Ngồi khóc trên cây", "Sách 1" }));
 
         comboReceiptEmployee.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nguyễn Văn An", "Đặng Ngọc Mai" }));
 
-        comboReceiptSupplier.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fahasa", "Sách mới"}));
+        comboReceiptSupplier.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Công ty cổ phần sách Việt Nam"}));
         comboReceiptSupplier.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 comboReceiptSupplierItemStateChanged(evt);
@@ -98,9 +98,9 @@ public class CreateReceipt extends javax.swing.JFrame {
             }
         });
 
-        txtReceiptQuantity1.addActionListener(new java.awt.event.ActionListener() {
+        txtReceiptPrice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtReceiptQuantity1ActionPerformed(evt);
+                txtReceiptPriceActionPerformed(evt);
             }
         });
 
@@ -120,7 +120,7 @@ public class CreateReceipt extends javax.swing.JFrame {
                     .addComponent(jLabel5))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(txtReceiptQuantity1)
+                    .addComponent(txtReceiptPrice)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(btnThem)
                         .addGap(87, 87, 87)
@@ -146,7 +146,7 @@ public class CreateReceipt extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtReceiptQuantity1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtReceiptPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -177,13 +177,25 @@ public class CreateReceipt extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtReceiptQuantityActionPerformed
 
+    private int getMaxId() {
+        int maxId = 0;
+        for (Receipt receipt : home.receipt_list) {
+            if (receipt.getReceiptId()> maxId) {
+                maxId = receipt.getReceiptId();
+            }
+        }
+        return maxId;
+    }
+    
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        String book, employee, supplier, quantity;
+        String book, employee, supplier;
+        int quantity, price;
         
         book = (String)comboReceiptBook.getSelectedItem();
         employee = (String)comboReceiptEmployee.getSelectedItem();
         supplier = (String)comboReceiptSupplier.getSelectedItem();
-        quantity = txtReceiptQuantity.getText();
+        quantity = Integer.parseInt(txtReceiptQuantity.getText());
+        price = Integer.parseInt(txtReceiptPrice.getText());
         
         // Lấy thời gian hiện tại
         LocalDateTime currentTime = LocalDateTime.now();
@@ -192,14 +204,14 @@ public class CreateReceipt extends javax.swing.JFrame {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         String formattedDateTime = currentTime.format(formatter);
         
-        Receipt b = new Receipt("1",formattedDateTime,supplier, book,quantity, employee, "1000000");
+        Receipt b = new Receipt(getMaxId() + 1,formattedDateTime,supplier, book,quantity, employee, price * quantity);
         
         home.handleCreateReceipt(b);        
     }//GEN-LAST:event_btnThemActionPerformed
 
-    private void txtReceiptQuantity1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtReceiptQuantity1ActionPerformed
+    private void txtReceiptPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtReceiptPriceActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtReceiptQuantity1ActionPerformed
+    }//GEN-LAST:event_txtReceiptPriceActionPerformed
 
     private void comboReceiptSupplierItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboReceiptSupplierItemStateChanged
         // TODO add your handling code here:
@@ -256,7 +268,7 @@ public class CreateReceipt extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JTextField txtReceiptPrice;
     private javax.swing.JTextField txtReceiptQuantity;
-    private javax.swing.JTextField txtReceiptQuantity1;
     // End of variables declaration//GEN-END:variables
 }

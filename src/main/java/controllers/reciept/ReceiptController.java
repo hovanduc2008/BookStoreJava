@@ -11,24 +11,13 @@ import java.util.Comparator;
 import models.Receipt;
 
 public class ReceiptController extends ControllerFile {
-//    public void sortByPrice(ArrayList<Receipt> x) {
-//        x.sort(new Comparator<Receipt>() {
-//            @Override
-//            public int compare(Receipt o1, Receipt o2) {
-//                return Double.compare(o1.getPrice(), o2.getPrice());
-//            }
-//        }); 
-//    }
-    
-    public ArrayList searchReceipt(ArrayList<Receipt> books, String id) {
+    public ArrayList searchReceipt(ArrayList<Receipt> receipts , int id) {
         ArrayList<Receipt> list = new ArrayList<>();
-        if(id.length() > 0) {
-            for(Receipt x : list) {
-                if(x.getSupplier().equals(id)) {
+        for(Receipt x : receipts) {
+                if(x.getReceiptId() == id) {
                     list.add(x);
                 }
             }
-        }
         return list;
     }
 }

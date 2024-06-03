@@ -185,7 +185,7 @@ public class CreateAuthor extends javax.swing.JFrame {
     }//GEN-LAST:event_txtAuthorEmailActionPerformed
 
     private void btnHuyBoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyBoActionPerformed
-        this.dispose();
+        setVisible(false);
     }//GEN-LAST:event_btnHuyBoActionPerformed
 
     private void txtAuthorNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAuthorNameActionPerformed

@@ -190,7 +190,7 @@ public class EditAuthor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnHuyBoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyBoActionPerformed
-        this.dispose();
+        setVisible(false);
     }//GEN-LAST:event_btnHuyBoActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed

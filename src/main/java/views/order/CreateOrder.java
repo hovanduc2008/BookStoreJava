@@ -331,7 +331,7 @@ public class CreateOrder extends javax.swing.JFrame {
         String formattedDateTime = currentTime.format(formatter);
 
         try {
-            if(order_detail_list != null && !order_detail_list.isEmpty()) {
+            if(order_detail_list.size() > 0 && !order_detail_list.isEmpty()) {
                 Order b = new Order(getMaxId() + 1, formattedDateTime, name, phone, mail, address, 1000000);
                 home.handleCreateOrder(b);
 

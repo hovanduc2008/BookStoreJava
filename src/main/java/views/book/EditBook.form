@@ -55,7 +55,7 @@
                   <Component id="txtBookEditDate" alignment="1" max="32767" attributes="0"/>
                   <Component id="comboBookCate" alignment="0" pref="269" max="32767" attributes="0"/>
                   <Component id="comboBookSupplier" alignment="0" max="32767" attributes="0"/>
-                  <Component id="txtBookEditAuthor" alignment="0" max="32767" attributes="0"/>
+                  <Component id="comboBookAuthor" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="txtBookEditISBN" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -86,7 +86,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtBookEditAuthor" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="comboBookAuthor" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -229,7 +229,7 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JComboBox" name="txtBookEditAuthor">
+    <Component class="javax.swing.JComboBox" name="comboBookAuthor">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;Nguy&#x1ec5;n Nh&#x1ead;t &#xc1;nh&quot; })" type="code"/>

@@ -19,11 +19,20 @@ public class BookController extends ControllerFile {
         }); 
     }
     
-    public ArrayList searchBook(ArrayList<Book> books, String id) {
+    public void sortByPrice2(ArrayList<Book> x) {
+        x.sort(new Comparator<Book>() {
+            @Override
+            public int compare(Book o1, Book o2) {
+                return Double.compare(o2.getPrice(), o1.getPrice());
+            }
+        }); 
+    }
+    
+    public ArrayList searchBook(ArrayList<Book> books, String searchKey) {
         ArrayList<Book> list = new ArrayList<>();
-        if(id.length() > 0) {
-            for(Book x : list) {
-                if(x.getISBN().equals(id)) {
+        if(searchKey.length() > 0) {
+            for(Book x : books) {
+                if(x.getISBN().equals(searchKey) || x.getTitle().equalsIgnoreCase(searchKey)) {
                     list.add(x);
                 }
             }

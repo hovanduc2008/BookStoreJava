@@ -11,20 +11,29 @@ import java.util.Comparator;
 import models.Supplier;
 
 public class SupplierController extends ControllerFile {
-//    public void sortByPrice(ArrayList<Book> x) {
-//        x.sort(new Comparator<Book>() {
-//            @Override
-//            public int compare(Book o1, Book o2) {
-//                return Double.compare(o1.getPrice(), o2.getPrice());
-//            }
-//        }); 
-//    }
+    public void sortByName(ArrayList<Supplier> x) {
+        x.sort(new Comparator<Supplier>() {
+            @Override
+            public int compare(Supplier o1, Supplier o2) {
+                return o2.getName().compareTo(o1.getName());
+            }
+        }); 
+    }
     
-    public ArrayList searchSupplier(ArrayList<Supplier> books, String id) {
+    public void sortByName2(ArrayList<Supplier> x) {
+        x.sort(new Comparator<Supplier>() {
+            @Override
+            public int compare(Supplier o1, Supplier o2) {
+                return o1.getName().compareTo(o2.getName());
+            }
+        }); 
+    }
+    
+    public ArrayList searchSupplier(ArrayList<Supplier> suppliers, String name) {
         ArrayList<Supplier> list = new ArrayList<>();
-        if(id.length() > 0) {
-            for(Supplier x : list) {
-                if(x.getPhoneNumber().equals(id)) {
+        if(name.length() > 0) {
+            for(Supplier x : suppliers) {
+                if(x.getName().equalsIgnoreCase(name) || x.getPhoneNumber().equalsIgnoreCase(name)) {
                     list.add(x);
                 }
             }

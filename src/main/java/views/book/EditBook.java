@@ -9,8 +9,11 @@ import javax.swing.JOptionPane;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.time.format.DateTimeFormatter;
+import models.Author;
 
 import models.Book;
+import models.Category;
+import models.Supplier;
 import view.HomePage;
 
 /**
@@ -29,6 +32,21 @@ public class EditBook extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         home = (HomePage) parent;
+        
+        comboBookCate.removeAllItems();
+        for (Category  cate : home.category_list) {
+            comboBookCate.addItem(cate.getName());
+        }
+        
+        comboBookSupplier.removeAllItems();
+        for (Supplier  supplier : home.supplier_list) {
+            comboBookSupplier.addItem(supplier.getName());
+        }
+        
+        comboBookAuthor.removeAllItems();
+        for (Author author : home.author_list) {
+            comboBookAuthor.addItem(author.getName());
+        }
         
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
@@ -60,7 +78,7 @@ public class EditBook extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         comboBookCate = new javax.swing.JComboBox<>();
         comboBookSupplier = new javax.swing.JComboBox<>();
-        txtBookEditAuthor = new javax.swing.JComboBox<>();
+        comboBookAuthor = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         txtBookEditISBN = new javax.swing.JLabel();
 
@@ -134,7 +152,7 @@ public class EditBook extends javax.swing.JFrame {
 
         comboBookSupplier.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fahasa" }));
 
-        txtBookEditAuthor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nguyễn Nhật Ánh" }));
+        comboBookAuthor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nguyễn Nhật Ánh" }));
 
         txtBookEditISBN.setText("   ");
 
@@ -165,7 +183,7 @@ public class EditBook extends javax.swing.JFrame {
                     .addComponent(txtBookEditDate, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(comboBookCate, 0, 269, Short.MAX_VALUE)
                     .addComponent(comboBookSupplier, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtBookEditAuthor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(comboBookAuthor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(txtBookEditISBN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -190,7 +208,7 @@ public class EditBook extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtBookEditAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboBookAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
@@ -229,7 +247,7 @@ public class EditBook extends javax.swing.JFrame {
         try {
             // Retrieve and trim input values
             String title = txtBookEditName.getText();
-            String author = String.valueOf(txtBookEditAuthor.getSelectedItem());
+            String author = String.valueOf(comboBookAuthor.getSelectedItem());
             String supplier = String.valueOf(comboBookSupplier.getSelectedItem());
             String category = String.valueOf(comboBookCate.getSelectedItem());
 
@@ -323,7 +341,7 @@ public class EditBook extends javax.swing.JFrame {
         
         txtBookEditISBN.setText(x.getISBN());
         txtBookEditName.setText(x.getTitle());
-        txtBookEditAuthor.setSelectedItem(x.getAuthor());
+        comboBookAuthor.setSelectedItem(x.getAuthor());
         txtBookEditDate.setText(String.valueOf(x.getPublicationYear()));
         comboBookSupplier.setSelectedItem(x.getPublisher());
         booknumberOfPagesEdit.setText(String.valueOf(x.getNumberOfPages()));
@@ -353,6 +371,7 @@ public class EditBook extends javax.swing.JFrame {
     private javax.swing.JTextField booknumberOfPagesEdit;
     private javax.swing.JButton btnHuyBo;
     private javax.swing.JButton btnThem;
+    private javax.swing.JComboBox<String> comboBookAuthor;
     private javax.swing.JComboBox<String> comboBookCate;
     private javax.swing.JComboBox<String> comboBookSupplier;
     private javax.swing.JLabel jLabel1;
@@ -366,7 +385,6 @@ public class EditBook extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JComboBox<String> txtBookEditAuthor;
     private javax.swing.JTextField txtBookEditDate;
     private javax.swing.JLabel txtBookEditISBN;
     private javax.swing.JTextField txtBookEditName;
